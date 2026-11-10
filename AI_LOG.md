@@ -48,6 +48,10 @@
 * **Issue:** Hindi speakers routinely search with terminal schwa deletion (`dharm`, `yog`, `karm`), while Sanskrit and standard IAST retain the trailing vowel (`dharma`, `yoga`, `karma`). Naive string equality failed to match `dharm` to `dharma`.
 * **My Correction:** Built `normalizePhonetic()` in `transliterationEngine.js` which strips optional trailing schwa vowels (`replace(/a$/, "")`), equalizes long/short vowel variants (`ee` ⇄ `i`, `oo` ⇄ `u`), and normalizes sibilants (`sh` ⇄ `s`).
 
+### E. Eliminating Generic Dark-Mode Mixtures & Cropped Photo Artifacts
+* **Issue:** An earlier AI design pass mixed discordant black boxes (`bg-[#1A140E]`) with light parchment cards, causing faint/washed-out white text on cream backgrounds, and attempted to paste rectangular photo cutouts with dark margins into the layout.
+* **My Correction:** Purged all dark-mode remnants and black cards in favor of a 100% unified, authentic Nalanda manuscript folio palette. Replaced rectangular photo snippets with pure, transparent vector SVG illustrations (`RishiScholar`, `SaraswatiVeena`, `BloomingLotus`, `AncientGrantha`, `PeacockFeather`, and `ManuscriptClouds`) rendered with rich soot-ink (`#1A140E`), terracotta (`#8B331B`), and Vedic forest green (`#1F5333`) line-work that blends naturally into the antique Bhojpatra deckled scroll.
+
 ---
 
 ## 4. Verification Methodology (Facts, Sources & Code)

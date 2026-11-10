@@ -12,8 +12,8 @@ export default function CategoryFilter({ selectedCategory, onSelectCategory }) {
             onClick={() => onSelectCategory(cat.id)}
             className={`px-3 py-1.5 rounded text-xs sm:text-sm font-medium whitespace-nowrap transition-all border ${
               isSelected
-                ? 'bg-[#1F5333] dark:bg-[#174228] text-[#FAF6ED] border-[#0E2E1A] shadow-xs font-semibold'
-                : 'bg-[#FAF6ED] dark:bg-[#1D1712] text-[#342A1F] dark:text-[#EBDDC7] border-[#CEBC95] dark:border-[#3E3123] hover:bg-[#EBDDC7]/70 hover:border-[#1F5333]'
+                ? 'bg-[#1F5333] text-[#FAF6ED] border-[#0E2E1A] shadow-xs font-semibold'
+                : 'bg-[#FAF6ED] text-[#342A1F] border-[#CEBC95] hover:bg-[#EBDDC7] hover:border-[#1F5333]'
             }`}
           >
             <span className="font-devanagari mr-1">{cat.labelHindi}</span>

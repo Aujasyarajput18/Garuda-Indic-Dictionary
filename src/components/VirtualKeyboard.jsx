@@ -18,15 +18,15 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
   const [activeTab, setActiveTab] = useState('vyanjan');
 
   return (
-    <div className="mt-3 p-3.5 bg-[#FAF6ED] dark:bg-[#1A1510] rounded-lg border border-[#CEBC95] dark:border-[#3E3123] shadow-xs transition-all">
-      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D8C7A3] dark:border-[#3E3123] text-xs">
+    <div className="mt-3 p-3.5 bg-[#FAF6ED] rounded-lg border border-[#CEBC95] shadow-xs transition-all">
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D8C7A3] text-xs">
         <div className="flex gap-1.5 font-medium">
           <button
             onClick={() => setActiveTab('vyanjan')}
             className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'vyanjan'
                 ? 'bg-[#1F5333] text-white font-semibold'
-                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
+                : 'text-[#524332] hover:bg-[#EBDDC7]/60'
             }`}
           >
             व्यंजन (Consonants)
@@ -36,7 +36,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
             className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'matra'
                 ? 'bg-[#1F5333] text-white font-semibold'
-                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
+                : 'text-[#524332] hover:bg-[#EBDDC7]/60'
             }`}
           >
             मात्राएं (Vowel Signs)
@@ -46,7 +46,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
             className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'swar'
                 ? 'bg-[#1F5333] text-white font-semibold'
-                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
+                : 'text-[#524332] hover:bg-[#EBDDC7]/60'
             }`}
           >
             स्वर (Vowels)
@@ -55,7 +55,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
 
         <button
           onClick={onClose}
-          className="p-1 rounded text-[#7D6B56] hover:text-[#221B13] dark:hover:text-[#FAF6ED] hover:bg-[#EBDDC7]"
+          className="p-1 rounded text-[#7D6B56] hover:text-[#1A140E] hover:bg-[#EBDDC7]"
           title="Close keyboard"
         >
           <X className="w-4 h-4" />
@@ -68,7 +68,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#221B13] dark:text-[#FAF6ED] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] text-[#1A140E] border border-[#CEBC95] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
           >
             {char}
           </button>
@@ -78,7 +78,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-lg sm:text-xl font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#8B331B] dark:text-[#EBBCAD] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#8B331B] active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-lg sm:text-xl font-devanagari font-bold rounded bg-[#FCF8F0] text-[#8B331B] border border-[#CEBC95] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#8B331B] active:scale-95 transition-all flex items-center justify-center"
           >
             क{char}
           </button>
@@ -88,7 +88,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#221B13] dark:text-[#FAF6ED] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] text-[#1A140E] border border-[#CEBC95] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
           >
             {char}
           </button>
@@ -96,16 +96,16 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
       </div>
 
       {/* Control Actions */}
-      <div className="flex items-center justify-center gap-2 mt-2.5 pt-2 border-t border-[#D8C7A3] dark:border-[#3E3123]">
+      <div className="flex items-center justify-center gap-2 mt-2.5 pt-2 border-t border-[#D8C7A3]">
         <button
           onClick={() => onInsertChar(" ")}
-          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#342A1F] dark:text-[#EBDDC7] border border-[#CEBC95] dark:border-[#4A3B2B] hover:bg-[#EBDDC7]"
+          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] text-[#342A1F] border border-[#CEBC95] hover:bg-[#EBDDC7]"
         >
           <Space className="w-3.5 h-3.5" /> Space (स्थान)
         </button>
         <button
           onClick={onBackspace}
-          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#8B331B] dark:text-[#EBBCAD] border border-[#CEBC95] dark:border-[#4A3B2B] hover:bg-[#F5DDD5] transition-all"
+          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] text-[#8B331B] border border-[#CEBC95] hover:bg-[#F5DDD5] transition-all"
         >
           <Delete className="w-3.5 h-3.5" /> Backspace (मिटाएं)
         </button>

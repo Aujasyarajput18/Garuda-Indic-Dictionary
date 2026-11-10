@@ -9,13 +9,17 @@ import BookmarksModal from './components/BookmarksModal';
 import AboutModal from './components/AboutModal';
 import { INDIC_DICTIONARY } from './data/dictionaryData';
 import { searchDictionary } from './utils/transliterationEngine';
-import { AncientGrantha, PeacockFeather, LotusFlower } from './components/Doodles';
-import { BookOpen, AlertCircle, RefreshCw, Feather } from 'lucide-react';
-
-// Real Bharat & Nalanda Doodle Assets
-import indicRishiImg from './assets/indic_rishi.png';
-import pinkLotusImg from './assets/pink_lotus.png';
-import bharatCollageImg from './assets/bharat_map_collage.jpg';
+import { 
+  AncientGrantha, 
+  PeacockFeather, 
+  LotusFlower, 
+  BotanicalVine,
+  RishiScholar,
+  SaraswatiVeena,
+  BloomingLotus,
+  ManuscriptClouds
+} from './components/Doodles';
+import { BookOpen, AlertCircle, RefreshCw } from 'lucide-react';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,6 +27,14 @@ export default function App() {
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [showBookmarksModal, setShowBookmarksModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
+
+  // Forcibly clear any dark mode remnants from browser cache
+  useEffect(() => {
+    document.documentElement.classList.remove('dark');
+    try {
+      localStorage.removeItem('garuda_dict_dark');
+    } catch {}
+  }, []);
 
   // Bookmarks with localStorage
   const [bookmarks, setBookmarks] = useState(() => {
@@ -105,39 +117,34 @@ export default function App() {
         {/* Ancient Deckled Parchment Scroll Container */}
         <div className="burnt-parchment-scroll p-4 sm:p-7 md:p-9 relative">
           
-          {/* Classical Nalanda Inscription Header with Bharat Doodles */}
+          {/* Classical Nalanda Inscription Header with Organic Vector Doodles */}
           <div className="relative mb-6 sm:mb-8 text-center pt-2">
             
-            {/* Left Doodle: Ancient Indian Scholar/Rishi writing with Peacock Feather */}
-            <div className="hidden md:block absolute -top-3 -left-3 lg:-left-6 pointer-events-none z-10">
-              <img 
-                src={indicRishiImg} 
-                alt="Ancient Sanskrit Scholar / Rishi writing" 
-                className="w-24 lg:w-28 h-auto drop-shadow-md select-none transform -rotate-3"
-              />
+            {/* Left Vignette: Ancient Rishi Writing on Bhojpatra (Pure Vector) */}
+            <div className="hidden lg:block absolute -top-1 left-0 pointer-events-none select-none opacity-85 hover:opacity-100 transition-opacity">
+              <RishiScholar className="w-24 xl:w-28 h-auto" />
             </div>
 
-            {/* Right Doodle: Sacred Indian Pink Lotus in Bloom */}
-            <div className="hidden md:block absolute -top-1 -right-2 lg:-right-4 pointer-events-none z-10">
-              <img 
-                src={pinkLotusImg} 
-                alt="Sacred Pink Indian Lotus" 
-                className="w-16 lg:w-20 h-auto drop-shadow-md select-none transform rotate-6"
-              />
+            {/* Right Vignette: Saraswati Veena & Blooming Lotus (Pure Vector) */}
+            <div className="hidden lg:flex flex-col items-center absolute -top-1 right-0 pointer-events-none select-none opacity-85 hover:opacity-100 transition-opacity">
+              <SaraswatiVeena className="w-10 xl:w-11 h-auto -rotate-12" />
+              <BloomingLotus className="w-11 h-auto -mt-3" />
             </div>
 
-            {/* Top Ornamental Motif */}
-            <div className="flex items-center justify-center gap-3 mb-2">
+            {/* Top Ornamental Doodles */}
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <ManuscriptClouds className="w-14 h-auto opacity-50 hidden sm:block" />
               <PeacockFeather className="w-5 h-5 opacity-85" />
-              <span className="h-px w-8 bg-[#CEBC95]"></span>
-              <LotusFlower className="w-4 h-4 opacity-75" />
-              <span className="h-px w-8 bg-[#CEBC95]"></span>
+              <BotanicalVine className="w-12 h-3.5 opacity-60" />
+              <LotusFlower className="w-5 h-5 opacity-80" />
+              <BotanicalVine className="w-12 h-3.5 opacity-60 -scale-x-100" />
               <AncientGrantha className="w-5 h-5 opacity-85" />
+              <ManuscriptClouds className="w-14 h-auto opacity-50 -scale-x-100 hidden sm:block" />
             </div>
 
             {/* National Civilizational Pill */}
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#EBDDC7] border border-[#CEBC95] text-[#1F5333] text-xs font-semibold mb-2 shadow-2xs font-devanagari">
-              <span>🇮🇳 भारत की ज्ञान-परंपरा • नालन्दा वाङ्मय</span>
+              <span>भारत की ज्ञान-परंपरा • नालन्दा वाङ्मय</span>
             </div>
 
             {/* Main Title */}
@@ -150,7 +157,7 @@ export default function App() {
               "धारणाद्धर्ममित्याहुर्धर्मो धारयते प्रजाः"
             </p>
 
-            <p className="mt-1 text-xs sm:text-sm text-[#524332] max-w-lg mx-auto leading-relaxed font-devanagari">
+            <p className="mt-1.5 text-xs sm:text-sm text-[#524332] max-w-lg mx-auto leading-relaxed font-devanagari">
               पाणिनि धातु, वैदिक व्युत्पत्ति एवं गैर-अनुवाद्य भारतीय अवधारणाओं का प्रामाणिक संकलन: <strong>देवनागरी</strong> अथवा <strong>Phonetic English (Hinglish)</strong> में।
             </p>
           </div>
@@ -255,30 +262,22 @@ export default function App() {
             )}
           </section>
 
-          {/* "Building for Bharat" Cultural Dedication Banner */}
-          <div className="mt-8 pt-5 border-t border-[#D8C7A3]">
-            <div className="p-4 sm:p-5 rounded-lg bg-[#FAF4E8] border border-[#CEBC95] flex flex-col sm:flex-row items-center gap-4">
-              <img 
-                src={bharatCollageImg} 
-                alt="भारत Cultural Collage" 
-                className="w-24 sm:w-28 h-auto rounded border border-[#CEBC95] shadow-xs shrink-0 select-none"
-              />
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#1F5333] font-devanagari">
-                  भारत के लिए निर्माण • Building for Bharat in the Age of AI
-                </span>
-                <p className="text-xs sm:text-sm text-[#342A1F] mt-1 font-devanagari leading-relaxed">
-                  संक्रान्त सानु जी के विचारानुसार, भारतीय भाषाओं की ज्ञान-परंपरा को पश्चिमी संकीर्ण अनुवादों से मुक्त कर, उनकी स्वाभाविक धातु, व्याकरण और सभ्यतामूलक अर्थों को डिजिटल युग में स्थापित करना ही इस शब्दकोश का उद्देश्य है।
-                </p>
-              </div>
+          {/* "Building for Bharat" Dedication Footer inside the scroll */}
+          <div className="mt-8 pt-4 border-t border-[#D8C7A3] text-center">
+            <div className="inline-block p-4 rounded-lg bg-[#F5ECE0] border border-[#CEBC95] max-w-xl mx-auto text-left">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1F5333] font-devanagari block mb-1">
+                भारत के लिए निर्माण • Building for Bharat
+              </span>
+              <p className="text-xs text-[#342A1F] font-devanagari leading-relaxed">
+                संक्रान्त सानु जी के विचारानुसार, भारतीय भाषाओं की ज्ञान-परंपरा को पश्चिमी संकीर्ण अनुवादों से मुक्त कर, उनकी स्वाभाविक धातु, व्याकरण और सभ्यतामूलक अर्थों को डिजिटल युग में स्थापित करना ही इस शब्दकोश का उद्देश्य है।
+              </p>
             </div>
-          </div>
 
-          {/* Bottom Manuscript Scroll Curled Finial */}
-          <div className="mt-6 pt-3 border-t border-[#D8C7A3] flex items-center justify-center gap-2 text-[11px] text-[#7D6B56] font-devanagari">
-            <span>॥ इति शुभम् ॥</span>
-            <span>•</span>
-            <span className="italic">गरुड़ प्रकाशन एवं ऋषिहुड विश्वविद्यालय</span>
+            <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-[#7D6B56] font-devanagari">
+              <span>॥ इति शुभम् ॥</span>
+              <span>•</span>
+              <span className="italic">गरुड़ प्रकाशन एवं ऋषिहुड विश्वविद्यालय</span>
+            </div>
           </div>
 
         </div>
