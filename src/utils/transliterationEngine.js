@@ -3,8 +3,8 @@
  * Engineered for Garuda Prakashan Indic Lexicon Project
  * 
  * Features:
- * 1. Live Roman to Devanagari transliteration (phonetic & ITRANS)
- * 2. Phonetic normalization (handling schwa deletion, vowel length, sibilants)
+ * 1. Live Roman to Devanagari transliteration (phonetic, ITRANS, and Hinglish)
+ * 2. Phonetic normalization (handling schwa deletion, vowel length, sibilants, aspiration)
  * 3. Bidirectional search (Devanagari, Romanized/Hinglish, and Reverse English semantic search)
  * 4. Fuzzy typo tolerance (Levenshtein distance & sound-alike ranking)
  */
@@ -16,118 +16,198 @@ export function isDevanagari(text) {
 
 // Consonant mappings with inherent 'a'
 const CONSONANTS = {
-  k: "क", kh: "ख", g: "ग", gh: "घ", ng: "ङ",
-  c: "च", ch: "च", chh: "छ", j: "ज", jh: "झ", ny: "ञ", jn: "ज्ञ", gy: "ज्ञ",
-  t: "त", th: "थ", d: "द", dh: "ध", n: "न",
-  T: "ट", Th: "ठ", D: "ड", Dh: "ढ", N: "ण",
-  p: "प", ph: "फ", f: "फ", b: "ब", bh: "भ", m: "म",
-  y: "य", r: "र", l: "ल", v: "व", w: "व",
-  sh: "श", shh: "ष", s: "स", h: "ह",
-  ksh: "क्ष", x: "क्ष", tr: "त्र", shr: "श्र"
+  ksh: "क्ष", chh: "छ", shh: "ष", jn: "ज्ञ", gy: "ज्ञ", shr: "श्र",
+  kh: "ख", gh: "घ", ch: "च", jh: "झ", th: "थ", dh: "ध",
+  ph: "फ", bh: "भ", sh: "श", tr: "त्र",
+  k: "क", g: "ग", c: "च", j: "ज", t: "त", d: "द", n: "न",
+  p: "प", f: "फ", b: "ब", m: "म", y: "य", r: "र", l: "ल",
+  v: "व", w: "व", s: "स", h: "ह"
 };
 
 // Independent vowels (start of word or after another vowel)
 const INDEPENDENT_VOWELS = {
-  a: "अ", aa: "आ", A: "आ",
-  i: "इ", ee: "ई", I: "ई",
-  u: "उ", oo: "ऊ", U: "ऊ",
-  ri: "ऋ", R: "ऋ",
-  e: "ए", ai: "ऐ",
-  o: "ओ", au: "औ", ou: "औ"
+  aa: "आ", ai: "ऐ", au: "औ", ee: "ई", oo: "ऊ", ou: "औ", ri: "ऋ",
+  a: "अ", i: "इ", u: "उ", e: "ए", o: "ओ"
 };
 
 // Vowel matras (dependent signs attached to consonants)
 const MATRAS = {
+  aa: "ा", ai: "ै", au: "ौ", ee: "ी", oo: "ू", ou: "ौ", ri: "ृ",
   a: "", // inherent vowel
-  aa: "ा", A: "ा",
-  i: "ि", ee: "ी", I: "ी",
-  u: "ु", oo: "ू", U: "ू",
-  ri: "ृ", R: "ृ",
-  e: "े", ai: "ै",
-  o: "ो", au: "ौ", ou: "ौ"
+  i: "ि", u: "ु", e: "े", o: "ो"
+};
+
+// High-frequency curated Indic terms map for instantaneous, exact 1:1 transliteration
+const COMMON_EXACT_MAP = {
+  namaste: "नमस्ते",
+  namaskar: "नमस्कार",
+  dharma: "धर्म",
+  dharm: "धर्म",
+  dharama: "धर्म",
+  yoga: "योग",
+  yog: "योग",
+  gyan: "ज्ञान",
+  jnan: "ज्ञान",
+  jnana: "ज्ञान",
+  gyaan: "ज्ञान",
+  satya: "सत्य",
+  saty: "सत्य",
+  ahimsa: "अहिंसा",
+  ahinsa: "अहिंसा",
+  rashtra: "राष्ट्र",
+  rashtr: "राष्ट्र",
+  swaraj: "स्वराज्य",
+  swarajya: "स्वराज्य",
+  moksha: "मोक्ष",
+  moksh: "मोक्ष",
+  karma: "कर्म",
+  karm: "कर्म",
+  itihasa: "इतिहास",
+  itihas: "इतिहास",
+  murti: "मूर्ति",
+  moorti: "मूर्ति",
+  guru: "गुरु",
+  seva: "सेवा",
+  prana: "प्राण",
+  pran: "प्राण",
+  sanskriti: "संस्कृति",
+  sanskruti: "संस्कृति",
+  vidya: "विद्या",
+  niti: "नीति",
+  samadhi: "समाधि",
+  purushartha: "पुरुषार्थ",
+  purusharth: "पुरुषार्थ",
+  // Classical Vedic and Indic additions
+  shanti: "शान्ति",
+  shantih: "शान्ति",
+  shaanti: "शान्ति",
+  santi: "शान्ति",
+  atman: "आत्मन्",
+  atma: "आत्मा",
+  aatma: "आत्मा",
+  aatman: "आत्मन्",
+  brahman: "ब्रह्म",
+  brahm: "ब्रह्म",
+  brahma: "ब्रह्म",
+  bramha: "ब्रह्म",
+  bhakti: "भक्ति",
+  bhakthi: "भक्ति",
+  shraddha: "श्रद्धा",
+  sraddha: "श्रद्धा",
+  tapas: "तपस्",
+  tap: "तपस्",
+  tapa: "तपस्",
+  ananda: "आनन्द",
+  anand: "आनन्द",
+  aananda: "आनन्द",
+  shakti: "शक्ति",
+  sakthi: "शक्ति",
+  shakthi: "शक्ति",
+  karuna: "करुणा",
+  karunaa: "करुणा",
+  mantra: "मन्त्र",
+  mantar: "मन्त्र",
+  manthra: "मन्त्र",
+  yajna: "यज्ञ",
+  yagya: "यज्ञ",
+  yagna: "यज्ञ",
+  sutra: "सूत्र",
+  sootra: "सूत्र",
+  darshan: "दर्शन",
+  darshana: "दर्शन",
+  bharat: "भारत",
+  bharata: "भारत",
+  varna: "वर्ण",
+  varn: "वर्ण",
+  jati: "जाति",
+  jaati: "जाति",
+  maya: "माया",
+  maaya: "माया",
+  dhyan: "ध्यान",
+  dhyana: "ध्यान",
+  sadhana: "साधना",
+  saadhana: "साधना",
+  ahankar: "अहङ्कार",
+  ahankara: "अहङ्कार",
+  prakriti: "प्रकृति",
+  prakruti: "प्रकृति",
+  purush: "पुरुष",
+  purusha: "पुरुष",
+  deva: "देव",
+  dev: "देव",
+  devata: "देवता",
+  kavya: "काव्य",
+  kaavya: "काव्य",
+  rasa: "रस",
+  ras: "रस"
 };
 
 /**
  * Phonetically transliterates a Romanized string to Devanagari.
- * Handles greedy longest-prefix matching for multi-character sounds (e.g. 'ksh', 'chh', 'shh').
+ * Employs curated exact dictionary lookup first, with a smart conjunct/matra tokenizer fallback.
  */
 export function romanToDevanagari(input) {
   if (!input) return "";
   const str = input.toLowerCase().trim();
-  let result = "";
-  let i = 0;
 
-  // Custom high-frequency words shortcut dictionary
-  const commonExactMap = {
-    namaste: "नमस्ते",
-    namaskar: "नमस्कार",
-    dharma: "धर्म",
-    dharm: "धर्म",
-    yoga: "योग",
-    yog: "योग",
-    gyan: "ज्ञान",
-    jnan: "ज्ञान",
-    jnana: "ज्ञान",
-    satya: "सत्य",
-    ahimsa: "अहिंसा",
-    ahinsa: "अहिंसा",
-    rashtra: "राष्ट्र",
-    swaraj: "स्वराज्य",
-    swarajya: "स्वराज्य",
-    moksha: "मोक्ष",
-    moksh: "मोक्ष",
-    karma: "कर्म",
-    karm: "कर्म",
-    itihasa: "इतिहास",
-    itihas: "इतिहास",
-    murti: "मूर्ति",
-    moorti: "मूर्ति",
-    guru: "गुरु",
-    seva: "सेवा",
-    prana: "प्राण",
-    pran: "प्राण",
-    sanskriti: "संस्कृति",
-    vidya: "विद्या",
-    niti: "नीति",
-    samadhi: "समाधि",
-    purushartha: "पुरुषार्थ"
-  };
-
-  if (commonExactMap[str]) {
-    return commonExactMap[str];
+  // 1. Direct High-Frequency Map
+  if (COMMON_EXACT_MAP[str]) {
+    return COMMON_EXACT_MAP[str];
   }
 
+  // 2. Multi-word transliteration
+  if (str.includes(" ")) {
+    return str.split(/\s+/).map(w => romanToDevanagari(w)).join(" ");
+  }
+
+  // 3. Smart Syllable Tokenizer
+  let result = "";
+  let i = 0;
+  let lastWasConsonant = false;
+
   while (i < str.length) {
-    // Check 3-char prefixes (ksh, chh, shh, etc.)
     const sub3 = str.slice(i, i + 3);
     const sub2 = str.slice(i, i + 2);
     const sub1 = str.slice(i, i + 1);
 
-    if (CONSONANTS[sub3]) {
-      result += CONSONANTS[sub3];
-      i += 3;
-    } else if (CONSONANTS[sub2]) {
-      result += CONSONANTS[sub2];
-      i += 2;
-    } else if (CONSONANTS[sub1]) {
-      result += CONSONANTS[sub1];
-      i += 1;
-    } else if (INDEPENDENT_VOWELS[sub2] && (i === 0 || !CONSONANTS[str[i - 1]])) {
-      result += INDEPENDENT_VOWELS[sub2];
-      i += 2;
-    } else if (INDEPENDENT_VOWELS[sub1] && (i === 0 || !CONSONANTS[str[i - 1]])) {
-      result += INDEPENDENT_VOWELS[sub1];
-      i += 1;
-    } else if (MATRAS[sub2] !== undefined) {
-      result += MATRAS[sub2];
-      i += 2;
-    } else if (MATRAS[sub1] !== undefined) {
-      result += MATRAS[sub1];
-      i += 1;
-    } else {
-      result += str[i];
-      i++;
+    // Consonant check
+    let consMatch = null;
+    let consLen = 0;
+    if (CONSONANTS[sub3]) { consMatch = CONSONANTS[sub3]; consLen = 3; }
+    else if (CONSONANTS[sub2]) { consMatch = CONSONANTS[sub2]; consLen = 2; }
+    else if (CONSONANTS[sub1]) { consMatch = CONSONANTS[sub1]; consLen = 1; }
+
+    if (consMatch) {
+      if (lastWasConsonant) {
+        result += "्"; // insert halanta for conjuncts
+      }
+      result += consMatch;
+      i += consLen;
+      lastWasConsonant = true;
+      continue;
     }
+
+    // Vowel check
+    let vowMatch = null;
+    let vowLen = 0;
+    if (MATRAS[sub2] !== undefined) { vowMatch = sub2; vowLen = 2; }
+    else if (MATRAS[sub1] !== undefined) { vowMatch = sub1; vowLen = 1; }
+
+    if (vowMatch) {
+      if (lastWasConsonant) {
+        result += MATRAS[vowMatch];
+      } else {
+        result += INDEPENDENT_VOWELS[vowMatch] || vowMatch;
+      }
+      i += vowLen;
+      lastWasConsonant = false;
+      continue;
+    }
+
+    // Space or other punctuation
+    result += str[i];
+    i++;
+    lastWasConsonant = false;
   }
 
   return result;
@@ -135,7 +215,7 @@ export function romanToDevanagari(input) {
 
 /**
  * Normalizes phonetic spelling to allow flexible matching
- * (e.g. collapsing long vowels, equating 'sh' and 's', equating 'v' and 'w', stripping trailing 'a')
+ * (e.g. collapsing long vowels, equating 'sh' and 's', equating 'v' and 'w', stripping trailing 'a' / schwa)
  */
 export function normalizePhonetic(str) {
   if (!str) return "";
@@ -148,8 +228,9 @@ export function normalizePhonetic(str) {
     .replace(/ou/g, "au")
     .replace(/w/g, "v")
     .replace(/shh/g, "sh")
+    .replace(/sh/g, "s")
     .replace(/jñ/g, "jn")
-    .replace(/gy/g, "jn") // equate gyan and jnan
+    .replace(/gy/g, "jn")
     .replace(/h/g, "")    // optional aspiration for fuzzy matching
     .replace(/a$/, "");   // schwa deletion at word end (dharm == dharma)
 }
@@ -181,9 +262,11 @@ export function levenshteinDistance(a, b) {
  * Search the dictionary using multi-criteria ranking:
  * 1. Exact Devanagari match
  * 2. Prefix / Substring Devanagari match
- * 3. Phonetic Romanized match (e.g. 'dharma', 'dharama', 'gyan', 'jnan')
- * 4. English semantic / meaning reverse search (e.g. 'duty', 'liberation', 'truth')
- * 5. Fuzzy sound-alike / Levenshtein fallback
+ * 3. Transliterated Devanagari match
+ * 4. Romanized / IAST exact & variant match
+ * 5. Normalized phonetic match (handles schwa deletion e.g. dharm -> dharma, yog -> yoga)
+ * 6. Reverse English semantic search (matching keywords in English definition, tags, and decolonial notes)
+ * 7. Fuzzy sound-alike / Levenshtein fallback (typographical error tolerance)
  */
 export function searchDictionary(query, dictionary) {
   if (!query || query.trim() === "") {
@@ -225,7 +308,7 @@ export function searchDictionary(query, dictionary) {
       if (entry.iast.toLowerCase() === lowerQuery || entry.id === lowerQuery) {
         score += 100;
         matchType = "Exact Romanized / IAST";
-      } else if (entry.phoneticVariants.some(v => v.toLowerCase() === lowerQuery)) {
+      } else if (entry.phoneticVariants && entry.phoneticVariants.some(v => v.toLowerCase() === lowerQuery)) {
         score += 95;
         matchType = "Phonetic Variant Match";
       } else if (entry.iast.toLowerCase().startsWith(lowerQuery)) {
@@ -233,43 +316,53 @@ export function searchDictionary(query, dictionary) {
         matchType = "Romanized Prefix";
       }
 
-      // 3. Normalized Phonetic match (handles schwa deletion e.g. dharm -> dharma)
+      // 3. Transliterated Devanagari match
+      if (transliteratedQuery) {
+        if (entry.devanagari === transliteratedQuery) {
+          score += 90;
+          matchType = matchType || "Transliterated Devanagari";
+        } else if (entry.devanagari.startsWith(transliteratedQuery)) {
+          score += 70;
+          matchType = matchType || "Transliterated Prefix";
+        }
+      }
+
+      // 4. Normalized Phonetic match (handles schwa deletion e.g. dharm -> dharma)
       if (score === 0) {
         const normIast = normalizePhonetic(entry.iast);
         if (normIast === normalizedQuery) {
           score += 85;
           matchType = "Phonetic Normalization (Schwa)";
-        } else if (entry.phoneticVariants.some(v => normalizePhonetic(v) === normalizedQuery)) {
+        } else if (entry.phoneticVariants && entry.phoneticVariants.some(v => normalizePhonetic(v) === normalizedQuery)) {
           score += 80;
           matchType = "Fuzzy Phonetic Match";
         }
       }
 
-      // 4. Transliterated Devanagari match
-      if (transliteratedQuery) {
-        if (entry.devanagari === transliteratedQuery) {
-          score += 90;
-          matchType = "Transliterated Devanagari";
-        } else if (entry.devanagari.startsWith(transliteratedQuery)) {
-          score += 70;
-          matchType = "Transliterated Prefix";
-        }
-      }
-
       // 5. English Semantic / Reverse Search
       const engMeaning = entry.meanings.english.toLowerCase();
+      const decolonialTitle = entry.decolonialNote ? entry.decolonialNote.title.toLowerCase() : "";
       const decolonialText = entry.decolonialNote ? entry.decolonialNote.content.toLowerCase() : "";
+      const fullDecolonial = `${decolonialTitle} ${decolonialText}`;
       const posEng = entry.partOfSpeech.english.toLowerCase();
 
-      if (engMeaning.includes(lowerQuery)) {
+      // Normalize hyphenated searches (e.g. non-violence -> nonviolence)
+      const cleanLower = lowerQuery.replace(/[-_]/g, "");
+      const spaceLower = lowerQuery.replace(/[-_]/g, " ");
+
+      const matchesText = (text) => {
+        return text.includes(lowerQuery) || text.includes(cleanLower) || text.includes(spaceLower);
+      };
+
+      if (matchesText(engMeaning)) {
+        score += 65;
+        matchType = matchType || "English Definition Translation";
+      } else if (entry.tags && entry.tags.some(t => matchesText(t.toLowerCase()))) {
         score += 55;
-        matchType = matchType || "English Definition";
-      } else if (decolonialText.includes(lowerQuery)) {
-        score += 40;
-        matchType = matchType || "Decolonial Notes";
-      } else if (entry.tags.some(t => t.includes(lowerQuery))) {
+        matchType = matchType || "English Tag Translation";
+      } else if (matchesText(fullDecolonial)) {
         score += 45;
-        matchType = matchType || "Tag Match";
+        matchType = matchType || "Decolonial Notes Translation";
       }
 
       // 6. Fuzzy Levenshtein Distance (for typos like 'namstey', 'dharmaa')

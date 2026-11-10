@@ -157,7 +157,7 @@ export const INDIC_DICTIONARY = [
     id: "ahimsa",
     devanagari: "अहिंसा",
     iast: "ahiṃsā",
-    phoneticVariants: ["ahimsa", "ahinsa", "ahimsā"],
+    phoneticVariants: ["ahimsa", "ahinsa", "ahimsā", "non-violence", "nonviolence", "non injury"],
     partOfSpeech: {
       hindi: "संज्ञा, स्त्रीलिंग",
       english: "Noun, feminine"
@@ -170,7 +170,7 @@ export const INDIC_DICTIONARY = [
     },
     meanings: {
       hindi: "मन, वचन अथवा कर्म से किसी भी प्राणी को पीड़ा न पहुँचाना; समस्त जीवों के प्रति सार्वभौमिक करुणा।",
-      english: "Non-injury and active compassion towards all living beings in thought, speech, and deed."
+      english: "Non-injury, non-violence, and active universal compassion towards all living beings in thought, speech, and deed."
     },
     decolonialNote: {
       title: "Non-violence vs. Active Compassion",
@@ -733,6 +733,911 @@ export const INDIC_DICTIONARY = [
     category: "Philosophy (दर्शन)",
     tags: ["framework", "ethics", "lifestyle"],
     pronunciationKey: "poo-roo-shaar-thuh"
+  },
+  {
+    id: "shanti",
+    devanagari: "शान्ति",
+    iast: "śānti",
+    phoneticVariants: ["shanti", "shantih", "shaanti", "shantihi", "santi", "peace"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "शम् (शमुँ उपशमे)",
+      formula: "शम् + क्तिन् = शान्तिः",
+      explanationHindi: "'शम्' धातु से निष्पन्न, जिसका अर्थ है शांत होना, ताप या क्लेश का उपशम होना।",
+      explanationEnglish: "Derived from Sanskrit root 'śam' (to be calm, cease, extinguish afflictions) + feminine suffix 'ktin'. Literal meaning: the pacification of inner and outer turmoil."
+    },
+    meanings: {
+      hindi: "आधिदैविक, आधिभौतिक और आध्यात्मिक तापों का उपशमन; अंतःकरण की पूर्ण स्थिरता, समत्व एवं विश्व-कल्याण।",
+      english: "The pacification of all afflictions (physical, environmental, and spiritual); profound inner poise, tranquility, and harmony with cosmic order."
+    },
+    decolonialNote: {
+      title: "Why Shanti ≠ Mere Absence of War (गैर-अनुवाद्य / Non-translatable)",
+      content: "In Western political thought, 'Peace' is negative—merely the absence of active military conflict (Pax Romana). In Indic philosophy, 'Shanti' is a positive, luminous state of consciousness and cosmic harmony (द्यौः शान्तिरन्तरिक्षं शान्तिः) requiring the pacification of egoic agitations."
+    },
+    citations: [
+      {
+        shloka: "ॐ द्यौः शान्तिरन्तरिक्षं शान्तिः पृथिवी शान्तिरापः शान्तिरोषधयः शान्तिः।\nवनस्पतयः शान्तिर्विश्वेदेवाः शान्तिर्ब्रह्म शान्तिः सर्वं शान्तिः शान्तिरेव शान्तिः सा मा शान्तिरेधि॥",
+        source: "शुक्ल यजुर्वेद (३६.१७) / शान्ति पाठ",
+        translation: "May peace radiate in the whole sky and ethereal space. May peace reign on the earth, in the waters, in the herbs and plants. May the cosmic forces bring peace unto us. Peace, peace, peace alone."
+      }
+    ],
+    synonyms: ["प्रशम", "उपशम", "निवृत्ति", "शांति", "विराम"],
+    antonyms: ["अशान्ति", "क्लेश", "विक्षेप"],
+    category: "Philosophy (दर्शन)",
+    tags: ["peace", "vedic", "harmony", "core"],
+    pronunciationKey: "shahn-tee"
+  },
+  {
+    id: "atman",
+    devanagari: "आत्मन्",
+    iast: "ātman",
+    phoneticVariants: ["atman", "atma", "aatma", "aatman", "athma", "soul", "self"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "अत् (अत सातत्यगमने) / वा (वा गतिगन्धनयोः)",
+      formula: "अत् + मनिन् = आत्मा",
+      explanationHindi: "'अत्' धातु (निरंतर गमनशील, सर्वव्यापी) अथवा 'अन्' (श्वास लेना)।",
+      explanationEnglish: "From root 'at' (to move continuously, permeate everywhere) or 'an' (to breathe) + 'manin'. That which constantly permeates all states of waking, dreaming, and deep sleep."
+    },
+    meanings: {
+      hindi: "प्रत्येक जीव में स्थित नित्य, शुद्ध, बुद्ध, सनातन चैतन्य तत्त्व; देह, मन और बुद्धि से परे का साक्षी स्व।",
+      english: "The eternal, unchanging, pure conscious Self within all living beings; the transcendent Witness (Sakshi) distinct from body, mind, and intellect."
+    },
+    decolonialNote: {
+      title: "Why Atman ≠ Western 'Soul'",
+      content: "The Western 'soul' is created by God, individual, subject to original sin, and faces eternal salvation or damnation. Atman, in contrast, is uncreated, beginningless, non-dual with Brahman, pure awareness, and untouched by sin or death."
+    },
+    citations: [
+      {
+        shloka: "न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे॥",
+        source: "श्रीमद्भगवद्गीता (२.२०) / कठोपनिषद् (१.२.१८)",
+        translation: "The Self is never born, nor does it die at any time; unborn, eternal, imperishable, ancient, it is not slain when the body is slain."
+      }
+    ],
+    synonyms: ["आत्मा", "क्षेत्रज्ञ", "साक्षी", "चैतन्य", "पुरुष"],
+    antonyms: ["अनात्मन्", "जड़", "देह"],
+    category: "Philosophy (दर्शन)",
+    tags: ["soul", "self", "upanishad", "consciousness"],
+    pronunciationKey: "aht-mun"
+  },
+  {
+    id: "brahman",
+    devanagari: "ब्रह्म",
+    iast: "brahman",
+    phoneticVariants: ["brahman", "brahm", "brahma", "bramha", "god", "ultimate reality"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "बृह् (बृहँ वृद्धौ)",
+      formula: "बृह् + मनिन् = ब्रह्म",
+      explanationHindi: "'बृह्' धातु से बना है, जिसका अर्थ है निरतिशय विशाल होना, बढ़ना या सर्वत्र व्याप्त होना।",
+      explanationEnglish: "Derived from Sanskrit root 'bṛh' (to grow, expand, swell, encompass boundlessly) + suffix 'manin'. The limitless, all-pervading substratum."
+    },
+    meanings: {
+      hindi: "समस्त चर-अचर सृष्टि का परम अधिष्ठान, कारण और लय-स्थान; सत्-चित्-आनन्द स्वरूप निर्विशेष परमतत्त्व।",
+      english: "The supreme, infinite, non-dual substratum and conscious reality of the entire cosmos; Existence-Consciousness-Bliss (Sat-Chit-Ananda)."
+    },
+    decolonialNote: {
+      title: "Why Brahman ≠ Western 'God'",
+      content: "Western 'God' is an anthropomorphic, historical ruler who creates from outside, commands obedience, and is distinct from creation. Brahman is both transcendent and immanent (सर्वं खल्विदं ब्रह्म)—the cosmos is a manifestation, not a distant artifact."
+    },
+    citations: [
+      {
+        shloka: "सत्यं ज्ञानमनन्तं ब्रह्म।",
+        source: "तैत्तिरीयोपनिषद् (२.१.१)",
+        translation: "Brahman is Truth, Consciousness, and Infinity."
+      },
+      {
+        shloka: "अहं ब्रह्मास्मि।",
+        source: "बृहदारण्यकोपनिषद् (१.४.१०)",
+        translation: "I am Brahman (the infinite reality)."
+      }
+    ],
+    synonyms: ["परमात्मा", "सच्चिदानन्द", "अक्षर", "परब्रह्म", "तत्सत्"],
+    antonyms: ["प्रपंच", "माया", "अनित्य"],
+    category: "Philosophy (दर्शन)",
+    tags: ["god", "cosmic", "vedanta", "reality"],
+    pronunciationKey: "bruh-mun"
+  },
+  {
+    id: "bhakti",
+    devanagari: "भक्ति",
+    iast: "bhakti",
+    phoneticVariants: ["bhakti", "bhakthi", "bhaktee", "devotion", "love"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "भज् (भजँ सेवायाम् / भज् विश्राणने)",
+      formula: "भज् + क्तिन् = भक्तिः",
+      explanationHindi: "'भज्' धातु से बना है, जिसका अर्थ है सेवा करना, सहभागिता करना या प्रेमपूर्वक समर्पित होना।",
+      explanationEnglish: "From root 'bhaj' (to share, participate in, belong to, revere, serve) + suffix 'ktin'. True spiritual participation, not mechanical servitude."
+    },
+    meanings: {
+      hindi: "ईश्वर या परमतत्त्व के प्रति अनन्य, निष्काम, प्रगाढ़ प्रेमानुराग; जीव और ईश्वर के बीच की घनिष्ठ सहभागिता।",
+      english: "Loving devotion, selfless attachment, and profound communion with the Divine; sacred participation in universal consciousness."
+    },
+    decolonialNote: {
+      title: "Why Bhakti ≠ Subservient 'Worship'",
+      content: "Western religious worship traditionally entails subservience to a distant sovereign ruler. Bhakti is reciprocal intimacy and love (वात्सल्य, सख्य, माधुर्य भाव)—where the devotee can love God as a friend, child, beloved, or inner self."
+    },
+    citations: [
+      {
+        shloka: "सा त्वास्मिन् परमप्रेमरूपा। अमृतस्वरूपा च॥",
+        source: "नारद भक्ति सूत्र (२-३)",
+        translation: "Bhakti is of the nature of supreme divine love, and is inherently immortal nectar."
+      }
+    ],
+    synonyms: ["अनुरक्ति", "उपासना", "समर्पण", "प्रेम", "शरणागति"],
+    antonyms: ["विभक्ति", "द्वेष", "उदासीनता"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["devotion", "gita", "love", "spiritual"],
+    pronunciationKey: "bhuk-tee"
+  },
+  {
+    id: "shraddha",
+    devanagari: "श्रद्धा",
+    iast: "śraddhā",
+    phoneticVariants: ["shraddha", "sraddha", "shraddhaa", "faith", "trust"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "श्रत् (सत्य/हृदय) + धा (धारण करणे)",
+      formula: "श्रत् + धा + टाप् = श्रद्धा",
+      explanationHindi: "'श्रत्' (सत्य या हृदय) में 'धा' (धारण करना, स्थापित करना)।",
+      explanationEnglish: "Compound of 'śrat' (truth, sacred certainty, heart) + 'dhā' (to place, hold, set). Literal: 'to place one's heart upon truth'."
+    },
+    meanings: {
+      hindi: "सत्य, शास्त्र और गुरुवचनों के प्रति अंतःकरण का गहरा विश्वास और आदरभाव; साधना में एकाग्र निष्ठा।",
+      english: "Existential trust, reverence, and earnest disposition towards truth; alignment of heart and intellect with wisdom."
+    },
+    decolonialNote: {
+      title: "Why Shraddha ≠ Blind 'Faith'",
+      content: "Western 'faith' (fides) frequently implies belief in unprovable dogmas contrary to empirical reason. Shraddha is an active, open-hearted posture that propels experiential verification and jnana."
+    },
+    citations: [
+      {
+        shloka: "श्रद्धावाँल्लभते ज्ञानं तत्परः संयतेन्द्रियः।",
+        source: "श्रीमद्भगवद्गीता (४.३९)",
+        translation: "The one who possesses Shraddha, is deeply dedicated, and has mastered the senses attains highest knowledge."
+      }
+    ],
+    synonyms: ["निष्ठा", "विश्वास", "आदर", "भक्ति", "सद्भाव"],
+    antonyms: ["अश्रद्धा", "संशय", "अविश्वास"],
+    category: "Philosophy (दर्शन)",
+    tags: ["faith", "trust", "gita", "mind"],
+    pronunciationKey: "shrud-dhaa"
+  },
+  {
+    id: "tapas",
+    devanagari: "तपस्",
+    iast: "tapas",
+    phoneticVariants: ["tapas", "tap", "tapa", "austerity", "penance"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "तप् (तपँ संतापे / ऐश्वर्ये)",
+      formula: "तप् + असुन् = तपस्",
+      explanationHindi: "'तप्' धातु से निष्पन्न, जिसका अर्थ है तपना, प्रकाशित होना, ऊर्जा उत्पन्न करना।",
+      explanationEnglish: "From root 'tap' (to heat, radiate, warm, purify by fire) + 'asun'. The inner spiritual fire that burns away mental impurities."
+    },
+    meanings: {
+      hindi: "उच्चतर लक्ष्य की प्राप्ति हेतु स्वेच्छा से किया गया इंद्रिय-निग्रह, स्वाध्याय, अनुशासन और साधना।",
+      english: "Spiritual heat, voluntary self-discipline, austerity, and focused energy directed towards inner purification and realization."
+    },
+    decolonialNote: {
+      title: "Why Tapas ≠ Christian 'Penance'",
+      content: "Colonial translators translated Tapas as 'penance' or 'mortification', which in Christian theology is self-punishment for sin and guilt. In Indic traditions, Tapas is joyful spiritual combustion that generates radiant willpower and clarity (तेजस्)."
+    },
+    citations: [
+      {
+        shloka: "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः।\nभावसंशुद्धिरित्येतत्तपो मानसमुच्यते॥",
+        source: "श्रीमद्भगवद्गीता (१७.१६)",
+        translation: "Serenity of mind, gentleness, silence, self-restraint, and purity of intent are declared to be austerity of the mind (Manasa Tapas)."
+      }
+    ],
+    synonyms: ["तप", "साधना", "संयम", "अनुष्ठान", "तितिक्षा"],
+    antonyms: ["भोग", "विलास", "असंयम"],
+    category: "Yoga & Ayurveda (योग व स्वास्थ्य)",
+    tags: ["austerity", "discipline", "fire", "energy"],
+    pronunciationKey: "tup-us"
+  },
+  {
+    id: "ananda",
+    devanagari: "आनन्द",
+    iast: "ānanda",
+    phoneticVariants: ["ananda", "anand", "aanand", "aananda", "bliss", "joy"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "आ + नन्द् (टुतुदिँ समृद्धौ / नन्दिँ हर्षे)",
+      formula: "आङ् + नन्द् + घञ् = आनन्दः",
+      explanationHindi: "'आ' उपसर्ग पूर्वक 'नन्द्' (प्रसन्न होना, खिलना) धातु।",
+      explanationEnglish: "Prefix 'ā' (completely, fully) + root 'nand' (to rejoice, delight) + suffix 'ghañ'. Unconditioned, self-existent bliss."
+    },
+    meanings: {
+      hindi: "इंद्रिय-विषयों से स्वतंत्र, आत्मा का स्वाभाविक, असीम और नित्य परमानन्द।",
+      english: "Unconditioned spiritual bliss; the intrinsic joy of pure consciousness beyond transient worldly pleasure and pain."
+    },
+    decolonialNote: {
+      title: "Why Ananda ≠ Sensory 'Pleasure'",
+      content: "Utilitarian Western philosophy defines happiness as sensory pleasure (hedonia). Ananda is not dependent on external stimuli; it is an inherent quality of the Self (आनन्दमयोऽभ्यासात्)."
+    },
+    citations: [
+      {
+        shloka: "आनन्दो ब्रह्मेति व्यजानात्।\nआनन्दाद्धयेव खल्विमानि भूतानि जायन्ते॥",
+        source: "तैत्तिरीयोपनिषद् (३.६.१)",
+        translation: "He knew that Bliss is Brahman; for indeed, from Bliss all beings are born, by Bliss they are sustained, and into Bliss they return."
+      }
+    ],
+    synonyms: ["परमानन्द", "हर्ष", "उल्लास", "मोद", "प्रमोद"],
+    antonyms: ["शोक", "दुःख", "विषाद"],
+    category: "Philosophy (दर्शन)",
+    tags: ["bliss", "joy", "upanishad", "vedanta"],
+    pronunciationKey: "aah-nun-duh"
+  },
+  {
+    id: "shakti",
+    devanagari: "शक्ति",
+    iast: "śakti",
+    phoneticVariants: ["shakti", "sakthi", "shakthi", "shaktee", "power", "energy"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "शक् (शक्लृँ शक्तौ)",
+      formula: "शक् + क्तिन् = शक्तिः",
+      explanationHindi: "'शक्' धातु से बना है, जिसका अर्थ है समर्थ होना, कार्य करने की क्षमता होना।",
+      explanationEnglish: "From root 'śak' (to be able, competent, have capacity) + suffix 'ktin'. Dynamic creative potency and cosmic feminine agency."
+    },
+    meanings: {
+      hindi: "सृजन, स्थिति और संहार की मूल कॉस्मिक ऊर्जा; चैतन्य का सक्रिय, गतिशील मातृ-स्वरूप।",
+      english: "Dynamic cosmic power, agency, and creative energy of the universe; the feminine principle inseparable from Shiva (pure awareness)."
+    },
+    decolonialNote: {
+      title: "Why Shakti ≠ Mere Coercive 'Power'",
+      content: "In Western discourse, 'power' is often political coercion or mechanical force over others. Shakti is sacred, ontological agency and consciousness in motion, revered as the Divine Mother."
+    },
+    citations: [
+      {
+        shloka: "शिवः शक्त्या युक्तो यदि भवति शक्तः प्रभवितुं\nन चेदेवं देवो न खलु कुशलः स्पन्दितुमपि॥",
+        source: "आदि शङ्कराचार्य, सौन्दर्यलहरी (१)",
+        translation: "Only when Shiva is united with Shakti does He have the power to create; otherwise, the Divine is not even able to stir."
+      }
+    ],
+    synonyms: ["ऊर्जा", "बल", "पराशक्ति", "सामर्थ्य", "प्रभाव"],
+    antonyms: ["अशक्ति", "दौर्बल्य", "जड़ता"],
+    category: "Philosophy (दर्शन)",
+    tags: ["energy", "power", "goddess", "cosmic"],
+    pronunciationKey: "shuk-tee"
+  },
+  {
+    id: "karuna",
+    devanagari: "करुणा",
+    iast: "karuṇā",
+    phoneticVariants: ["karuna", "karunaa", "compassion", "mercy", "pity"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "कृ (डुकृञ् करणे)",
+      formula: "कृ + उनन् + टाप् = करुणा",
+      explanationHindi: "'कृ' धातु (करना, दुःखनिवारणार्थ कर्म करना) से।",
+      explanationEnglish: "From root 'kṛ' (to act, relieve) + affix 'unan'. An active stirring of the heart to alleviate suffering, not passive sentiment."
+    },
+    meanings: {
+      hindi: "अन्य प्राणियों के दुःख को देखकर हृदय में उत्पन्न होने वाली स्वाभाविक सहानुभूति और दुःख-निवारण का सक्रिय संकल्प।",
+      english: "Active compassion, empathy, and universal loving-kindness that seeks the alleviation of suffering in all living beings."
+    },
+    decolonialNote: {
+      title: "Why Karuna ≠ Patronizing 'Pity'",
+      content: "Western 'pity' involves a hierarchical stance looking down from a position of superiority upon the unfortunate. Karuna arises from seeing oneself in all beings (आत्मवत् सर्वभूतेषु) with absolute equality."
+    },
+    citations: [
+      {
+        shloka: "मैत्रीकरुणामुदितोपेक्षाणां सुखदुःखपुण्यापुण्यविषयाणां भावनातश्चित्तप्रसादनम्॥",
+        source: "पतञ्जलि योगसूत्र (१.३३)",
+        translation: "By cultivating friendliness towards the happy, compassion for the sorrowful, delight in the virtuous, and equanimity toward the wicked, the mind becomes profoundly serene."
+      }
+    ],
+    synonyms: ["दया", "कृपा", "सहानुभूति", "अनुकम्पा", "मृदुता"],
+    antonyms: ["क्रूरता", "कठोरता", "निर्दयता"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["compassion", "ethics", "buddha", "yoga"],
+    pronunciationKey: "kuh-roo-naa"
+  },
+  {
+    id: "mantra",
+    devanagari: "मन्त्र",
+    iast: "mantra",
+    phoneticVariants: ["mantra", "mantar", "manthra", "mantram", "chant", "sacred utterance"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "मन् (मनँ ज्ञाने) + त्रै (त्रैङ् पालने)",
+      formula: "मन् + त्रन् = मन्त्रः",
+      explanationHindi: "'मननात् त्रायते इति मन्त्रः'—जिसके मनन, उच्चारण व ध्यान से मन की रक्षा हो।",
+      explanationEnglish: "From root 'man' (to contemplate, think) + 'tra' (to protect, liberate). 'Mananāt trāyate iti mantraḥ'—that which protects through contemplation."
+    },
+    meanings: {
+      hindi: "चेतना को रूपांतरित करने वाली आध्यात्मिक ध्वनि-तरंग; वैदिक ऋचा अथवा पवित्र बीज-अक्षर।",
+      english: "A sacred sonic formula, syllable, or revelation whose contemplation frees the mind from limitation and aligns consciousness with cosmic reality."
+    },
+    decolonialNote: {
+      title: "Why Mantra ≠ 'Magic Spell' or 'Incantation'",
+      content: "Colonial scholarship degraded Mantras as magical spells (superstitions). In reality, Mantras are precise acoustical and consciousness sciences (शब्द ब्रह्म) utilizing resonance, meter, and intention."
+    },
+    citations: [
+      {
+        shloka: "मननात् त्रायते यस्मात् सर्वसंसारबन्धनात्।\nयतोऽभिलषितं सर्वं साधयेन्मन्त्र उच्यते॥",
+        source: "कुलार्णव तन्त्र (१७.५३)",
+        translation: "That which protects from all worldly bondages by contemplation and accomplishes all noble goals is called Mantra."
+      }
+    ],
+    synonyms: ["ऋचा", "बीजाक्षर", "स्तोत्र", "जप", "ध्वनि"],
+    antonyms: ["कोलाहल", "अपशब्द"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["chant", "sound", "vedic", "consciousness"],
+    pronunciationKey: "mun-truh"
+  },
+  {
+    id: "yajna",
+    devanagari: "यज्ञ",
+    iast: "yajña",
+    phoneticVariants: ["yajna", "yagya", "yagna", "yadnya", "sacrifice", "offering"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "यज् (यजँ देवपूजासङ्गतीकरणदानेषु)",
+      formula: "यज् + नङ् = यज्ञः",
+      explanationHindi: "'यज्' धातु के तीन अर्थ हैं: देवपूजा (आदर), संगतिकरण (एकजुटता/संगठन) और दान (समर्पण)।",
+      explanationEnglish: "From root 'yaj' (divine reverence, unification/fellowship, and giving/sacrifice) + suffix 'naṅ'. Reciprocal cosmic offering."
+    },
+    meanings: {
+      hindi: "सार्वभौमिक कल्याण और पर्यावरण शुद्धि हेतु किया गया निःस्वार्थ समर्पण, आहुति और सामाजिक संगतिकरण।",
+      english: "Sacred reciprocal offering, selfless contribution, and cosmic communion; living in harmonious alignment with natural cycles."
+    },
+    decolonialNote: {
+      title: "Why Yajna ≠ Bloody 'Sacrifice'",
+      content: "Colonial orientalists mapped Yajna to Abrahamic 'sacrifice' (appeasing an angry god through slaughtered animals). Gita 4.33 explains that the highest Yajna is knowledge (ज्ञानयज्ञ) and living with self-sacrifice for the collective good (लोकसंग्रह)."
+    },
+    citations: [
+      {
+        shloka: "सहयज्ञाः प्रजाः सृष्ट्वा पुरोवाच प्रजापतिः।\nअनेन प्रसविष्यध्वमेष वोऽस्त्विष्टकामधुक्॥",
+        source: "श्रीमद्भगवद्गीता (३.१०)",
+        translation: "In the beginning, Prajapati created humanity along with Yajna and said: By this shall you prosper; let this be the wish-yielding milch cow for you."
+      }
+    ],
+    synonyms: ["हवन", "होम", "याग", "समर्पण", "बलिदान"],
+    antonyms: ["स्वार्थ", "शोषण", "उपभोग"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["vedic", "offering", "gita", "ecology"],
+    pronunciationKey: "yug-nyuh"
+  },
+  {
+    id: "sutra",
+    devanagari: "सूत्र",
+    iast: "sūtra",
+    phoneticVariants: ["sutra", "sootra", "aphorism", "thread", "formula"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "सिव् (षिवुँ तन्तुसन्ताने)",
+      formula: "सिव् + त्र = सूत्रम्",
+      explanationHindi: "'सिव्' धातु से निष्पन्न, जिसका अर्थ है सीना, पिरोना या धागे में जोड़ना।",
+      explanationEnglish: "Derived from root 'siv' (to sew, thread, string together) + suffix 'tra'. A mnemonic thread weaving vast philosophical knowledge."
+    },
+    meanings: {
+      hindi: "अल्पाक्षर, असंदिग्ध, सारगर्भित और दोषरहित सूक्ति-वाक्य जो विशाल ज्ञान को संक्षेप में संजोए।",
+      english: "An aphoristic thread of wisdom; a concise, unambiguous formula embodying extensive philosophical and scientific knowledge."
+    },
+    decolonialNote: {
+      title: "Mnemonic Precision in Indian Oral Knowledge",
+      content: "Before print culture, India preserved massive libraries through Sutras (Brahma Sutras, Panini Ashtadhyayi, Yoga Sutras). A sutra requires minimum syllables (अल्पाक्षर) while remaining universally comprehensive (विश्वतोमुखम्)."
+    },
+    citations: [
+      {
+        shloka: "अल्पाक्षरमसंदिग्धं सारवद्विश्वतोमुखम्।\nअस्तोभमनवद्यं च सूत्रं सूत्रविदो विदुः॥",
+        source: "वायु पुराण / पाणिनीय शिक्षा",
+        translation: "A Sutra is characterized by experts as having minimal syllables, being free from ambiguity, carrying essential meaning, all-encompassing, and faultless."
+      }
+    ],
+    synonyms: ["सूक्ति", "सिद्धांत", "नियम", "धागा", "तंतु"],
+    antonyms: ["भाष्य", "विस्तार"],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["aphorism", "panini", "grammar", "literature"],
+    pronunciationKey: "soo-truh"
+  },
+  {
+    id: "darshana",
+    devanagari: "दर्शन",
+    iast: "darśana",
+    phoneticVariants: ["darshana", "darshan", "darsan", "philosophy", "worldview", "vision"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "दृश् (दृशिँर् प्रेक्षणे)",
+      formula: "दृश् + ल्युट् = दर्शनम्",
+      explanationHindi: "'दृश्' धातु से बना है, जिसका अर्थ है देखना, साक्षात् अनुभव करना या दृष्टि प्राप्त करना।",
+      explanationEnglish: "From root 'dṛś' (to see, perceive, behold) + affix 'lyuṭ'. 'Dṛśyate anena iti darśanam'—that through which reality is directly seen."
+    },
+    meanings: {
+      hindi: "सत्य का प्रत्यक्ष साक्षात् दर्शन; भारतीय विचार-पद्धति की षड्दर्शन परंपरा (सांख्य, योग, न्याय, वैशेषिक, मीमांसा, वेदांत)।",
+      english: "Direct vision and experiential perception of ultimate reality; the six classical orthodox systems of Indic philosophy."
+    },
+    decolonialNote: {
+      title: "Why Darshana ≠ Western 'Philosophy'",
+      content: "Western 'Philosophy' (love of wisdom) is primarily an intellectual, speculative exercise. Darshana requires direct experiential realization (अपरोक्षानुभूति) and lived transformation."
+    },
+    citations: [
+      {
+        shloka: "आत्मा वा अरे द्रष्टव्यः श्रोतव्यो मन्तव्यो निदिध्यासितव्यः।",
+        source: "बृहदारण्यकोपनिषद् (२.४.५)",
+        translation: "The Self, indeed, should be realized, heard about, reflected upon, and deeply meditated upon."
+      }
+    ],
+    synonyms: ["दृष्टि", "साक्षात्कार", "तत्त्वज्ञान", "सिद्धांत", "अवलोकन"],
+    antonyms: ["अज्ञान", "भ्रम", "अंधविश्वास"],
+    category: "Philosophy (दर्शन)",
+    tags: ["philosophy", "vedanta", "seeing", "vision"],
+    pronunciationKey: "dur-shuh-nuh"
+  },
+  {
+    id: "bharat",
+    devanagari: "भारत",
+    iast: "bhārata",
+    phoneticVariants: ["bharat", "bharata", "bhaarata", "india", "hindustan"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "भा (भा दीप्तौ) + रम् (रमुँ क्रीडायाम् / रति)",
+      formula: "भा + रत = भारत",
+      explanationHindi: "'भा' का अर्थ है प्रकाश या ज्ञान, और 'रत' का अर्थ है लीन। 'भायां रतः इति भारतः'।",
+      explanationEnglish: "From roots 'bhā' (light, knowledge, illumination) + 'rata' (devoted, engaged). Literal: 'Those who are passionately devoted to the pursuit of knowledge and light'."
+    },
+    meanings: {
+      hindi: "ज्ञान के प्रकाश में सतत रत रहने वाली सनातन सभ्यतामूलक भूमि; हिमालय से समुद्र पर्यन्त विस्तृत सांस्कृतिक राष्ट्र।",
+      english: "The civilizational realm devoted to inner light and wisdom; the indigenous name for India encompassing sacred geography from Himalayas to Indian Ocean."
+    },
+    decolonialNote: {
+      title: "Why Bharat is a Civilization, Not Just a Westphalian State",
+      content: "The name 'India' was bestowed by Greek and British outsiders referencing the Indus river. 'Bharat' defines a civilizational identity rooted in seekers of knowledge (ऋषि-मुनि) existing millennia before colonial nation-states."
+    },
+    citations: [
+      {
+        shloka: "उत्तरं यत्समुद्रस्य हिमाद्रेश्चैव दक्षिणम्।\nवर्षं तद् भारतं नाम भारती यत्र संततिः॥",
+        source: "विष्णु पुराण (२.३.१)",
+        translation: "The country that lies north of the ocean and south of the snowy Himalayas is called Bharata; there dwell the descendants of Bharata."
+      }
+    ],
+    synonyms: ["आर्यावर्त", "जम्बूद्वीप", "हिंदुस्तान", "भारतवर्ष"],
+    antonyms: [],
+    category: "Governance & Society (नीति व राष्ट्र)",
+    tags: ["nation", "civilization", "history", "identity"],
+    pronunciationKey: "bhaa-rut"
+  },
+  {
+    id: "varna",
+    devanagari: "वर्ण",
+    iast: "varṇa",
+    phoneticVariants: ["varna", "varn", "caste", "social order"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "वृ (वृञ् संवरणार्थे / वृङ् सम्भक्तौ)",
+      formula: "वृ + न = वर्णः",
+      explanationHindi: "'वृ' धातु से बना है, जिसका अर्थ है वरण करना, चुनना (स्वभाव व कर्मानुसार)।",
+      explanationEnglish: "From root 'vṛ' (to choose, select, encompass) + affix 'na'. Functional classification based on natural aptitude (Guna) and chosen work (Karma)."
+    },
+    meanings: {
+      hindi: "गुण और कर्म के आधार पर समाज का चतुर्विध वर्गीकरण (ब्राह्मण, क्षत्रिय, वैश्य, शूद्र); न कि जन्मना जाति।",
+      english: "Social organic classification based on intrinsic qualities (Guna) and vocation (Karma), distinct from hereditary colonial 'caste'."
+    },
+    decolonialNote: {
+      title: "Why Varna ≠ Portuguese 'Caste'",
+      content: "The word 'Caste' is from Portuguese 'casta' (pure breed/race), superimposed by the 1901 British Census (Herbert Risley) onto India's dynamic social fabric. Gita 4.13 explicitly states Varna is created according to Guna and Karma, not biological birth."
+    },
+    citations: [
+      {
+        shloka: "चातुर्वर्ण्यं मया सृष्टं गुणकर्मविभागशः।\nतस्य कर्तारमपि मां विद्ध्यकर्तारमव्ययम्॥",
+        source: "श्रीमद्भगवद्गीता (४.१३)",
+        translation: "The fourfold order was created by Me according to the divisions of qualities (Guna) and activities (Karma); know Me as its author, yet immutable."
+      }
+    ],
+    synonyms: ["व्यवस्था", "प्रकृति", "वर्ग", "प्रवृत्ति"],
+    antonyms: ["अवर्णीय"],
+    category: "Governance & Society (नीति व राष्ट्र)",
+    tags: ["caste", "society", "gita", "governance"],
+    pronunciationKey: "vur-nuh"
+  },
+  {
+    id: "jati",
+    devanagari: "जाति",
+    iast: "jāti",
+    phoneticVariants: ["jati", "jaati", "community", "caste", "biradari"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "जन् (जनीँ प्रादुर्भावे)",
+      formula: "जन् + क्तिन् = जातिः",
+      explanationHindi: "'जन्' धातु से, जिसका अर्थ है जन्म लेना, उत्पन्न होना, समूह या समुदाय।",
+      explanationEnglish: "From root 'jan' (to be born, produce) + suffix 'ktin'. Kinship communities, endogamous vocational guilds, or species (सामान्य)."
+    },
+    meanings: {
+      hindi: "व्यावसायिक, सांस्कृतिक एवं सामाजिक सह-अस्तित्व वाले स्वशासित समुदाय व श्रेणियां (guilds)।",
+      english: "Decentralized socio-cultural vocational communities and autonomous guilds that historically managed decentralized trade and craft in India."
+    },
+    decolonialNote: {
+      title: "De-criminalizing the Indic Community",
+      content: "Pre-colonial Jatis functioned as self-governing economic cooperatives and trade corporations. The colonial state rigidified them through legal codes and the Criminal Tribes Act, turning fluid social networks into an oppressive hierarchy."
+    },
+    citations: [
+      {
+        shloka: "आकृतिग्रहणा जातिर्लिङ्गानां च न सर्वभाक्।\nसकृदाख्यातनिर्ग्राह्या गोत्ववन्मूर्ध्न्युदीरिता॥",
+        source: "महाभाष्य (पतञ्जलि) / न्याय सूत्र",
+        translation: "Jati is that which is recognized by common characteristics and shared enduring form, as 'cowness' is recognized in all cows."
+      }
+    ],
+    synonyms: ["समुदाय", "श्रेणी", "कुल", "बिरादरी", "समूह"],
+    antonyms: [],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["caste", "community", "guild", "society"],
+    pronunciationKey: "jaa-tee"
+  },
+  {
+    id: "maya",
+    devanagari: "माया",
+    iast: "māyā",
+    phoneticVariants: ["maya", "maaya", "illusion", "delusion", "matrix"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "मा (माङ् माने / मा दीप्तौ)",
+      formula: "मा + यत् + टाप् = माया",
+      explanationHindi: "'मा' धातु से बना है, जिसका अर्थ है नापना (measure), रूप देना या निर्माण करना।",
+      explanationEnglish: "From root 'mā' (to measure, fashion, create form) + affix 'yat'. The cosmic power that projects and measures the finite out of the infinite."
+    },
+    meanings: {
+      hindi: "परब्रह्म की अनिर्वचनीय सृजन-शक्ति; जो असीम को ससीम रूप में प्रस्तुत करती है।",
+      english: "The wondrous creative power of the Absolute that projects the multifaceted empirical universe; relative phenomenological reality."
+    },
+    decolonialNote: {
+      title: "Why Maya ≠ 'Non-existent Illusion'",
+      content: "Colonial critics alleged that Advaita Vedanta calls the world 'an illusion' and therefore promotes fatalism. In reality, Maya is described as 'सत्-असत्-अनिर्वाच्य' (empirically real, yet not ultimately eternal like pure consciousness)."
+    },
+    citations: [
+      {
+        shloka: "दैवी ह्येषा गुणमयी मम माया दुरत्यया।\nमामेव ये प्रपद्यन्ते मायामेतां तरन्ति ते॥",
+        source: "श्रीमद्भगवद्गीता (७.१४)",
+        translation: "This divine Maya of Mine, consisting of the three Gunas, is hard to overcome; but those who take refuge in Me alone cross beyond this Maya."
+      }
+    ],
+    synonyms: ["प्रकृति", "अविद्या", "लीला", "सृजनशक्ति", "इंद्रजाल"],
+    antonyms: ["परमार्थ", "सत्य", "ब्रह्म"],
+    category: "Philosophy (दर्शन)",
+    tags: ["illusion", "vedanta", "gita", "reality"],
+    pronunciationKey: "maa-yaa"
+  },
+  {
+    id: "dhyana",
+    devanagari: "ध्यान",
+    iast: "dhyāna",
+    phoneticVariants: ["dhyan", "dhyana", "meditation", "zen", "chan", "mindfulness"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "ध्यै (ध्यै चिन्तायाम्)",
+      formula: "ध्यै + ल्युट् = ध्यानम्",
+      explanationHindi: "'ध्यै' धातु से बना है, जिसका अर्थ है एकाग्र चित्त से देखना, अनुसंधान करना।",
+      explanationEnglish: "From root 'dhyai' (to contemplate, meditate, focus unbroken attention) + affix 'lyuṭ'. The root origin of Chinese 'Chan' and Japanese 'Zen'."
+    },
+    meanings: {
+      hindi: "ध्येय वस्तु में चित्त की तैलधारावत् अखण्ड, अविरल एकाग्रता; पतञ्जलि अष्टांग योग का सातवाँ अंग।",
+      english: "Sustained meditative absorption; an unbroken flow of awareness toward the object of contemplation like pouring oil."
+    },
+    decolonialNote: {
+      title: "The Indian Origin of Global Zen",
+      content: "Dhyana was transmitted to China by Bodhidharma as 'Chan', and subsequently to Japan as 'Zen'. Western apps repackage it as 'mindfulness', detaching it from its ethical and Indic metaphysical foundations."
+    },
+    citations: [
+      {
+        shloka: "तत्र प्रत्ययैकतानता ध्यानम्॥",
+        source: "पतञ्जलि योगसूत्र (३.२)",
+        translation: "Dhyana is the unbroken single continuous flow of awareness towards the object of concentration."
+      }
+    ],
+    synonyms: ["एकाग्रता", "चिंतन", "उपासना", "अनुसंधान", "योग"],
+    antonyms: ["विक्षेप", "चंचलता", "प्रमाद"],
+    category: "Yoga & Ayurveda (योग व स्वास्थ्य)",
+    tags: ["meditation", "zen", "patanjali", "mind"],
+    pronunciationKey: "dhyaa-nuh"
+  },
+  {
+    id: "sadhana",
+    devanagari: "साधना",
+    iast: "sādhanā",
+    phoneticVariants: ["sadhana", "saadhana", "spiritual practice", "practice"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "साध् (साधँ संसिद्धौ)",
+      formula: "साध् + ल्युट् + टाप् = साधना",
+      explanationHindi: "'साध्' धातु से निष्पन्न, जिसका अर्थ है सिद्ध करना, पूर्णता प्राप्त करना।",
+      explanationEnglish: "From root 'sādh' (to accomplish, reach the goal, master, perfect) + 'lyuṭ' + feminine affix. Dedicated practical methodology to realize truth."
+    },
+    meanings: {
+      hindi: "आध्यात्मिक या कलात्मक सिद्धि हेतु किया जाने वाला नियमित, अनुशासित अभ्यास और पुरुषार्थ।",
+      english: "Systematic spiritual or artistic discipline undertaken to attain mastery, realization, and highest perfection."
+    },
+    decolonialNote: {
+      title: "Practice Over Blind Dogma",
+      content: "Unlike Western creeds that require believing a set of dogmas, Indic traditions are orthopraxic: realization comes only through direct Sadhana (अन्तःकरण शुद्धि)."
+    },
+    citations: [
+      {
+        shloka: "साधनानां च सर्वेषां योगः श्रेष्ठतमो मतः।",
+        source: "शिव संहिता",
+        translation: "Among all disciplines and practices, Yoga is considered the most supreme."
+      }
+    ],
+    synonyms: ["अभ्यास", "तपस्या", "अनुष्ठान", "यत्न", "क्रिया"],
+    antonyms: ["प्रमाद", "आलस्य", "उपेक्षा"],
+    category: "Yoga & Ayurveda (योग व स्वास्थ्य)",
+    tags: ["practice", "discipline", "yoga", "culture"],
+    pronunciationKey: "saa-dhuh-naa"
+  },
+  {
+    id: "ahankara",
+    devanagari: "अहङ्कार",
+    iast: "ahaṅkāra",
+    phoneticVariants: ["ahankara", "ahankar", "ahamkara", "ego", "i-ness"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "अहम् (अव्यय) + कृ (डुकृञ् करणे)",
+      formula: "अहम् + कार = अहङ्कारः",
+      explanationHindi: "'अहम्' (मैं) + 'कार' (बनाना) = 'मैं' का बोध कराना।",
+      explanationEnglish: "Compound of 'aham' (I) + 'kāra' (maker, doer). Literal: 'the maker of the I-sense'."
+    },
+    meanings: {
+      hindi: "जीवात्मा में 'मैं' और 'मेरा' का भाव उत्पन्न करने वाला अंतःकरण का तत्त्व; देहाभिमान।",
+      english: "The cognitive faculty that generates the sense of separate individuality ('I-ness' and 'my-ness'); distinct from the pure Witness (Atman)."
+    },
+    decolonialNote: {
+      title: "Why Ahankara ≠ Freudian 'Ego'",
+      content: "Freudian psychology views the Ego as the rational mediator between Id and Superego. In Sankhya philosophy, Ahankara is one of the 24 material evolutes (Tattvas) that falsely claims agency over consciousness."
+    },
+    citations: [
+      {
+        shloka: "प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः।\nअहङ्कारविमूढात्मा कर्ताहमिति मन्यते॥",
+        source: "श्रीमद्भगवद्गीता (३.२७)",
+        translation: "All actions are performed by the modes of Prakriti (nature); but he whose mind is deluded by Ahankara thinks: 'I am the doer'."
+      }
+    ],
+    synonyms: ["अहंकार", "अस्मिता", "दर्प", "गर्व", "अभिमान"],
+    antonyms: ["निरहंकार", "विनय", "समर्पण"],
+    category: "Philosophy (दर्शन)",
+    tags: ["ego", "sankhya", "gita", "mind"],
+    pronunciationKey: "uh-hung-kaa-ruh"
+  },
+  {
+    id: "prakriti",
+    devanagari: "प्रकृति",
+    iast: "prakṛti",
+    phoneticVariants: ["prakriti", "prakruti", "nature", "matter", "matrix"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "प्र + कृ (डुकृञ् करणे)",
+      formula: "प्र + कृ + क्तिन् = प्रकृतिः",
+      explanationHindi: "'प्र' (प्रकृष्ट रूप से) + 'कृ' (करना) = जो समस्त सृष्टि का उपादान कारण बने।",
+      explanationEnglish: "Prefix 'pra' (forth, primordial) + root 'kṛ' (to make, act) + 'ktin'. The primal cosmic matrix from which all material form evolves."
+    },
+    meanings: {
+      hindi: "सत्व, रज, तम त्रिगुणमयी आदि-सृजन शक्ति; समस्त भौतिक जगत, शरीर और मन का मूल उपादान कारण।",
+      english: "The primordial nature and material substratum consisting of the three Gunas (Sattva, Rajas, Tamas); the dynamic counterpart to Purusha."
+    },
+    decolonialNote: {
+      title: "Sacred Nature vs. Exploitative 'Resource'",
+      content: "Western Enlightenment philosophy treats nature as inert, mechanical matter to be conquered and exploited by man. Indic thought reveres Prakriti as sacred, animate, and inextricably linked with consciousness."
+    },
+    citations: [
+      {
+        shloka: "भूमिरापोऽनलो वायुः खं मनो बुद्धिरेव च।\nअहङ्कार इतीयं मे भिन्ना प्रकृतिरष्टधा॥",
+        source: "श्रीमद्भगवद्गीता (७.४)",
+        translation: "Earth, water, fire, air, space, mind, intellect, and ego-sense—thus is My material nature divided eightfold."
+      }
+    ],
+    synonyms: ["स्वभाव", "सृष्टि", "माया", "नैसर्गिकता", "त्रिगुणात्मिका"],
+    antonyms: ["पुरुष", "विकृति"],
+    category: "Philosophy (दर्शन)",
+    tags: ["nature", "sankhya", "ecology", "matter"],
+    pronunciationKey: "pruh-kree-tee"
+  },
+  {
+    id: "purusha",
+    devanagari: "पुरुष",
+    iast: "puruṣa",
+    phoneticVariants: ["purusha", "purush", "pure consciousness", "soul", "witness"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "पुर् (पुरी शेते इति पुरुषः) / पृ (पालनपूरणयोः)",
+      formula: "पुर् + कुषन् = पुरुषः",
+      explanationHindi: "'पुरि शेते इति पुरुषः'—जो शरीर रूपी नौ द्वारों वाली नगरी में साक्षी रूप से निवास करता है।",
+      explanationEnglish: "From 'puri śete iti puruṣaḥ'—He who abides as the silent witness in the city of the body (puri)."
+    },
+    meanings: {
+      hindi: "अपरिवर्तनशील, साक्षी, विशुद्ध चैतन्य तत्त्व; सांख्य दर्शन में प्रकृति से पृथक् परम ज्ञाता।",
+      english: "The unattached, unchanging, pure witness consciousness (Sakshi); the spiritual principle distinct from the material matrix (Prakriti)."
+    },
+    decolonialNote: {
+      title: "Beyond Biological Gender",
+      content: "While 'purusha' in colloquial modern Hindi can denote 'man/male', in philosophical Sanskrit it denotes trans-gender transcendent awareness residing in all living entities."
+    },
+    citations: [
+      {
+        shloka: "सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात्।\nस भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम्॥",
+        source: "ऋग्वेद (१०.९०.१) / पुरुष सूक्त",
+        translation: "The Cosmic Purusha has thousands of heads, thousands of eyes, thousands of feet; pervading the universe on every side, He transcends it by ten fingers' breadth."
+      }
+    ],
+    synonyms: ["साक्षी", "ज्ञाता", "चेतन", "द्रष्टा", "परमात्मा"],
+    antonyms: ["प्रकृति", "दृश्य", "जड़"],
+    category: "Philosophy (दर्शन)",
+    tags: ["consciousness", "sankhya", "rigveda", "witness"],
+    pronunciationKey: "poo-roo-shuh"
+  },
+  {
+    id: "deva",
+    devanagari: "देव",
+    iast: "deva",
+    phoneticVariants: ["deva", "dev", "devata", "devtaa", "deity", "god"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "दिव् (दिवुँ क्रीड़ाविजिगीषाव्यवहारद्युतिस्तुतिमोदमदस्वप्नकान्तिगतिषु)",
+      formula: "दिव् + अच् = देवः",
+      explanationHindi: "'दिव्' धातु से बना है, जिसका अर्थ है चमकना, प्रकाशित होना या प्रकाशवान होना।",
+      explanationEnglish: "From root 'div' (to shine, radiate, illuminate, rejoice) + suffix 'ac'. Luminous cosmic agents and powers of light."
+    },
+    meanings: {
+      hindi: "सृष्टि में प्रकाश, ऊर्जा और नियम का पोषण करने वाले दिव्य प्रकाशवान तत्त्व (यथा सूर्य, अग्नि, वरुण)।",
+      english: "Luminous celestial entities and cosmic powers of nature and consciousness; beings of light who uphold cosmic functioning."
+    },
+    decolonialNote: {
+      title: "Why Devas ≠ 'Polytheistic Gods'",
+      content: "Colonial missionaries labeled Hinduism as 'polytheism' (many gods fighting each other). The Vedas clarify: 'एकं सद्विप्रा बहुधा वदन्ति'—Truth is One, the wise perceive and invoke It as many luminous Devas."
+    },
+    citations: [
+      {
+        shloka: "एकं सद्विप्रा बहुधा वदन्त्यग्निं यमं मातरिश्वानमाहुः॥",
+        source: "ऋग्वेद (१.१६४.४६)",
+        translation: "Truth is One; sages describe It by many names—they call It Agni, Yama, and Matarishvan."
+      }
+    ],
+    synonyms: ["देवता", "सुर", "अमर", "द्योतनशील", "प्रकाशवान"],
+    antonyms: ["असुर", "दानव", "तम"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["god", "deity", "vedic", "light"],
+    pronunciationKey: "day-vuh"
+  },
+  {
+    id: "kavya",
+    devanagari: "काव्य",
+    iast: "kāvya",
+    phoneticVariants: ["kavya", "kaavya", "poetry", "literature", "aesthetic"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "कवि + ष्यञ्",
+      formula: "कवि + ष्यञ् = काव्यम्",
+      explanationHindi: "'कवेः कर्म काव्यम्'—जो कवि की दिव्य प्रज्ञा और अंतर्दृष्टि की कलात्मक अभिव्यक्ति हो।",
+      explanationEnglish: "Derived from 'kavi' (seer, poet with visionary insight) + suffix 'ṣyañ'. The creative, inspired work of a visionary seer."
+    },
+    meanings: {
+      hindi: "रस, ध्वनि, अलंकार और औचित्य से युक्त भावपूर्ण उदात्त वाङ्मय; जो सहृदय के हृदय को आनंदित करे।",
+      english: "High Sanskrit literary art, poetry, and creative aesthetic expression characterized by Rasa (emotion) and Dhvani (reverberation)."
+    },
+    decolonialNote: {
+      title: "The Seer-Poet Tradition",
+      content: "In the Indic tradition, a 'Kavi' is not merely an entertainer or rhymester, but an enlightened seer ('क्रान्तदर्शी कविः') whose words reflect the deepest harmonies of the cosmos."
+    },
+    citations: [
+      {
+        shloka: "वाक्यं रसात्मकं काव्यम्॥",
+        source: "आचार्य विश्वनाथ, साहित्यदर्पण (१.३)",
+        translation: "Poetry is speech whose soul is aesthetic essence (Rasa)."
+      }
+    ],
+    synonyms: ["कविता", "पद्य", "साहित्य", "वाङ्मय", "गीत"],
+    antonyms: ["शास्त्र", "वार्ता"],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["poetry", "literature", "rasa", "aesthetic"],
+    pronunciationKey: "kaav-yuh"
+  },
+  {
+    id: "rasa",
+    devanagari: "रस",
+    iast: "rasa",
+    phoneticVariants: ["rasa", "ras", "aesthetic essence", "taste", "emotion"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "रस् (रसँ आस्वादने)",
+      formula: "रस् + अच् = रसः",
+      explanationHindi: "'रस्यते आस्वाद्यते इति रसः'—जिसका सहृदय द्वारा परमानंदपूर्वक आस्वादन किया जाए।",
+      explanationEnglish: "From root 'ras' (to taste, savor, relish) + affix 'ac'. 'Rasyate āsvādyate iti rasaḥ'—that which is aesthetically savored."
+    },
+    meanings: {
+      hindi: "कला और साहित्य में विभावादि के संयोग से उत्पन्न होने वाला अनिर्वचनीय आनंदमय रस (शृंगार, हास्य, करुण आदि नव रस)।",
+      english: "Aesthetic essence, emotional flavor, and contemplative delight experienced in classical Indian drama, dance, and poetry (the 9 Rasas)."
+    },
+    decolonialNote: {
+      title: "Aesthetics as Spiritual Experience",
+      content: "Bharata Muni's Natyashastra states 'रसो वै सः'—Rasa is not mere emotional stimulation, but a stepping stone to Brahmananda (spiritual ecstasy) through depersonalized aesthetic enjoyment."
+    },
+    citations: [
+      {
+        shloka: "विभावानुभावव्यभिचारिसंयोगाद्रसनिष्पत्तिः॥",
+        source: "भरत मुनि, नाट्यशास्त्र (रससूत्र)",
+        translation: "The aesthetic experience (Rasa) is born from the harmonious combination of the determinants (Vibhāva), consequents (Anubhāva), and transitory emotional states (Vyabhicāri-bhāva)."
+      }
+    ],
+    synonyms: ["आनंद", "स्वाद", "भाव", "अमृत", "आस्वाद"],
+    antonyms: ["नीरस", "अरुचि"],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["aesthetic", "dance", "theatre", "literature"],
+    pronunciationKey: "ruh-suh"
   }
 ];
 
