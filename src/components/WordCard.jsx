@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Volume2, Bookmark, Copy, Check, BookOpen } from 'lucide-react';
-import { PeacockFeather, LotusFlower, ManuscriptCorner, SaraswatiVeena } from './Doodles';
+import { PeacockFeather, LotusFlower, ManuscriptCorner } from './Doodles';
 
 export default function WordCard({ 
   entry, 
@@ -40,7 +40,7 @@ export default function WordCard({
   };
 
   return (
-    <article className="manuscript-card rounded-lg p-5 sm:p-6 relative group transition-all duration-150">
+    <article className="folio-card rounded-lg p-5 sm:p-6 relative group transition-all duration-150">
       
       {/* Decorative Traditional Corner Filigrees */}
       <div className="absolute top-2 left-2 pointer-events-none opacity-40 group-hover:opacity-80 transition-opacity">
@@ -118,7 +118,7 @@ export default function WordCard({
         </button>
       </div>
 
-      {/* Etymology / Dhatu Formula (प्राचीन धातु पाठ व व्युत्पत्ति) */}
+      {/* Etymology / Dhatu Formula */}
       <div className="mt-3 p-3 rounded bg-[#F4ECE0] dark:bg-[#1A140F] border-l-3 border-l-[#1F5333] border-y border-r border-[#D8C7A3] dark:border-[#3E3123] text-xs">
         <div className="flex items-center gap-2 font-semibold text-[#221B13] dark:text-[#FAF6ED]">
           <span className="px-1.5 py-0.5 rounded bg-[#EBDDC7] dark:bg-[#2A2118] text-[#8B331B] dark:text-[#EBBCAD] text-[10px] uppercase font-bold tracking-wider font-devanagari">
@@ -157,7 +157,7 @@ export default function WordCard({
         </div>
       </div>
 
-      {/* Decolonial Note / Non-translatable Context (पार्श्व-टिप्पणी / गैर-अनुवाद्य शब्द) */}
+      {/* Decolonial Note / Non-translatable Context */}
       {entry.decolonialNote && (
         <div className="mt-3.5 p-3 rounded bg-[#EFE7D8] dark:bg-[#18130E] border border-[#CEBC95] dark:border-[#4A3B2B]">
           <div className="flex items-center gap-1.5 text-[#8B331B] dark:text-[#EBBCAD] font-bold text-xs">
@@ -170,7 +170,7 @@ export default function WordCard({
         </div>
       )}
 
-      {/* Scriptural Citations / Shlokas (प्रमाण श्लोक) */}
+      {/* Scriptural Citations / Shlokas */}
       {entry.citations && entry.citations.length > 0 && (
         <div className="mt-3.5 p-3 rounded bg-[#FAF6ED] dark:bg-[#1A140F] border border-[#D8C7A3] dark:border-[#3E3123]">
           <div className="flex items-center justify-between text-[11px] font-semibold text-[#524332] dark:text-[#A8987E] mb-1">
