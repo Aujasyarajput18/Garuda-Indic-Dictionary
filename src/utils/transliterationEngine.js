@@ -214,6 +214,18 @@ export function romanToDevanagari(input) {
 }
 
 /**
+ * Extract morphological stem from English query words
+ * (strips common suffixes like -ful, -ing, -ed, -ical, -ic, -ion, -ness, -ly, etc.)
+ */
+export function getStem(word) {
+  if (!word) return "";
+  return word
+    .toLowerCase()
+    .replace(/[-_]/g, "")
+    .replace(/(ful|ing|ed|ical|ic|ions|ion|ate|ly|ous|al|ism|ist|ness|ences|ence|ances|ance|ents|ent|ants|ant|ies|y|s)$/, "");
+}
+
+/**
  * Normalizes phonetic spelling to allow flexible matching
  * (e.g. collapsing long vowels, equating 'sh' and 's', equating 'v' and 'w', stripping trailing 'a' / schwa)
  */
@@ -349,9 +361,26 @@ export function searchDictionary(query, dictionary) {
       // Normalize hyphenated searches (e.g. non-violence -> nonviolence)
       const cleanLower = lowerQuery.replace(/[-_]/g, "");
       const spaceLower = lowerQuery.replace(/[-_]/g, " ");
+      const qStem = getStem(cleanLower);
 
       const matchesText = (text) => {
-        return text.includes(lowerQuery) || text.includes(cleanLower) || text.includes(spaceLower);
+        if (!text) return false;
+        const lower = text.toLowerCase();
+        if (lower.includes(lowerQuery) || lower.includes(cleanLower) || lower.includes(spaceLower)) {
+          return true;
+        }
+        if (qStem.length >= 3) {
+          const words = lower.split(/[^a-zA-Z0-9\u0900-\u097F]+/).filter(Boolean);
+          for (const w of words) {
+            if (w.length >= 3) {
+              const wStem = getStem(w);
+              if (wStem.length >= 3 && (wStem === qStem || wStem.startsWith(qStem) || qStem.startsWith(wStem))) {
+                return true;
+              }
+            }
+          }
+        }
+        return false;
       };
 
       if (matchesText(engMeaning)) {
