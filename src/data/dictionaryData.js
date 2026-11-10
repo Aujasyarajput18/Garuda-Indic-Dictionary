@@ -1638,6 +1638,191 @@ export const INDIC_DICTIONARY = [
     category: "Literature & Tradition (साहित्य व परंपरा)",
     tags: ["aesthetic", "dance", "theatre", "literature"],
     pronunciationKey: "ruh-suh"
+  },
+  {
+    id: "rama",
+    devanagari: "राम",
+    iast: "rāma",
+    phoneticVariants: ["ram", "rama", "raam", "raama", "shri ram", "shriram", "sriram", "sri ram"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "रम् (रमुँ क्रीडायाम् / रमुँ विहारे)",
+      formula: "रम् + घञ् = रामः",
+      explanationHindi: "'रमन्ते योगिनोऽस्मिन् इति रामः'—जिस नित्य आनन्दस्वरूप परमतत्त्व में योगी रमण करते हैं, वही राम हैं।",
+      explanationEnglish: "Derived from Sanskrit root 'ram' (to revel, rejoice, find delight in pure consciousness) + affix 'ghañ'. Literal meaning: 'The supreme indwelling consciousness in which yogis rejoice'."
+    },
+    meanings: {
+      hindi: "सर्वव्यापी चैतन्य तत्त्व; मर्यादा पुरुषोत्तम, धर्मविग्रह अवतार जिन्होंने धर्म, सत्य, पितृभक्ति और न्यायपूर्ण शासन (रामराज्य) का सर्वोच्च आदर्श स्थापित किया।",
+      english: "The all-pervading divine consciousness; the Maryada Purushottama (supreme embodiment of righteousness) who exemplified perfect filial duty, adherence to truth, and ideal governance (Ramrajya)."
+    },
+    decolonialNote: {
+      title: "Why Rama ≠ 'Mythological King'",
+      content: "Colonial orientalists categorized the Ramayana as 'mythology' (fiction). In the Indic tradition, Rama is an Itihasa (living witness of historical dharma) and the cosmic Self dwelling in the hearts of all living beings (घट-घट वासी राम)."
+    },
+    citations: [
+      {
+        shloka: "रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः।\nराजा सर्वस्य लोकस्य देवानामिव वासवः॥",
+        source: "वाल्मीकि रामायण, अरण्य काण्ड (३७.१३)",
+        translation: "Rama is the very embodiment of Dharma, noble, of unfailing truth and valour, as Indra is to the gods, the rightful sovereign of all the worlds."
+      },
+      {
+        shloka: "रमन्ते योगिनोऽनन्ते नित्यानन्दे चिदात्मनि।\nइति रामपदेनासौ परं ब्रह्माभिधीयते॥",
+        source: "रामपूर्वतापनीयोपनिषद् (१.६)",
+        translation: "That infinite, eternal bliss and pure conscious Self in which yogis delight is denoted by the word 'Rama'—it designates the Supreme Brahman."
+      }
+    ],
+    synonyms: ["मर्यादा पुरुषोत्तम", "रघुनन्दन", "दाशरथि", "राघव", "कौसल्यानन्दन"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["ramayana", "avatar", "dharma", "itihasa", "core"],
+    pronunciationKey: "raa-muh"
+  },
+  {
+    id: "krishna",
+    devanagari: "कृष्ण",
+    iast: "kṛṣṇa",
+    phoneticVariants: ["krishna", "krishn", "krsna", "kanha", "shyam", "keshava"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "कृष् (कृषँ विलेखने / कृष् आकर्षे)",
+      formula: "कृष् + नक् = कृष्णः",
+      explanationHindi: "'कृषिर्भूवाचकः शब्दो णश्च निर्वृतिवाचकः। तयोरैक्यं परं ब्रह्म कृष्ण इत्यभिधीयते॥' जो समस्त ब्रह्मांड को अपनी ओर आकर्षित करे।",
+      explanationEnglish: "From root 'kṛṣ' (to attract, draw towards, cultivate) + affix 'nak'. The Supreme Attractor who draws all souls toward divine consciousness."
+    },
+    meanings: {
+      hindi: "समस्त सृष्टि को आकर्षित करने वाला परमानन्द स्वरूप पूर्णब्रह्म; श्रीमद्भगवद्गीता के उद्गाता और योगेश्वर।",
+      english: "The all-attractive Supreme Consciousness, the Yogeshwara and teacher of the Bhagavad Gita who harmonizes supreme transcendence with dynamic worldly engagement."
+    },
+    decolonialNote: {
+      title: "Yogeshwara vs. Pagan Deity",
+      content: "Colonial scholarship dismissed Krishna through Victorian puritanical lenses. In the Gita, Krishna is the universal Self (अहमात्मा गुडाकेश सर्वभूताशयस्थितः), embodying total detached mastery (कर्मयोग) in the midst of conflict."
+    },
+    citations: [
+      {
+        shloka: "यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।\nतत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम॥",
+        source: "श्रीमद्भगवद्गीता (१८.७८)",
+        translation: "Wherever is Krishna, the Lord of Yoga, and wherever is Arjuna, the archer, there will certainly be fortune, victory, welfare, and unwavering morality."
+      }
+    ],
+    synonyms: ["योगेश्वर", "माधव", "केशव", "वासुदेव", "गोविन्द"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["gita", "avatar", "yoga", "core"],
+    pronunciationKey: "krish-nuh"
+  },
+  {
+    id: "gita",
+    devanagari: "गीता",
+    iast: "gītā",
+    phoneticVariants: ["gita", "geeta", "bhagavad gita", "bhagavadgita", "song of god"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "गै (गै शब्दे / गाने)",
+      formula: "गै + क्तः + टाप् = गीता",
+      explanationHindi: "'गीतं भगवता यत् तत्'—जो साक्षात् भगवान् श्रीकृष्ण द्वारा अर्जुन के माध्यम से संपूर्ण मानवता के लिए गाया गया।",
+      explanationEnglish: "From root 'gai' (to sing, chant, utter melodiously) + past participle affix 'kta' + feminine 'ṭāp'. The Divine Song of universal wisdom."
+    },
+    meanings: {
+      hindi: "महाभारत के भीष्मपर्व का ७०० श्लोकों वाला अमर दार्शनिक संवाद; कर्मयोग, ज्ञानयोग और भक्तियोग का समन्वय।",
+      english: "The 700-verse philosophical dialogue between Krishna and Arjuna in the Mahabharata; the supreme synthesis of Karma Yoga, Jnana Yoga, and Bhakti Yoga."
+    },
+    decolonialNote: {
+      title: "The Milk of the Upanishads",
+      content: "Colonial critics attempted to portray the Gita as a war text. Indic masters revere the Gita as an exposition of inner freedom: 'सर्वोपनिषदो गावो दोग्धा गोपालनन्दनः'—it addresses moral crisis with spiritual clarity."
+    },
+    citations: [
+      {
+        shloka: "सर्वोपनिषदो गावो दोग्धा गोपालनन्दनः।\nपार्थो वत्सः सुधीर्भोक्ता दुग्धं गीतामृतं महत्॥",
+        source: "गीता ध्यानम्",
+        translation: "All the Upanishads are cows, the milker is Krishna, Arjuna is the calf, the wise are the drinkers, and the supreme nectar of the Gita is the milk."
+      }
+    ],
+    synonyms: ["श्रीमद्भगवद्गीता", "गीतोपनिषद्", "योगशास्त्र", "ब्रह्मविद्या"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["gita", "upanishad", "philosophy", "yoga"],
+    pronunciationKey: "gee-taa"
+  },
+  {
+    id: "shiva",
+    devanagari: "शिव",
+    iast: "śiva",
+    phoneticVariants: ["shiva", "shiv", "mahadev", "bhole", "shambhu"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "शी (शीङ् स्वप्ने) / श्वि (गतिवृद्ध्योः) / वश् कान्तौ",
+      formula: "शी + वन् = शिवः",
+      explanationHindi: "'शेते सर्वमस्मिन्निति शिवः' अथवा 'शं कल्याणं करोतीति शिवः'—जो समस्त जगत के कल्याणकारी और विशुद्ध चैतन्य हैं।",
+      explanationEnglish: "From root 'śī' (in whom all things rest) or 'śam' (conferring auspiciousness) + affix 'van'. The Auspicious Principle of transcendent consciousness."
+    },
+    meanings: {
+      hindi: "परम कल्याणमय, निष्प्रपंच, निर्गुण-सगुण स्वरूप परमतत्त्व; योगियों के आदिगुरु (आदियोगी) और तुरीय चैतन्य।",
+      english: "The Auspicious Supreme Reality; pure non-dual witness consciousness (Turiya) and Adiyogi (the primordial teacher of Yoga)."
+    },
+    decolonialNote: {
+      title: "Why Shiva ≠ 'God of Destruction'",
+      content: "Colonial trinitarian templates mapped Brahma-Vishnu-Shiva to Creator-Preserver-Destroyer. Shiva's 'samhara' is dissolution of illusion (अविद्या) and regeneration of cosmic equilibrium, not macabre destruction."
+    },
+    citations: [
+      {
+        shloka: "शान्तं शिवमद्वैतं चतुर्थं मन्यन्ते स आत्मा स विज्ञेयः॥",
+        source: "माण्डूक्योपनिषद् (७)",
+        translation: "Peaceful, auspicious, and non-dual is the Fourth state (Turiya); that is the Self, that is to be known."
+      }
+    ],
+    synonyms: ["महादेव", "शम्भू", "भोलेनाथ", "शङ्कर", "आदियोगी"],
+    antonyms: [],
+    category: "Philosophy (दर्शन)",
+    tags: ["consciousness", "yoga", "vedic", "upanishad"],
+    pronunciationKey: "shi-vuh"
+  },
+  {
+    id: "veda",
+    devanagari: "वेद",
+    iast: "veda",
+    phoneticVariants: ["veda", "ved", "vedas", "rigveda", "knowledge"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "विद् (विदँ ज्ञाने / विद् सत्तायाम् / विद् विचारणे)",
+      formula: "विद् + घञ् = वेदः",
+      explanationHindi: "'विद्यन्ते ज्ञायन्ते लभ्यन्ते सर्वे धर्मादयः पुरुषार्था येभ्यस्ते वेदाः'।",
+      explanationEnglish: "Derived from Sanskrit root 'vid' (to know, perceive, exist, enquire) + suffix 'ghañ'. Eternal sonic repository of cosmic laws and knowledge."
+    },
+    meanings: {
+      hindi: "ऋषियों द्वारा अंतर्ज्ञान में साक्षात्कृत अपौरुषेय ज्ञानराशि; चतुर्वेद (ऋक्, यजुः, साम, अथर्व)।",
+      english: "The primordial, authorless (Apaurusheya) revelations of cosmic vibration and cosmic laws heard by ancient seers in deep meditation."
+    },
+    decolonialNote: {
+      title: "Apaurusheya Knowledge vs. Historical Book",
+      content: "Western scriptures are historical books revealed to a single mortal prophet at a single point in history. The Vedas are considered cosmic laws of sound and consciousness (श्रुति), discovered by multiple male and female Rishis."
+    },
+    citations: [
+      {
+        shloka: "वेदोऽखिलो धर्ममूलम्॥",
+        source: "मनुस्मृति (२.६)",
+        translation: "The entire Veda is the foundational root and fountainhead of Dharma."
+      }
+    ],
+    synonyms: ["श्रुति", "आगम", "निगम", "स्वाध्याय", "ब्रह्म"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["vedic", "knowledge", "scripture", "core"],
+    pronunciationKey: "vay-duh"
   }
 ];
 
