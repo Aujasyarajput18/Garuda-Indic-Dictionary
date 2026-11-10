@@ -53,13 +53,14 @@ export default function SearchBar({
   }, [searchQuery, dictionary]);
 
   const quickPills = [
+    { label: "ऋषि (rishi)", query: "rishi" },
+    { label: "गरुड़ (garuda)", query: "garuda" },
     { label: "राम (ram)", query: "ram" },
     { label: "धर्म (dharma)", query: "dharma" },
     { label: "ज्ञान (gyan)", query: "gyan" },
     { label: "योग (yoga)", query: "yoga" },
     { label: "राष्ट्र (rashtra)", query: "rashtra" },
     { label: "मन्दिर (mandir)", query: "mandir" },
-    { label: "नमस्ते (namaste)", query: "namaste" },
   ];
 
   const handleSelectCandidate = (candidate) => {

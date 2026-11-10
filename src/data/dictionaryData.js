@@ -2183,6 +2183,119 @@ export const INDIC_DICTIONARY = [
     category: "Literature & Tradition (साहित्य व परंपरा)",
     tags: ["sanskrit", "panini", "language", "grammar", "core"],
     pronunciationKey: "sum-skri-tuh"
+  },
+  {
+    id: "rishi",
+    devanagari: "ऋषि",
+    iast: "ṛṣi",
+    phoneticVariants: ["rishi", "rshi", "rsi", "sage", "seer", "mantradrashta", "rishihood", "rishis", "muni"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "ऋष् (ऋषीँ गतौ प्रापणे च / ऋषँ दर्शने)",
+      formula: "ऋष् + इन् = ऋषिः (यास्क, निरुक्त २.११: 'ऋषिर्दर्शनात्')",
+      explanationHindi: "'ऋषयो मन्त्रद्रष्टारः'—जिन्होंने समाधि की गहनतम अवस्था में ब्रह्माण्डीय मन्त्रों और परम सत्य का साक्षात् दर्शन किया।",
+      explanationEnglish: "From root 'ṛṣ' (to flow towards, see, obtain truth) + affix 'in'. 'Ṛṣir darśanāt'—The Seers who directly perceived and heard the vibrational mantras of the cosmos."
+    },
+    meanings: {
+      hindi: "वैदिक मन्त्रद्रष्टा, आत्मज्ञानी साधक एवं चेतना-विज्ञानी; जिन्होंने तपस्या और समाधि के द्वारा सनातन ज्ञान का साक्षात्कार किया।",
+      english: "A Vedic seer, visionary sage, and scientist of consciousness who directly perceives metaphysical truths and cosmic sonic vibrations (Mantras) in deep meditation."
+    },
+    decolonialNote: {
+      title: "Why Rishi ≠ 'Hermit', 'Monk', or 'Sage'",
+      content: "Colonial orientalists stereotyped Rishis as other-worldly hermits or primitive monks. In truth, Rishis were polymaths, astronomers, educators, and family householders (गृहस्थ) like Yajnavalkya, Vashistha, Agastya, and female Rishikas (Gargi, Maitreyi, Lopamudra) who pioneered civilizational knowledge systems—celebrated in the vision of institutions like Rishihood University."
+    },
+    citations: [
+      {
+        shloka: "ऋषिर्दर्शनात् स्तोमान् ददर्श॥\nऋषयो मन्त्रद्रष्टारः न तु मन्त्रकर्तारः॥",
+        source: "यास्क, निरुक्त (२.११) एवं सायण भाष्य",
+        translation: "A Rishi is so called because of direct intuitive vision (darshana); Rishis are the seers of the Mantras, not their mortal authors."
+      }
+    ],
+    synonyms: ["मन्त्रद्रष्टा", "द्रष्टा", "मनीषी", "मुनि", "विप्र", "साधक"],
+    antonyms: ["अज्ञानी"],
+    category: "Philosophy (दर्शन)",
+    tags: ["rishi", "seer", "sage", "vedic", "consciousness", "rishihood", "core"],
+    pronunciationKey: "ri-shee"
+  },
+  {
+    id: "garuda",
+    devanagari: "गरुड़",
+    iast: "garuḍa",
+    phoneticVariants: ["garuda", "garud", "vainateya", "pakshiraja", "suparna"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "गॄ (गॄ शब्दे / विगरणे) + उड़च्",
+      formula: "गॄ + उड़च् = गरुडः (गरुड़ः)",
+      explanationHindi: "'गिरेति वाणीं वदति उच्चारयति' अथवा 'सामवेदमयो गरुडः'—जिनके पंखों से सामवेद के पवित्र साम-गान का निनाद होता है।",
+      explanationEnglish: "From root 'gṝ' (to articulate sacred speech, swallow darkness) + affix 'uḍac'. 'Sāmavedamayo garuḍaḥ'—The embodiment of the soaring melodic hymns of the Sama Veda."
+    },
+    meanings: {
+      hindi: "भगवान् विष्णु के दिव्य वाहन, पक्षीराज, वैनतेय; अमरत्व, असीम गति, शौर्य और वैदिक ज्ञान के अधिष्ठाता प्रतीक।",
+      english: "The divine king of birds and vahana (mount) of Lord Vishnu; sovereign symbol of transcendental speed, moral courage, nectar of immortality (Amrita), and Sama Vedic resonance."
+    },
+    decolonialNote: {
+      title: "Why Garuda ≠ 'Mythical Giant Bird'",
+      content: "In Indic civilizational consciousness, Garuda represents the ascending spiritual velocity capable of bearing the all-pervading divine preserver (Vishnu). It is the namesake emblem of fearless dharmic publishing and intellectual sovereignty at Garuda Prakashan."
+    },
+    citations: [
+      {
+        shloka: "वैनतेयश्च पक्षिणाम्॥",
+        source: "श्रीमद्भगवद्गीता (१०.२८)",
+        translation: "Among the winged birds, I am Garuda, the son of Vinata."
+      },
+      {
+        shloka: "बृहद् रथो वामदेव्यं गरुडस्य पक्षाः॥",
+        source: "शतपथ ब्राह्मण",
+        translation: "The majestic Brihat and Vamadevya chants of the Sama Veda constitute the wings of Garuda."
+      }
+    ],
+    synonyms: ["वैनतेय", "पक्षीराज", "सुपर्ण", "नागान्तक", "विष्णुवाहन"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["garuda", "vishnu", "vedic", "samaveda", "publishing", "core"],
+    pronunciationKey: "guh-roo-duh"
+  },
+  {
+    id: "rta",
+    devanagari: "ऋत",
+    iast: "ṛta",
+    phoneticVariants: ["rta", "rita", "cosmic order", "divine rhythm", "natural law"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "ऋ (ऋ गतौ)",
+      formula: "ऋ + क्त = ऋतम्",
+      explanationHindi: "'ऋतं सत्यं धर्मश्च'—सृष्टि की स्वाभाविक लय, ब्रह्माण्डीय नियमन और शाश्वत व्यवस्था।",
+      explanationEnglish: "From root 'ṛ' (to move harmoniously, order, adjust) + past participle affix 'kta'. The dynamic self-organizing cosmic order and rhythm of the universe."
+    },
+    meanings: {
+      hindi: "सृष्टि का स्वाभाविक संतुलन, ऋग्वेद का परम ब्रह्माण्डीय नियम और नैतिक क्रम; जिससे सूर्य, ऋतुएं और जीवन-चक्र संचालित होते हैं।",
+      english: "The primal cosmic rhythm, eternal natural order, and ontological balance that governs physical universe, cosmic cycles, and ethical order (Dharma)."
+    },
+    decolonialNote: {
+      title: "Rta vs. Static Western Natural Law",
+      content: "Western concepts of 'natural law' imply external commands imposed by a distant monarch. Rta is immanent, dynamic balance inherent in existence itself; Dharma is the subjective and societal alignment with Rta."
+    },
+    citations: [
+      {
+        shloka: "ऋतं च सत्यं चाभीद्धात्तपसोऽध्यजायत।\nततो रात्र्यजायत ततः समुद्रो अर्णवः॥",
+        source: "ऋग्वेद (१०.१९०.१ - अघमर्षण सूक्त)",
+        translation: "From blazing spiritual heat (Tapas), cosmic Order (Rta) and dynamic Truth (Satya) were born; then night arose, and then the undulating cosmic ocean."
+      }
+    ],
+    synonyms: ["सत्य", "शाश्वत नियम", "विश्व-व्यवस्था", "धर्म-मूल", "कॉस्मिक ऑर्डर"],
+    antonyms: ["अनृत", "अव्यवस्था"],
+    category: "Philosophy (दर्शन)",
+    tags: ["rta", "cosmic order", "vedic", "satya", "dharma", "core"],
+    pronunciationKey: "ri-tuh"
   }
 ];
 

@@ -243,7 +243,27 @@ typoCases.forEach(({ typo, expected }) => {
 // ==============================================================================
 console.log("\n--- [SUITE 7: MULTI-CANDIDATE LATTICE & GOOGLE INDIC IME ENGINE] ---");
 
-// Test A: Core user issue - 'ram' and 'rama' MUST produce 'राम'
+// Test A: Core user issue - 'ram' and 'rama' MUST produce 'राम', and 'rishi' MUST produce 'ऋषि'
+assert(
+  romanToDevanagari("rishi", INDIC_DICTIONARY) === "ऋषि",
+  `romanToDevanagari("rishi") === "ऋषि" (Got "${romanToDevanagari("rishi", INDIC_DICTIONARY)}")`
+);
+
+assert(
+  generateLocalCandidates("rishi", INDIC_DICTIONARY)[0] === "ऋषि",
+  `Candidate #1 for "rishi" is "ऋषि" (Got "${generateLocalCandidates("rishi", INDIC_DICTIONARY)[0]}")`
+);
+
+assert(
+  romanToDevanagari("garuda", INDIC_DICTIONARY) === "गरुड़",
+  `romanToDevanagari("garuda") === "गरुड़" (Got "${romanToDevanagari("garuda", INDIC_DICTIONARY)}")`
+);
+
+assert(
+  romanToDevanagari("rishihood", INDIC_DICTIONARY) === "ऋषिहुड",
+  `romanToDevanagari("rishihood") === "ऋषिहुड" (Got "${romanToDevanagari("rishihood", INDIC_DICTIONARY)}")`
+);
+
 assert(
   romanToDevanagari("ram", INDIC_DICTIONARY) === "राम",
   `romanToDevanagari("ram") === "राम" (Got "${romanToDevanagari("ram", INDIC_DICTIONARY)}")`
@@ -288,6 +308,24 @@ const bharatCands = generateLocalCandidates("bharat", INDIC_DICTIONARY);
 assert(
   bharatCands[0] === "भारत",
   `Candidate #1 for "bharat" is "भारत" (Rank 1: "${bharatCands[0]}")`
+);
+
+const rishiResults = searchDictionary("rishi", INDIC_DICTIONARY);
+assert(
+  rishiResults[0] && rishiResults[0].id === "rishi",
+  `Search "rishi" -> #1 result is "rishi" (ऋषि) (Score: ${rishiResults[0]?._matchMeta?.score})`
+);
+
+const garudaResults = searchDictionary("garuda", INDIC_DICTIONARY);
+assert(
+  garudaResults[0] && garudaResults[0].id === "garuda",
+  `Search "garuda" -> #1 result is "garuda" (गरुड़) (Score: ${garudaResults[0]?._matchMeta?.score})`
+);
+
+const rtaResults = searchDictionary("rta", INDIC_DICTIONARY);
+assert(
+  rtaResults[0] && rtaResults[0].id === "rta",
+  `Search "rta" -> #1 result is "rta" (ऋत) (Score: ${rtaResults[0]?._matchMeta?.score})`
 );
 
 const mandirResults = searchDictionary("mandir", INDIC_DICTIONARY);

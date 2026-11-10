@@ -42,6 +42,20 @@ const MATRAS = {
 
 // High-frequency curated Indic terms map for instantaneous 0ms exact transliteration
 export const COMMON_EXACT_MAP = {
+  rishi: "ऋषि",
+  rshi: "ऋषि",
+  rsi: "ऋषि",
+  rishis: "ऋषि",
+  "rishi muni": "ऋषि मुनि",
+  rishihood: "ऋषिहुड",
+  rishikesh: "ऋषिकेश",
+  garuda: "गरुड़",
+  garud: "गरुड़",
+  rta: "ऋत",
+  rita: "ऋत",
+  ritu: "ऋतु",
+  riddhi: "ऋद्धि",
+  rishabh: "ऋषभ",
   ram: "राम",
   rama: "राम",
   raam: "राम",
@@ -199,30 +213,36 @@ const apiCandidateCache = new Map();
 /**
  * Parses Latin string into Devanagari using syllable automaton with configurable vowel treatment
  */
-function parseSyllables(str, treatMedialAAsLong = false, treatTrailingAAsLong = false) {
+function parseSyllables(str, treatMedialAAsLong = false, treatTrailingAAsLong = false, vocalicRi = true, retroflexSh = false) {
   let result = "";
   let i = 0;
   let lastWasConsonant = false;
+
+  const INDEP = {
+    ...INDEPENDENT_VOWELS,
+    ri: vocalicRi ? "ऋ" : null
+  };
 
   while (i < str.length) {
     const sub3 = str.slice(i, i + 3);
     const sub2 = str.slice(i, i + 2);
     const sub1 = str.slice(i, i + 1);
 
-    // Consonant check (greedy 3, then 2, then 1)
-    let consMatch = null;
-    let consLen = 0;
-    if (CONSONANTS[sub3]) { consMatch = CONSONANTS[sub3]; consLen = 3; }
-    else if (CONSONANTS[sub2]) { consMatch = CONSONANTS[sub2]; consLen = 2; }
-    else if (CONSONANTS[sub1]) { consMatch = CONSONANTS[sub1]; consLen = 1; }
+    // Initial / Independent vowel check (when not directly following consonant)
+    if (!lastWasConsonant && (INDEP[sub2] || INDEP[sub1])) {
+      const match = INDEP[sub2] ? sub2 : sub1;
+      result += INDEP[match];
+      i += match.length;
+      lastWasConsonant = false;
+      continue;
+    }
 
-    if (consMatch) {
-      if (lastWasConsonant) {
-        result += "्"; // conjunct halanta
-      }
-      result += consMatch;
-      i += consLen;
-      lastWasConsonant = true;
+    // Matra check after consonant (including vocalic "ri" -> "ृ")
+    if (lastWasConsonant && (MATRAS[sub2] !== undefined || MATRAS[sub1] !== undefined)) {
+      const mMatch = MATRAS[sub2] !== undefined ? sub2 : sub1;
+      result += MATRAS[mMatch];
+      i += mMatch.length;
+      lastWasConsonant = false;
       continue;
     }
 
@@ -245,20 +265,29 @@ function parseSyllables(str, treatMedialAAsLong = false, treatTrailingAAsLong = 
       continue;
     }
 
-    // Vowel check
-    let vowMatch = null;
-    let vowLen = 0;
-    if (MATRAS[sub2] !== undefined) { vowMatch = sub2; vowLen = 2; }
-    else if (MATRAS[sub1] !== undefined) { vowMatch = sub1; vowLen = 1; }
+    // Retroflex 'sh' check
+    if (retroflexSh && (sub2 === "sh" || sub3 === "shh")) {
+      if (lastWasConsonant) result += "्";
+      result += "ष";
+      i += (sub3 === "shh" ? 3 : 2);
+      lastWasConsonant = true;
+      continue;
+    }
 
-    if (vowMatch) {
+    // Consonant check (greedy 3, then 2, then 1)
+    let consMatch = null;
+    let consLen = 0;
+    if (CONSONANTS[sub3]) { consMatch = CONSONANTS[sub3]; consLen = 3; }
+    else if (CONSONANTS[sub2]) { consMatch = CONSONANTS[sub2]; consLen = 2; }
+    else if (CONSONANTS[sub1]) { consMatch = CONSONANTS[sub1]; consLen = 1; }
+
+    if (consMatch) {
       if (lastWasConsonant) {
-        result += MATRAS[vowMatch];
-      } else {
-        result += INDEPENDENT_VOWELS[vowMatch] || vowMatch;
+        result += "्"; // conjunct halanta
       }
-      i += vowLen;
-      lastWasConsonant = false;
+      result += consMatch;
+      i += consLen;
+      lastWasConsonant = true;
       continue;
     }
 
@@ -346,7 +375,23 @@ export function generateLocalCandidates(input, dictionary = []) {
     }
   }
 
-  // 6. Anusvara variant (e.g. replacing 'n'/'m' before stops with anusvara)
+  // 6. Vocalic 'ri' and retroflex 'sh' variants (e.g. rishi -> ऋषि, rita -> ऋत, krishna -> कृष्ण)
+  if (clean.includes("ri") || clean.includes("sh") || clean.startsWith("r")) {
+    const rishiParse1 = parseSyllables(clean, false, false, true, true);
+    if (rishiParse1 && !candidates.includes(rishiParse1)) {
+      candidates.push(rishiParse1);
+    }
+    const rishiParse2 = parseSyllables(clean, false, false, true, false);
+    if (rishiParse2 && !candidates.includes(rishiParse2)) {
+      candidates.push(rishiParse2);
+    }
+    const rishiParse3 = parseSyllables(clean, false, false, false, true);
+    if (rishiParse3 && !candidates.includes(rishiParse3)) {
+      candidates.push(rishiParse3);
+    }
+  }
+
+  // 7. Anusvara variant (e.g. replacing 'n'/'m' before stops with anusvara)
   if (/m[dtpbkkgjc]|n[dtpbkkgjc]/.test(clean)) {
     const anusvaraClean = clean.replace(/m(?=[dtpbkkgjc])/g, "n");
     const anusvaraResult = parseSyllables(anusvaraClean, false, false).replace(/न्(?=[क-ह])/g, "ं");
