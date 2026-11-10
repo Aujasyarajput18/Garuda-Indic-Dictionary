@@ -43,8 +43,8 @@ As demonstrated in Sankrant Ji's work (*The English Medium Myth*), millions of I
   * One-click export of saved word lists as text files (`.txt`) for students and researchers.
   * One-click copying of academic citations.
 * **🎨 Authentic Indic Design System:**
-  * Styled with saffron/terracotta (`bharat-600`), warm parchment backgrounds, and Google Indic typography (*Noto Serif Devanagari*, *Rozha One*, *Yatra One*, *Cinzel*).
-  * Persistent Dark & Light modes.
+  * Styled with ancient Nalanda Bhojpatra manuscript scroll aesthetic, soot-ink typography (`#1A140E`), terracotta accents (`#8B331B`), Vedic forest green (`#1F5333`), and pure transparent vector SVG Indic doodles (Rishi writing on bhojpatra, Saraswati Veena, blooming pink lotus, Grantha pothi).
+  * 100% harmonious single-palette editorial reading experience without discordant dark-mode mixtures.
 
 ---
 
@@ -69,7 +69,10 @@ garuda-indic-dictionary/
 │   ├── App.jsx                      # Main reactive application state container
 │   ├── main.jsx                     # Vite React entry point
 │   └── index.css                    # Tailwind CSS directives & Indic typography rules
-├── test_search.js                   # Automated test suite (12/12 unit tests passing)
+├── test_rigorous.js                 # Exhaustive test suite (520/520 automated tests passing)
+├── test_search.js                   # Automated test runner
+├── AI_LOG.md                        # Transparent AI usage disclosure log
+├── DRIVE_FOLDER_README.md           # Submission README for Google Drive folder
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.js
