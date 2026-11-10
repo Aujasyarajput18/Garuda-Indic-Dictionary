@@ -1823,6 +1823,366 @@ export const INDIC_DICTIONARY = [
     category: "Literature & Tradition (साहित्य व परंपरा)",
     tags: ["vedic", "knowledge", "scripture", "core"],
     pronunciationKey: "vay-duh"
+  },
+  {
+    id: "hanuman",
+    devanagari: "हनुमान्",
+    iast: "hanumān",
+    phoneticVariants: ["hanuman", "hanumana", "hanumat", "maruti", "bajrangbali", "anjaneya"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "हनु (हन् हिंसागत्योः) + मतुप्",
+      formula: "हनु + मतुप् (प्रशंसायाम्) = हनुमान्",
+      explanationHindi: "'प्रशस्ता हनूरस्यास्तीति हनुमान्' (पाणिनि ५.२.९४)—सुदृढ़ चिबुक, असीम धैर्य, ब्रह्मचर्य व अतुलित बल के स्वामी।",
+      explanationEnglish: "Derived from 'hanu' (jaw/chin, symbol of resolute endurance) + possessive affix 'matup' (Pāṇini 5.2.94). The embodiment of unshakeable willpower and devotion."
+    },
+    meanings: {
+      hindi: "अतुलित बलधामा, ज्ञानी-शिरोमणि, रामदूत एवं निःस्वार्थ सेवा व निष्काम भक्ति के साक्षात् विग्रह।",
+      english: "The embodiment of supreme selfless service (Seva), unflinching devotion (Bhakti), wisdom, and moral fearlessness; the messenger and eternal servant of Sri Rama."
+    },
+    decolonialNote: {
+      title: "Why Hanuman ≠ 'Monkey God'",
+      content: "Colonial orientalists trivialized Hanuman as an animalistic 'monkey god'. In Valmiki Ramayana, 'Vanara' denotes forest-dwelling sentient civilization with profound mastery over Vedic grammar (न ऋग्वेदविनीतस्य नाऋग्वेदविदोऽपि वा—Rama praises Hanuman's speech)."
+    },
+    citations: [
+      {
+        shloka: "अतुलितबलधामं हेमशैलाभदेहं दनुजवनकृशानुं ज्ञानिनामग्रगण्यम्।\nसकलगुणनिधानं वानराणामधीशं रघुपतिप्रियभक्तं वातजातं नमामि॥",
+        source: "रामचरितमानस, किष्किन्धा काण्ड (मंगलाचरण)",
+        translation: "I bow to the Son of the Wind, abode of incomparable strength, whose body gleams like a mountain of gold, foremost among the wise, and the beloved devotee of Sri Raghupati."
+      }
+    ],
+    synonyms: ["मारुति", "अञ्जनेय", "बजरंगबली", "पवनपुत्र", "कपीश्वर"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["ramayana", "bhakti", "seva", "avatar", "core"],
+    pronunciationKey: "huh-noo-maan"
+  },
+  {
+    id: "sita",
+    devanagari: "सीता",
+    iast: "sītā",
+    phoneticVariants: ["sita", "seeta", "janaki", "vaidehi", "maithili"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "षि (षिञ् बन्धने) / सित (धवल, बद्ध) + टाप्",
+      formula: "सीता = भूमि-पुत्री (सीर-मुखोत्पन्ना)",
+      explanationHindi: "'सीता लाङ्गलपद्धतिः'—भूमि को जोतते समय हल के मुख से प्रकट होने वाली धरित्री-नन्दिनी, पावनता और तपस्विता की मूर्ति।",
+      explanationEnglish: "Rigvedic word for the fertile agricultural furrow, daughter of the Earth (Bhoomi-devi) discovered by King Janaka; embodiment of sacred purity and spiritual resilience."
+    },
+    meanings: {
+      hindi: "माता धरित्री की पुत्री, जनकनन्दिनी, श्रीराम की सहधर्मिणी; पातिव्रत्य, आत्मसम्मान, तपस्या और अदम्य साहस की सर्वोच्च प्रतीक।",
+      english: "Daughter of Mother Earth, beloved consort of Sri Rama, and the supreme exemplar of spiritual steadfastness (Tapas), unyielding self-respect, and moral integrity."
+    },
+    decolonialNote: {
+      title: "Sita as Autonomous Sovereign Shakti",
+      content: "Western feminist critiques mistakenly reduce Sita to a passive victim. In Valmiki's text, Sita fearlessly chooses forest exile, commands respect from Ravana while weaponless, and ultimately asserts absolute spiritual sovereignty in returning to her Mother Earth."
+    },
+    citations: [
+      {
+        shloka: "यथा न व्यभिचाराहं मनसा कर्मणा गिरा।\nतथा मे धरणी देवी विवरं दातुमर्हति॥",
+        source: "वाल्मीकि रामायण, उत्तर काण्ड (९७.१४)",
+        translation: "As I have never been unfaithful in thought, word, or deed to Rama, may the Divine Mother Earth open her bosom and give me shelter within."
+      }
+    ],
+    synonyms: ["जानकी", "वैदेही", "मैथिली", "भूमिजा", "रामप्रिया"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["ramayana", "shakti", "dharma", "tapas"],
+    pronunciationKey: "see-taa"
+  },
+  {
+    id: "upanishad",
+    devanagari: "उपनिषद्",
+    iast: "upaniṣad",
+    phoneticVariants: ["upanishad", "upanishads", "vedanta", "brahmavidya"],
+    partOfSpeech: {
+      hindi: "संज्ञा, स्त्रीलिंग",
+      english: "Noun, feminine"
+    },
+    rootEtymology: {
+      dhatu: "उप + नि + सद् (षद्लृँ विशरण-गत्यवसादनेषु)",
+      formula: "उप + नि + सद् + क्विप् = उपनिषद्",
+      explanationHindi: "'उप' (समीप), 'नि' (निष्ठापूर्वक) और 'सद्' (बैठना व अविद्या का नाश)—गुरु के समीप निष्ठा से बैठकर अविद्या के नाश व ब्रह्मज्ञान की प्राप्ति।",
+      explanationEnglish: "Prefix 'upa' (near) + 'ni' (devotedly) + root 'sad' (to destroy ignorance / loosen bondage / sit down near the master). The experiential science of self-realization."
+    },
+    meanings: {
+      hindi: "वेदों का ज्ञानकाण्ड (वेदान्त); जीव, ब्रह्म और जगत् के तात्विक ऐक्य का रहस्योद्घाटन करने वाला दार्शनिक साहित्य।",
+      english: "The culminating philosophical treatises of the Vedas (Vedanta), revealing the metaphysical non-duality of individual consciousness (Atman) and universal reality (Brahman)."
+    },
+    decolonialNote: {
+      title: "Experiential Epistemology vs. Religious Dogma",
+      content: "Unlike Abrahamic creeds demanding belief in dogmatic commandments, Upanishadic spirituality demands personal direct inquiry (तत्त्वमसि, नेति नेति) verified through meditation, reason, and experiential realization (अनुभूति)."
+    },
+    citations: [
+      {
+        shloka: "असतो मा सद्गमय। तमसो मा ज्योतिर्गमय। मृत्योर्मा अमृतं गमय॥",
+        source: "बृहदारण्यकोपनिषद् (१.३.२८)",
+        translation: "Lead me from the unreal to the Real, lead me from darkness to Light, lead me from death to Immortality."
+      }
+    ],
+    synonyms: ["वेदान्त", "ब्रह्मविद्या", "रहस्य", "ज्ञानकाण्ड", "श्रुति-शिरोभाग"],
+    antonyms: [],
+    category: "Philosophy (दर्शन)",
+    tags: ["upanishad", "vedanta", "brahman", "atman", "core"],
+    pronunciationKey: "oo-puh-ni-shud"
+  },
+  {
+    id: "ramayana",
+    devanagari: "रामायण",
+    iast: "rāmāyaṇa",
+    phoneticVariants: ["ramayana", "ramayan", "adikavya", "valmiki ramayana"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "राम + अयन (अयँ गतौ)",
+      formula: "राम + अयनम् = रामायणम् (णत्व विधान)",
+      explanationHindi: "'रामस्य अयनं चरितं रामायणम्'—श्रीराम के जीवन, धर्ममार्ग और पावन यात्रा का विस्तृत निरूपण।",
+      explanationEnglish: "Compound of 'rāma' (Lord Rama) + 'ayana' (path, voyage, journey). Literal meaning: 'The sacred journey and righteous conduct of Sri Rama'."
+    },
+    meanings: {
+      hindi: "महर्षि वाल्मीकि द्वारा अनुष्टुप् छन्द में रचित भारत का आदिकाव्य; धर्म, परिवार, राष्ट्र और न्याय का शाश्वत आचारशास्त्र।",
+      english: "The primordial Sanskrit epic (Adi Kavya) composed by Maharshi Valmiki; an eternal living manual on Dharma, familial fidelity, statecraft, and human nobility."
+    },
+    decolonialNote: {
+      title: "Itihasa (Living History) vs. 'Mythology'",
+      content: "Western colonial education labeled Indian epics as 'mythology' (synonymous with fictional fable). In Sanskrit tradition, Ramayana is designated as Itihasa ('इति-ह-आस' = indeed so it happened), an authoritative dharmic chronicle."
+    },
+    citations: [
+      {
+        shloka: "यावत्स्थास्यन्ति गिरयः सरितश्च महीतले।\nतावद्रामायणकथा लोकेषु प्रचरिष्यति॥",
+        source: "वाल्मीकि रामायण, बाल काण्ड (२.३६)",
+        translation: "As long as mountains stand and rivers flow upon this earth, so long shall the sacred story of the Ramayana prevail among mankind."
+      }
+    ],
+    synonyms: ["आदिकाव्य", "वाल्मीकि-कृत", "रामचरित", "पौलस्त्यवध"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["ramayana", "itihasa", "kavya", "dharma", "core"],
+    pronunciationKey: "raa-maa-yuh-nuh"
+  },
+  {
+    id: "mahabharata",
+    devanagari: "महाभारत",
+    iast: "mahābhārata",
+    phoneticVariants: ["mahabharata", "mahabharat", "jaya", "panchama veda"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "महत् (महँ पूजायाम्) + भारत (भृ भरणे)",
+      formula: "महत् + भारतम् = महाभारतम्",
+      explanationHindi: "'महत्त्वाद् भारवत्त्वाच्च महाभारतमुच्यते'—अपने विशाल आकार, गहन दार्शनिक भार और भारत-वंश के आख्यान के कारण महाभारत कहलाता है।",
+      explanationEnglish: "From 'mahat' (immense, majestic) + 'bhārata' (descendants of King Bharata / bearing light). Named for its monumental weight of wisdom and human drama."
+    },
+    meanings: {
+      hindi: "महर्षि वेदव्यास द्वारा प्रणीत एक लाख श्लोकों वाला पंचम वेद; धर्म, अर्थ, काम और मोक्ष का समग्र ज्ञानकोश।",
+      english: "The grandest epic in human history, composed by Maharshi Veda Vyasa; an encyclopedic masterwork encapsulating every human emotion, ethical dilemma, and spiritual truth."
+    },
+    decolonialNote: {
+      title: "The Ultimate Encyclopedia of Human Consciousness",
+      content: "The Mahabharata declares: 'यदिहास्ति तदन्यत्र यन्नेहास्ति न तत् क्वचित्' (What is found here may be found elsewhere, but what is not found here is found nowhere). It is not a war story, but the ultimate exploration of cosmic order (Dharma)."
+    },
+    citations: [
+      {
+        shloka: "धर्मे चार्थे च कामे च मोक्षे च भरतर्षभ।\nयदिहास्ति तदन्यत्र यन्नेहास्ति न तत्क्वचित्॥",
+        source: "महाभारत, आदि पर्व (६२.५३)",
+        translation: "In matters of Dharma, prosperity, pleasure, and liberation, whatever is found here is found elsewhere; what is not found here exists nowhere on earth."
+      }
+    ],
+    synonyms: ["जय", "भारतसंहिता", "पंचम वेद", "व्याससंहिता"],
+    antonyms: [],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["itihasa", "gita", "vyasa", "dharma", "core"],
+    pronunciationKey: "muh-haa-bhaa-ruh-tuh"
+  },
+  {
+    id: "ayurveda",
+    devanagari: "आयुर्वेद",
+    iast: "āyurveda",
+    phoneticVariants: ["ayurveda", "ayurved", "holistic medicine", "health"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "आयुस् (एण् गतौ / जीवन) + विद् (विदँ ज्ञाने)",
+      formula: "आयुस् + वेदः = आयुर्वेदः",
+      explanationHindi: "'हिताहितं सुखं दुःखमायुस्तस्य हिताहितम्। मानं च तच्च यत्रोक्तमायुर्वेदः स उच्यते॥'—जीवन की समग्र गुणवत्ता व दीर्घायु का विज्ञान।",
+      explanationEnglish: "Compound of 'āyus' (life span, vitality) + 'veda' (systematic knowledge). The holistic Vedic science of longevity and mind-body harmony."
+    },
+    meanings: {
+      hindi: "शरीर, मन, इंद्रिय और आत्मा के संतुलन पर आधारित प्राचीन भारतीय समग्र चिकित्सा व स्वास्थ्य-संवर्धन विज्ञान।",
+      english: "The ancient Indic holistic system of medicine emphasizing equilibrium among biological humors (Vata, Pitta, Kapha), diet, herbal therapies, and conscious living."
+    },
+    decolonialNote: {
+      title: "Root Cause Balance vs. Symptom Suppression",
+      content: "Allopathic medicine often views disease as an isolated chemical glitch requiring pharmaceutical suppression. Ayurveda approaches health as dynamic harmony (समदोषः समाग्निश्च) integrating body, senses, mind, and transcendent soul."
+    },
+    citations: [
+      {
+        shloka: "प्रयोजनं चास्य स्वस्थस्य स्वास्थ्यरक्षणमातुरस्य विकारप्रशमनं च॥",
+        source: "चरक संहिता, सूत्रस्थान (३०.२६)",
+        translation: "The objective of Ayurveda is twofold: to preserve the radiant health of the healthy and to heal the afflictions of the diseased."
+      }
+    ],
+    synonyms: ["आयुर्विज्ञान", "वैद्यकशास्त्र", "चरक-संहिता", "आरोग्यशास्त्र"],
+    antonyms: [],
+    category: "Yoga & Ayurveda (योग व स्वास्थ्य)",
+    tags: ["ayurveda", "wellness", "dosha", "health", "core"],
+    pronunciationKey: "aa-yoor-vay-duh"
+  },
+  {
+    id: "mandir",
+    devanagari: "मन्दिर",
+    iast: "mandira",
+    phoneticVariants: ["mandir", "mandira", "temple", "devalaya", "koyil"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "मन्द् (मदिँ हर्षे / कान्तौ) + किरच्",
+      formula: "मन्द् + किरच् = मन्दिरम्",
+      explanationHindi: "'मोदन्ते अत्र भक्ताः' अथवा 'मनो मन्दते दीप्यते यत्र'—जहाँ मन दिव्य आनन्द में लीन व प्रकाशित होता है।",
+      explanationEnglish: "From root 'mand' (to rejoice, be glad, radiate light) + affix 'kirac'. A consecrated cosmological space designed for the soul to experience divine illumination."
+    },
+    meanings: {
+      hindi: "देवता का प्रतिष्ठित पावन गृह; वास्तुशास्त्र व ज्यामिति के नियमों पर निर्मित ब्रह्माण्डीय ऊर्जा-केंद्र।",
+      english: "A consecrated Hindu temple; an architectural cosmic mandala serving as an energetic nexus where the transcendent divine interfaces with earthly consciousness."
+    },
+    decolonialNote: {
+      title: "Consecrated Tirtha vs. Meeting Hall",
+      content: "Colonial scholarship equated Mandirs with churches or mosques (communal prayer halls). In Indic architecture, the temple is the consecrated physical body of the deity (प्रासादं पुरुषं मत्वा), built on precise mathematical Agamic geometries."
+    },
+    citations: [
+      {
+        shloka: "प्रासादं वासुदेवस्य मूर्त्तिं वा परिकल्पयेत्।\nगर्भगृहं भवेत् तत्र हृदयस्थानमुच्यते॥",
+        source: "अग्नि पुराण (६१.२६)",
+        translation: "One should contemplate the temple as the living form of the Divine; the sanctum sanctorum (Garbhagriha) is its very heart center."
+      }
+    ],
+    synonyms: ["देवालय", "प्रासाद", "मन्दिरम्", "विमान", "तीर्थ"],
+    antonyms: [],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["temple", "vastu", "murti", "sacred space"],
+    pronunciationKey: "mun-dir"
+  },
+  {
+    id: "samskara",
+    devanagari: "संस्कार",
+    iast: "saṃskāra",
+    phoneticVariants: ["samskara", "sanskar", "sanskaara", "impression", "rite"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "सम् + कृ (डुकृञ् करणे) + घञ्",
+      formula: "सम् + सुट् + कृ + घञ् = संस्कारः",
+      explanationHindi: "'आत्मनि सम्यक् क्रियते इति संस्कारः'—चित्त और चेतना को परिशुद्ध, सुसंस्कृत एवं परिष्कृत करने वाली आंतरिक प्रक्रिया।",
+      explanationEnglish: "Prefix 'sam' (wholesome, refined) + 'sut' augment + root 'kṛ' (to act, fashion) + suffix 'ghañ'. Mental impressions, psychological conditioning, and sacred rites of purification."
+    },
+    meanings: {
+      hindi: "जीवन को परिष्कृत करने वाले षोडश (१६) वैदिक संस्कार; मन के अंतस्तल पर संचित कर्म-संस्कार एवं चेतना का संस्कारण।",
+      english: "Sacred rites of life transition (e.g. Upanayana, Vivaha); subliminal psychological impressions imprinted upon consciousness (Chitta) that shape inclinations and destiny."
+    },
+    decolonialNote: {
+      title: "Psychological Architecture vs. Empty Ritual",
+      content: "Colonial observers dismissed Samskaras as empty priestcraft. In Indic psychology, Samskaras are conscious neurological and spiritual imprints designed to anchor virtues, elevate emotional resilience, and purify ancestral memory."
+    },
+    citations: [
+      {
+        shloka: "संस्काराः संस्क्रियन्ते च चित्तभूमिषु सर्वदा।\nतज्जाः संस्कारा अन्यसंस्कारप्रतिबन्धिनः॥",
+        source: "पतञ्जलि योगसूत्र (१.५०)",
+        translation: "The impressions generated by higher meditative wisdom supersede and neutralize all limiting subconscious samskaras."
+      }
+    ],
+    synonyms: ["परिष्कार", "शुद्धिकरण", "चित्त-संस्कार", "षोडश-संस्कार"],
+    antonyms: ["विकार", "अपसंस्कृति"],
+    category: "Daily Living & Culture (व्यवहार व संस्कृति)",
+    tags: ["psychology", "ritual", "mind", "yoga"],
+    pronunciationKey: "sum-skaar"
+  },
+  {
+    id: "ishvara",
+    devanagari: "ईश्वर",
+    iast: "īśvara",
+    phoneticVariants: ["ishvara", "ishwar", "iswara", "lord", "supreme"],
+    partOfSpeech: {
+      hindi: "संज्ञा, पुल्लिंग",
+      english: "Noun, masculine"
+    },
+    rootEtymology: {
+      dhatu: "ईश् (ईशँ ऐश्वर्ये)",
+      formula: "ईश् + वरच् = ईश्वरः",
+      explanationHindi: "'ईष्टे सर्वं जगत् इति ईश्वरः'—जो अपनी स्वतंत्र सत्ता और सामर्थ्य से समस्त ब्रह्माण्ड का नियमन करते हैं।",
+      explanationEnglish: "Derived from Sanskrit root 'īś' (to rule, possess sovereign power, govern) + affix 'varac'. The Supreme Sovereign Principle of cosmos and consciousness."
+    },
+    meanings: {
+      hindi: "सृष्टि के नियामक, अंतर्यामी परमेश्वर; क्लेश, कर्म, विपाक और आशय से सर्वथा अस्पृष्ट विशेष पुरुष चैतन्य।",
+      english: "The Supreme Sovereign and Cosmic Ruler; the unconditioned Purusha untouched by afflictions, karmas, karmic consequences, or latent impressions (Yoga Sutra 1.24)."
+    },
+    decolonialNote: {
+      title: "Unconditioned Consciousness vs. Jealous Anthropomorphic God",
+      content: "Translating Ishvara as Abrahamic 'God' introduces ideas of judgment, jealousy, and punishment. In Sanatana Dharma, Ishvara is the indwelling intelligence and cosmic witness, free of wrath or ego."
+    },
+    citations: [
+      {
+        shloka: "क्लेशकर्मविपाकाशयैरपरामृष्टः पुरुषविशेष ईश्वरः॥",
+        source: "पतञ्जलि योगसूत्र (१.२४)",
+        translation: "Ishvara is a distinct conscious Self (Purusha), untouched by afflictions, karma, ripening of actions, or subconscious impressions."
+      }
+    ],
+    synonyms: ["परमेश्वर", "भगवान्", "जगदीश", "अन्तर्यामी", "प्रभु"],
+    antonyms: ["जीव"],
+    category: "Philosophy (दर्शन)",
+    tags: ["consciousness", "yoga", "philosophy", "upanishad", "supreme sovereign", "lord", "core"],
+    pronunciationKey: "eesh-vuh-ruh"
+  },
+  {
+    id: "sanskrit",
+    devanagari: "संस्कृत",
+    iast: "saṃskṛta",
+    phoneticVariants: ["sanskrit", "samskrit", "samskritam", "sanskritam", "devavani"],
+    partOfSpeech: {
+      hindi: "संज्ञा, नपुंसकलिंग",
+      english: "Noun, neuter"
+    },
+    rootEtymology: {
+      dhatu: "सम् + कृ (डुकृञ् करणे) + क्त",
+      formula: "सम् + सुट् + कृ + क्तः = संस्कृतम्",
+      explanationHindi: "'सम्यक् कृतं परिष्कृतं यत् तत् संस्कृतम्'—जो व्याकरण, ध्वनि-विज्ञान और छंद से पूर्णतः परिष्कृत, शुद्ध और वैज्ञानिक हो।",
+      explanationEnglish: "Prefix 'sam' (together, perfected) + root 'kṛ' (to create, form) + past passive participle affix 'kta'. Perfectly formed, refined, and phonetically consecrated tongue."
+    },
+    meanings: {
+      hindi: "भारत की शाश्वत देववाणी एवं ज्ञान-भाषा; महर्षि पाणिनि के अष्टाध्यायी सूत्रों द्वारा नियमबद्ध संसार की सर्वाधिक वैज्ञानिक भाषा।",
+      english: "The timeless classical language of Bharat; an impeccably systematic and algorithmic linguistic marvel codified by Panini's Ashtadhyayi."
+    },
+    decolonialNote: {
+      title: "Living Algorithmic Language vs. 'Dead Language'",
+      content: "Colonial administrators declared Sanskrit a 'dead language' to demoralize Indian civilization and impose English. Sanskrit is an eternal algorithmic mother-tongue of knowledge systems, computer science, and pan-Indian culture."
+    },
+    citations: [
+      {
+        shloka: "संस्कृतं नाम दैवी वागन्वाख्याता महर्षिभिः॥",
+        source: "दण्डी, काव्यादर्श (१.३३)",
+        translation: "Sanskrit has been proclaimed by the great seers as the Divine Speech."
+      }
+    ],
+    synonyms: ["गीर्वाणभारती", "देववाणी", "अमरवाणी", "ब्रह्मवाणी", "सुरसरस्वती"],
+    antonyms: ["प्राकृत", "अपभ्रंश"],
+    category: "Literature & Tradition (साहित्य व परंपरा)",
+    tags: ["sanskrit", "panini", "language", "grammar", "core"],
+    pronunciationKey: "sum-skri-tuh"
   }
 ];
 

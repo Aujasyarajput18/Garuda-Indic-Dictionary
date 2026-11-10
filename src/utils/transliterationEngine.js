@@ -3,10 +3,14 @@
  * Engineered for Garuda Prakashan Indic Lexicon Project
  * 
  * Features:
- * 1. Live Roman to Devanagari transliteration (phonetic, ITRANS, and Hinglish)
- * 2. Phonetic normalization (handling schwa deletion, vowel length, sibilants, aspiration)
- * 3. Bidirectional search (Devanagari, Romanized/Hinglish, and Reverse English semantic search)
- * 4. Fuzzy typo tolerance (Levenshtein distance & sound-alike ranking)
+ * 1. Dual-Engine Transliteration Architecture:
+ *    - Online: Google Input Tools Indic IME API (Sanskrit & Hindi lattice ranking)
+ *    - Offline: Pure client-side syllable automaton with vowel lengthening & conjunct matrix (0ms latency)
+ * 2. Multi-Candidate Generation (Lattice): Generates ranked phonetic candidates (e.g. ram -> [राम, रम, रमा, रामा])
+ * 3. Lexicon-Driven Boosting: Re-ranks candidates that exist in the Indic Dictionary to rank #1
+ * 4. Multi-Branch Parallel Search: Simultaneously evaluates all candidate branches against dictionary headwords
+ * 5. Reverse English Semantic Search: Root stemmer for English queries (peaceful -> shanti, duty -> dharma)
+ * 6. Typo Tolerance: Levenshtein distance matrix (dist <= 2)
  */
 
 // Devanagari Unicode Range: \u0900-\u097F
@@ -33,12 +37,11 @@ const INDEPENDENT_VOWELS = {
 // Vowel matras (dependent signs attached to consonants)
 const MATRAS = {
   aa: "ा", ai: "ै", au: "ौ", ee: "ी", oo: "ू", ou: "ौ", ri: "ृ",
-  a: "", // inherent vowel
   i: "ि", u: "ु", e: "े", o: "ो"
 };
 
-// High-frequency curated Indic terms map for instantaneous, exact 1:1 transliteration
-const COMMON_EXACT_MAP = {
+// High-frequency curated Indic terms map for instantaneous 0ms exact transliteration
+export const COMMON_EXACT_MAP = {
   ram: "राम",
   rama: "राम",
   raam: "राम",
@@ -105,6 +108,14 @@ const COMMON_EXACT_MAP = {
   karm: "कर्म",
   itihasa: "इतिहास",
   itihas: "इतिहास",
+  mandir: "मन्दिर",
+  temple: "मन्दिर",
+  samskara: "संस्कार",
+  sanskar: "संस्कार",
+  ishvara: "ईश्वर",
+  ishwar: "ईश्वर",
+  sanskrit: "संस्कृत",
+  samskritam: "संस्कृत",
   murti: "मूर्ति",
   moorti: "मूर्ति",
   guru: "गुरु",
@@ -118,7 +129,6 @@ const COMMON_EXACT_MAP = {
   samadhi: "समाधि",
   purushartha: "पुरुषार्थ",
   purusharth: "पुरुषार्थ",
-  // Classical Vedic and Indic additions
   shanti: "शान्ति",
   shantih: "शान्ति",
   shaanti: "शान्ति",
@@ -183,25 +193,13 @@ const COMMON_EXACT_MAP = {
   ras: "रस"
 };
 
+// In-memory cache for API candidates
+const apiCandidateCache = new Map();
+
 /**
- * Phonetically transliterates a Romanized string to Devanagari.
- * Employs curated exact dictionary lookup first, with a smart conjunct/matra tokenizer fallback.
+ * Parses Latin string into Devanagari using syllable automaton with configurable vowel treatment
  */
-export function romanToDevanagari(input) {
-  if (!input) return "";
-  const str = input.toLowerCase().trim();
-
-  // 1. Direct High-Frequency Map
-  if (COMMON_EXACT_MAP[str]) {
-    return COMMON_EXACT_MAP[str];
-  }
-
-  // 2. Multi-word transliteration
-  if (str.includes(" ")) {
-    return str.split(/\s+/).map(w => romanToDevanagari(w)).join(" ");
-  }
-
-  // 3. Smart Syllable Tokenizer
+function parseSyllables(str, treatMedialAAsLong = false, treatTrailingAAsLong = false) {
   let result = "";
   let i = 0;
   let lastWasConsonant = false;
@@ -211,7 +209,7 @@ export function romanToDevanagari(input) {
     const sub2 = str.slice(i, i + 2);
     const sub1 = str.slice(i, i + 1);
 
-    // Consonant check
+    // Consonant check (greedy 3, then 2, then 1)
     let consMatch = null;
     let consLen = 0;
     if (CONSONANTS[sub3]) { consMatch = CONSONANTS[sub3]; consLen = 3; }
@@ -220,11 +218,30 @@ export function romanToDevanagari(input) {
 
     if (consMatch) {
       if (lastWasConsonant) {
-        result += "्"; // insert halanta for conjuncts
+        result += "्"; // conjunct halanta
       }
       result += consMatch;
       i += consLen;
       lastWasConsonant = true;
+      continue;
+    }
+
+    // Special treatment for single "a"
+    if (sub1 === "a") {
+      const isTrailing = (i === str.length - 1);
+      if (lastWasConsonant) {
+        if (isTrailing) {
+          if (treatTrailingAAsLong) result += "ा";
+          // else schwa deletion (no matra added)
+        } else {
+          if (treatMedialAAsLong) result += "ा";
+          // else inherent schwa
+        }
+      } else {
+        result += INDEPENDENT_VOWELS["a"];
+      }
+      i += 1;
+      lastWasConsonant = false;
       continue;
     }
 
@@ -245,13 +262,182 @@ export function romanToDevanagari(input) {
       continue;
     }
 
-    // Space or other punctuation
+    // Fallback for non-alphabetic chars
     result += str[i];
     i++;
     lastWasConsonant = false;
   }
 
   return result;
+}
+
+/**
+ * Re-ranks candidates by boosting words that exist in the Indic Dictionary
+ */
+function boostDictionaryMatches(candidates, dictionary) {
+  if (!dictionary || !dictionary.length || !candidates || !candidates.length) {
+    return candidates;
+  }
+
+  const dictHeadwords = new Set();
+  const dictSynonyms = new Set();
+
+  for (const entry of dictionary) {
+    if (entry.devanagari) dictHeadwords.add(entry.devanagari);
+    if (entry.synonyms) entry.synonyms.forEach(s => dictSynonyms.add(s));
+  }
+
+  const boosted = [];
+  const others = [];
+
+  for (const cand of candidates) {
+    if (dictHeadwords.has(cand) || dictSynonyms.has(cand)) {
+      if (!boosted.includes(cand)) boosted.push(cand);
+    } else {
+      if (!others.includes(cand)) others.push(cand);
+    }
+  }
+
+  return [...boosted, ...others];
+}
+
+/**
+ * Generates local candidates instantly (0ms latency, zero network dependency)
+ */
+export function generateLocalCandidates(input, dictionary = []) {
+  if (!input || !input.trim()) return [];
+  const clean = input.toLowerCase().trim();
+
+  const candidates = [];
+
+  // 1. Curated exact match
+  if (COMMON_EXACT_MAP[clean]) {
+    candidates.push(COMMON_EXACT_MAP[clean]);
+  }
+
+  // 2. Multi-word support
+  if (clean.includes(" ")) {
+    const words = clean.split(/\s+/);
+    const multiCand = words.map(w => COMMON_EXACT_MAP[w] || parseSyllables(w, true, false)).join(" ");
+    candidates.push(multiCand);
+  }
+
+  // 3. Medial Long Vowel Parse (ram -> राम, bharat -> भारत, kam -> काम)
+  const longParse = parseSyllables(clean, true, false);
+  if (longParse && !candidates.includes(longParse)) {
+    candidates.push(longParse);
+  }
+
+  // 4. Short Inherent Vowel Parse (ram -> रम, bharat -> भरत)
+  const shortParse = parseSyllables(clean, false, false);
+  if (shortParse && !candidates.includes(shortParse)) {
+    candidates.push(shortParse);
+  }
+
+  // 5. Trailing Long Vowel Parse (rama -> रमा / रामा)
+  if (clean.endsWith("a")) {
+    const trailingLong = parseSyllables(clean, false, true);
+    if (trailingLong && !candidates.includes(trailingLong)) {
+      candidates.push(trailingLong);
+    }
+    const bothLong = parseSyllables(clean, true, true);
+    if (bothLong && !candidates.includes(bothLong)) {
+      candidates.push(bothLong);
+    }
+  }
+
+  // 6. Anusvara variant (e.g. replacing 'n'/'m' before stops with anusvara)
+  if (/m[dtpbkkgjc]|n[dtpbkkgjc]/.test(clean)) {
+    const anusvaraClean = clean.replace(/m(?=[dtpbkkgjc])/g, "n");
+    const anusvaraResult = parseSyllables(anusvaraClean, false, false).replace(/न्(?=[क-ह])/g, "ं");
+    if (anusvaraResult && !candidates.includes(anusvaraResult)) {
+      candidates.push(anusvaraResult);
+    }
+  }
+
+  // Always keep English original query as the last fallback choice
+  if (!candidates.includes(input)) {
+    candidates.push(input);
+  }
+
+  return boostDictionaryMatches(candidates, dictionary);
+}
+
+/**
+ * Fetches real-time candidates from Google Input Tools API (Online + Sanskrit/Hindi merged)
+ * Falls back immediately to local lattice generator if offline or network delayed.
+ */
+export async function fetchIndicCandidates(query, dictionary = [], maxResults = 5) {
+  if (!query || !query.trim()) return [];
+  const clean = query.toLowerCase().trim();
+
+  // If already Devanagari, return as-is
+  if (isDevanagari(clean)) {
+    return [clean];
+  }
+
+  // Check cache
+  if (apiCandidateCache.has(clean)) {
+    const cached = apiCandidateCache.get(clean);
+    return boostDictionaryMatches(cached, dictionary);
+  }
+
+  // Immediate local candidates available in 0ms
+  const localCandidates = generateLocalCandidates(clean, dictionary);
+
+  try {
+    const encoded = encodeURIComponent(clean);
+    const saUrl = `https://inputtools.google.com/request?text=${encoded}&itc=sa-t-i0-und&num=${maxResults}&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`;
+    const hiUrl = `https://inputtools.google.com/request?text=${encoded}&itc=hi-t-i0-und&num=${maxResults}&cp=0&cs=1&ie=utf-8&oe=utf-8&app=demopage`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1200);
+
+    const [saRes, hiRes] = await Promise.all([
+      fetch(saUrl, { signal: controller.signal }).then(r => r.json()).catch(() => null),
+      fetch(hiUrl, { signal: controller.signal }).then(r => r.json()).catch(() => null)
+    ]);
+    clearTimeout(timeoutId);
+
+    const saCand = saRes?.[1]?.[0]?.[1] || [];
+    const hiCand = hiRes?.[1]?.[0]?.[1] || [];
+
+    // Merge Google candidates
+    const combined = Array.from(new Set([...saCand, ...hiCand]));
+
+    if (combined.length > 0) {
+      // Append local candidates for maximum recall
+      for (const loc of localCandidates) {
+        if (!combined.includes(loc)) {
+          combined.push(loc);
+        }
+      }
+      const boosted = boostDictionaryMatches(combined, dictionary).slice(0, 6);
+      apiCandidateCache.set(clean, boosted);
+      return boosted;
+    }
+  } catch (err) {
+    // Graceful offline fallback
+  }
+
+  return localCandidates;
+}
+
+/**
+ * Phonetically transliterates a Romanized string to Devanagari (returns top candidate)
+ */
+export function romanToDevanagari(input, dictionary = []) {
+  if (!input) return "";
+  const str = input.toLowerCase().trim();
+
+  // 1. High frequency direct match
+  if (COMMON_EXACT_MAP[str]) {
+    return COMMON_EXACT_MAP[str];
+  }
+
+  // 2. Generate local candidate lattice and take top ranked
+  const cands = generateLocalCandidates(input, dictionary);
+  return cands[0] || input;
 }
 
 /**
@@ -268,7 +454,6 @@ export function getStem(word) {
 
 /**
  * Normalizes phonetic spelling to allow flexible matching
- * (e.g. collapsing long vowels, equating 'sh' and 's', equating 'v' and 'w', stripping trailing 'a' / schwa)
  */
 export function normalizePhonetic(str) {
   if (!str) return "";
@@ -312,16 +497,9 @@ export function levenshteinDistance(a, b) {
 }
 
 /**
- * Search the dictionary using multi-criteria ranking:
- * 1. Exact Devanagari match
- * 2. Prefix / Substring Devanagari match
- * 3. Transliterated Devanagari match
- * 4. Romanized / IAST exact & variant match
- * 5. Normalized phonetic match (handles schwa deletion e.g. dharm -> dharma, yog -> yoga)
- * 6. Reverse English semantic search (matching keywords in English definition, tags, and decolonial notes)
- * 7. Fuzzy sound-alike / Levenshtein fallback (typographical error tolerance)
+ * Search the dictionary using multi-criteria ranking and multi-branch candidate evaluation
  */
-export function searchDictionary(query, dictionary) {
+export function searchDictionary(query, dictionary, liveCandidates = []) {
   if (!query || query.trim() === "") {
     return dictionary;
   }
@@ -329,8 +507,16 @@ export function searchDictionary(query, dictionary) {
   const rawQuery = query.trim();
   const lowerQuery = rawQuery.toLowerCase();
   const queryIsDev = isDevanagari(rawQuery);
-  const transliteratedQuery = queryIsDev ? rawQuery : romanToDevanagari(lowerQuery);
   const normalizedQuery = normalizePhonetic(lowerQuery);
+
+  // Compute or use candidates
+  const candidates = queryIsDev
+    ? [rawQuery]
+    : (liveCandidates && liveCandidates.length > 0
+        ? liveCandidates
+        : generateLocalCandidates(lowerQuery, dictionary));
+
+  const topTransliteration = candidates[0] || (queryIsDev ? rawQuery : romanToDevanagari(lowerQuery, dictionary));
 
   const scoredResults = [];
 
@@ -338,7 +524,7 @@ export function searchDictionary(query, dictionary) {
     let score = 0;
     let matchType = null;
 
-    // 1. Devanagari Direct Match
+    // 1. Devanagari Direct Search
     if (queryIsDev) {
       if (entry.devanagari === rawQuery) {
         score += 100;
@@ -352,32 +538,47 @@ export function searchDictionary(query, dictionary) {
       } else if (entry.meanings.hindi.includes(rawQuery) || entry.rootEtymology.dhatu.includes(rawQuery)) {
         score += 40;
         matchType = "Hindi Definition / Dhatu";
-      } else if (entry.synonyms.some(s => s.includes(rawQuery))) {
+      } else if (entry.synonyms && entry.synonyms.some(s => s.includes(rawQuery))) {
         score += 35;
         matchType = "Devanagari Synonym";
       }
     } else {
-      // 2. Romanized / IAST exact match
-      if (entry.iast.toLowerCase() === lowerQuery || entry.id === lowerQuery) {
-        score += 100;
-        matchType = "Exact Romanized / IAST";
-      } else if (entry.phoneticVariants && entry.phoneticVariants.some(v => v.toLowerCase() === lowerQuery)) {
-        score += 95;
-        matchType = "Phonetic Variant Match";
-      } else if (entry.iast.toLowerCase().startsWith(lowerQuery)) {
-        score += 75;
-        matchType = "Romanized Prefix";
+      // 2. Multi-Candidate Transliteration Match (Tests ALL generated candidates)
+      for (let idx = 0; idx < candidates.length; idx++) {
+        const cand = candidates[idx];
+        if (!cand || cand === rawQuery) continue;
+
+        if (entry.devanagari === cand) {
+          const rankWeight = Math.max(70, 100 - idx * 5);
+          if (rankWeight > score) {
+            score = rankWeight;
+            matchType = `Phonetic Candidate (#${idx + 1}: ${cand})`;
+          }
+        } else if (entry.devanagari.startsWith(cand)) {
+          const rankWeight = Math.max(50, 75 - idx * 5);
+          if (rankWeight > score) {
+            score = rankWeight;
+            matchType = `Candidate Prefix (${cand})`;
+          }
+        } else if (entry.synonyms && entry.synonyms.some(s => s === cand || s.startsWith(cand))) {
+          const rankWeight = Math.max(45, 65 - idx * 5);
+          if (rankWeight > score) {
+            score = rankWeight;
+            matchType = `Synonym Candidate (${cand})`;
+          }
+        }
       }
 
-      // 3. Transliterated Devanagari match
-      if (transliteratedQuery) {
-        if (entry.devanagari === transliteratedQuery) {
-          score += 90;
-          matchType = matchType || "Transliterated Devanagari";
-        } else if (entry.devanagari.startsWith(transliteratedQuery)) {
-          score += 70;
-          matchType = matchType || "Transliterated Prefix";
-        }
+      // 3. Romanized / IAST exact match
+      if (entry.iast.toLowerCase() === lowerQuery || entry.id === lowerQuery) {
+        score = Math.max(score, 100);
+        matchType = matchType || "Exact Romanized / IAST";
+      } else if (entry.phoneticVariants && entry.phoneticVariants.some(v => v.toLowerCase() === lowerQuery)) {
+        score = Math.max(score, 95);
+        matchType = matchType || "Phonetic Variant Match";
+      } else if (entry.iast.toLowerCase().startsWith(lowerQuery)) {
+        score = Math.max(score, 75);
+        matchType = matchType || "Romanized Prefix";
       }
 
       // 4. Normalized Phonetic match (handles schwa deletion e.g. dharm -> dharma)
@@ -397,9 +598,7 @@ export function searchDictionary(query, dictionary) {
       const decolonialTitle = entry.decolonialNote ? entry.decolonialNote.title.toLowerCase() : "";
       const decolonialText = entry.decolonialNote ? entry.decolonialNote.content.toLowerCase() : "";
       const fullDecolonial = `${decolonialTitle} ${decolonialText}`;
-      const posEng = entry.partOfSpeech.english.toLowerCase();
 
-      // Normalize hyphenated searches (e.g. non-violence -> nonviolence)
       const cleanLower = lowerQuery.replace(/[-_]/g, "");
       const spaceLower = lowerQuery.replace(/[-_]/g, " ");
       const qStem = getStem(cleanLower);
@@ -450,7 +649,7 @@ export function searchDictionary(query, dictionary) {
         entry,
         score,
         matchType,
-        transliteratedPreview: transliteratedQuery
+        transliteratedPreview: topTransliteration
       });
     }
   }

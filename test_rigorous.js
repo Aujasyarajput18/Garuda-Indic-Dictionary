@@ -1,4 +1,10 @@
-import { searchDictionary, romanToDevanagari, normalizePhonetic } from './src/utils/transliterationEngine.js';
+import { 
+  searchDictionary, 
+  romanToDevanagari, 
+  normalizePhonetic, 
+  generateLocalCandidates, 
+  fetchIndicCandidates 
+} from './src/utils/transliterationEngine.js';
 import { INDIC_DICTIONARY, CATEGORIES } from './src/data/dictionaryData.js';
 
 console.log("================================================================================");
@@ -21,9 +27,9 @@ function assert(condition, testName, details = "") {
 }
 
 // ==============================================================================
-// 1. DATA INTEGRITY & TRANSLATION COMPLETENESS (Every word must be fully translated)
+// 1. DATA INTEGRITY & SCHOLARLY COMPLETENESS (Every word must be fully translated)
 // ==============================================================================
-console.log("\n--- [SUITE 1: DATA INTEGRITY & SCHOLARLY COMPLETENESS] ---");
+console.log("\n--- [SUITE 1: DATA INTEGRITY & SCHOLARLY COMPLETENESS (60 ENTRIES)] ---");
 const validCategories = CATEGORIES.filter(c => c.id !== 'all').map(c => c.id);
 
 INDIC_DICTIONARY.forEach((entry) => {
@@ -132,7 +138,10 @@ const schwaCases = [
   { input: "moksh", expected: "moksha" },
   { input: "pran", expected: "prana" },
   { input: "itihas", expected: "itihasa" },
-  { input: "moorti", expected: "murti" }
+  { input: "moorti", expected: "murti" },
+  { input: "sanskar", expected: "samskara" },
+  { input: "ishwar", expected: "ishvara" },
+  { input: "samskrit", expected: "sanskrit" }
 ];
 
 schwaCases.forEach(({ input, expected }) => {
@@ -190,7 +199,10 @@ const englishSemanticCases = [
   { english: "pure consciousness", expected: "purusha" },
   { english: "deity", expected: "deva" },
   { english: "poetry", expected: "kavya" },
-  { english: "aesthetic", expected: "rasa" }
+  { english: "aesthetic", expected: "rasa" },
+  { english: "temple", expected: "mandir" },
+  { english: "impression", expected: "samskara" },
+  { english: "supreme sovereign", expected: "ishvara" }
 ];
 
 englishSemanticCases.forEach(({ english, expected }) => {
@@ -223,6 +235,128 @@ typoCases.forEach(({ typo, expected }) => {
     found,
     `Typo tolerance for "${typo}" -> Found "${expected}"`,
     `Expected "${expected}" to be retrieved for typo "${typo}"`
+  );
+});
+
+// ==============================================================================
+// 7. GOOGLE INDIC IME & MULTI-CANDIDATE LATTICE ENGINE TESTS
+// ==============================================================================
+console.log("\n--- [SUITE 7: MULTI-CANDIDATE LATTICE & GOOGLE INDIC IME ENGINE] ---");
+
+// Test A: Core user issue - 'ram' and 'rama' MUST produce 'राम'
+assert(
+  romanToDevanagari("ram", INDIC_DICTIONARY) === "राम",
+  `romanToDevanagari("ram") === "राम" (Got "${romanToDevanagari("ram", INDIC_DICTIONARY)}")`
+);
+
+assert(
+  romanToDevanagari("rama", INDIC_DICTIONARY) === "राम",
+  `romanToDevanagari("rama") === "राम" (Got "${romanToDevanagari("rama", INDIC_DICTIONARY)}")`
+);
+
+const ramLocalCands = generateLocalCandidates("ram", INDIC_DICTIONARY);
+assert(
+  ramLocalCands.includes("राम"),
+  `generateLocalCandidates("ram") includes "राम" (${JSON.stringify(ramLocalCands)})`
+);
+assert(
+  ramLocalCands[0] === "राम",
+  `Candidate #1 for "ram" is "राम" (Rank 1: "${ramLocalCands[0]}")`
+);
+
+const ramaLocalCands = generateLocalCandidates("rama", INDIC_DICTIONARY);
+assert(
+  ramaLocalCands.includes("राम") && (ramaLocalCands.includes("रमा") || ramaLocalCands.includes("रामा")),
+  `generateLocalCandidates("rama") includes both "राम" and feminine variants (${JSON.stringify(ramaLocalCands)})`
+);
+
+// Test B: Dictionary search for 'ram' and 'rama' returns 'rama' (राम) as #1
+const ramResults = searchDictionary("ram", INDIC_DICTIONARY);
+assert(
+  ramResults[0] && ramResults[0].id === "rama",
+  `Search "ram" -> #1 result is "rama" (राम) (Score: ${ramResults[0]?._matchMeta?.score})`
+);
+
+const ramaResults = searchDictionary("rama", INDIC_DICTIONARY);
+assert(
+  ramaResults[0] && ramaResults[0].id === "rama",
+  `Search "rama" -> #1 result is "rama" (राम) (Score: ${ramaResults[0]?._matchMeta?.score})`
+);
+
+// Test C: Other iconic cultural terms in candidate engine
+const bharatCands = generateLocalCandidates("bharat", INDIC_DICTIONARY);
+assert(
+  bharatCands[0] === "भारत",
+  `Candidate #1 for "bharat" is "भारत" (Rank 1: "${bharatCands[0]}")`
+);
+
+const mandirResults = searchDictionary("mandir", INDIC_DICTIONARY);
+assert(
+  mandirResults[0] && mandirResults[0].id === "mandir",
+  `Search "mandir" -> #1 result is "mandir" (मन्दिर)`
+);
+
+const hanumanResults = searchDictionary("hanuman", INDIC_DICTIONARY);
+assert(
+  hanumanResults[0] && hanumanResults[0].id === "hanuman",
+  `Search "hanuman" -> #1 result is "hanuman" (हनुमान्)`
+);
+
+const sitaResults = searchDictionary("sita", INDIC_DICTIONARY);
+assert(
+  sitaResults[0] && sitaResults[0].id === "sita",
+  `Search "sita" -> #1 result is "sita" (सीता)`
+);
+
+const upanishadResults = searchDictionary("upanishad", INDIC_DICTIONARY);
+assert(
+  upanishadResults[0] && upanishadResults[0].id === "upanishad",
+  `Search "upanishad" -> #1 result is "upanishad" (उपनिषद्)`
+);
+
+const ramayanaResults = searchDictionary("ramayana", INDIC_DICTIONARY);
+assert(
+  ramayanaResults[0] && ramayanaResults[0].id === "ramayana",
+  `Search "ramayana" -> #1 result is "ramayana" (रामायण)`
+);
+
+const mahabharataResults = searchDictionary("mahabharata", INDIC_DICTIONARY);
+assert(
+  mahabharataResults[0] && mahabharataResults[0].id === "mahabharata",
+  `Search "mahabharata" -> #1 result is "mahabharata" (महाभारत)`
+);
+
+const ayurvedaResults = searchDictionary("ayurveda", INDIC_DICTIONARY);
+assert(
+  ayurvedaResults[0] && ayurvedaResults[0].id === "ayurveda",
+  `Search "ayurveda" -> #1 result is "ayurveda" (आयुर्वेद)`
+);
+
+const samskaraResults = searchDictionary("samskara", INDIC_DICTIONARY);
+assert(
+  samskaraResults[0] && samskaraResults[0].id === "samskara",
+  `Search "samskara" -> #1 result is "samskara" (संस्कार)`
+);
+
+const ishvaraResults = searchDictionary("ishvara", INDIC_DICTIONARY);
+assert(
+  ishvaraResults[0] && ishvaraResults[0].id === "ishvara",
+  `Search "ishvara" -> #1 result is "ishvara" (ईश्वर)`
+);
+
+const sanskritResults = searchDictionary("sanskrit", INDIC_DICTIONARY);
+assert(
+  sanskritResults[0] && sanskritResults[0].id === "sanskrit",
+  `Search "sanskrit" -> #1 result is "sanskrit" (संस्कृत)`
+);
+
+// Test D: Arbitrary word transliteration check (not hardcoded)
+const arbitraryWords = ["karega", "namaste", "dhyana", "saraswati", "ayodhya", "kashi", "pustak"];
+arbitraryWords.forEach(w => {
+  const cands = generateLocalCandidates(w, INDIC_DICTIONARY);
+  assert(
+    Array.isArray(cands) && cands.length >= 2,
+    `Arbitrary word "${w}" generates candidate lattice (${cands.slice(0, 3).join(", ")})`
   );
 });
 

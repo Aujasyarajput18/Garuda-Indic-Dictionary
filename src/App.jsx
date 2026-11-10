@@ -23,6 +23,7 @@ import { BookOpen, AlertCircle, RefreshCw } from 'lucide-react';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeCandidates, setActiveCandidates] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [showBookmarksModal, setShowBookmarksModal] = useState(false);
@@ -72,12 +73,12 @@ export default function App() {
 
   // Search & Filter Execution
   const searchResults = useMemo(() => {
-    let results = searchDictionary(searchQuery, INDIC_DICTIONARY);
+    let results = searchDictionary(searchQuery, INDIC_DICTIONARY, activeCandidates);
     if (selectedCategory !== 'all') {
       results = results.filter(entry => entry.category === selectedCategory);
     }
     return results;
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, activeCandidates]);
 
   // Virtual Keyboard Insertion
   const handleInsertChar = (char) => {
@@ -170,6 +171,9 @@ export default function App() {
               showKeyboard={showKeyboard}
               setShowKeyboard={setShowKeyboard}
               totalResults={searchResults.length}
+              dictionary={INDIC_DICTIONARY}
+              activeCandidates={activeCandidates}
+              setActiveCandidates={setActiveCandidates}
             />
 
             {/* Virtual Keyboard Drawer */}

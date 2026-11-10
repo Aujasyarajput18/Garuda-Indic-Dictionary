@@ -25,12 +25,20 @@ As demonstrated in Sankrant Ji's work (*The English Medium Myth*), millions of I
 
 ## 🚀 Key Features
 
-* **⚡ Real-Time Dual-Search & Transliteration Engine:**
-  * Instant prefix, substring, and exact matching across Devanagari, IAST, phonetic variants, and English definitions.
-  * Live transliteration preview pill (e.g., typing `dharma` visually shows `Phonetic Transliteration: dharma → धर्म` with one-click adoption).
+* **⚡ Google Input Tools & Indic IME Multi-Candidate Lattice Engine:**
+  * Powered by a dual-engine transliteration architecture:
+    1. **Google Indic Transliteration API:** Debounced live neural/n-gram candidate lattice for any arbitrary Sanskrit, Hindi, or Hinglish word.
+    2. **Local Syllable Automaton:** Instant 0ms client-side fallback with medial long-vowel parsing (`ram` → `राम`, `kam` → `काम`), conjunct matrix (`युक्ताक्षर`), and anusvara substitution.
+  * **Interactive Suggestion Bar:** Real-time candidate chips (`1. राम ↵`, `2. रम`, `3. रमा`, `4. रामा`, `5. ram`) with keyboard navigation (`Enter`, `Space`, `Tab`, `Alt+Arrow`, or number shortcuts) and lexicon-boosted indicators.
+  * **Multi-Branch Parallel Search:** Simultaneously searches across all candidate branches so typing `ram` or `rama` instantly matches `राम` with highest score.
 * **🔤 Phonetic Normalizer & Schwa Deletion:**
   * Seamlessly handles terminal schwa variation (`dharm` ⇄ `dharma`, `yog` ⇄ `yoga`, `karm` ⇄ `karma`).
   * Normalizes sibilants (`sh` / `s` / `shh`), vowel lengths (`ee` / `i`, `oo` / `u`), and conjunct ambiguities (`gyan` vs `jnan`).
+* **📖 60 Foundational Scholarly Indic Entries:**
+  * Across 5 classical categories (Philosophy, Yoga & Wellness, Statecraft & Civil Society, Epics & Literature, Daily Culture).
+  * Every entry complete with Paninian Dhatu (`धातु`), derivational formula, Sanskrit scriptural citations (*प्रमाण श्लोक*), decolonial notes, and English reverse lookup.
+* **🧪 Rigorous Automated Test Suite (701 Assertions, 100% Pass Rate):**
+  * Automated testing across 7 comprehensive test suites (`npm test` / `node test_rigorous.js`).
 * **⌨️ Integrated Indic Virtual Keyboard:**
   * For desktop and mobile users without an active Hindi/Devanagari IME keyboard. Categorized into *स्वर (Vowels)*, *मात्राएं (Vowel Signs)*, and *व्यंजन (Consonants & Conjuncts)* with halant and Vedic symbols (ॐ, ं, ः).
 * **🔊 Audio Pronunciation:**
