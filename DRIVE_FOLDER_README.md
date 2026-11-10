@@ -3,7 +3,7 @@
 **Candidate Name:** Aujasya  
 **Institution:** Rishihood University  
 **Public GitHub Repository:** https://github.com/Aujasyarajput18/Garuda-Indic-Dictionary  
-**Live Deployed Application:** https://garuda-indic-dictionary.vercel.app (or GitHub Pages link)
+**Live Deployed Application:** https://aujasyarajput18.github.io/Garuda-Indic-Dictionary/
 
 ---
 

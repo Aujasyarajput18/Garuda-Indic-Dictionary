@@ -2,7 +2,7 @@
 ### Live Project Assignment for Garuda Prakashan × Rishihood University
 **Track 3: Dictionary App (Web & Indic Computing)**  
 **Author:** Aujasya (Rishihood University)  
-**Live Demo:** *(Deployed on Vercel / GitHub Pages)*
+**Live Demo:** [https://aujasyarajput18.github.io/Garuda-Indic-Dictionary/](https://aujasyarajput18.github.io/Garuda-Indic-Dictionary/)
 
 ---
 
