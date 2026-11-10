@@ -8,40 +8,43 @@ export default {
   theme: {
     extend: {
       colors: {
+        nalanda: {
+          50: '#FAF6ED',   // Fresh bhojpatra parchment
+          100: '#F4ECE0',  // Aged palm leaf
+          200: '#EBDDC7',  // Vintage manuscript paper
+          300: '#DFCFAF',  // Deep parchment tone
+          400: '#CEBC95',  // Aged deckled edge
+          700: '#524332',  // Sepia secondary ink
+          800: '#342A1F',  // Antique manuscript ink
+          900: '#221B13',  // Deep soot woodblock ink
+          950: '#14100B',  // Deepest soot black
+        },
         forest: {
-          50: '#f0f9f3',
-          100: '#dcf0e3',
-          200: '#bae2cb',
-          300: '#8dccaa',
-          400: '#5ab083',
-          500: '#389463',
-          600: '#27774d',
-          700: '#1e5f3e',
-          800: '#1a4c33',
-          900: '#163f2b',
-          950: '#0a2318',
+          50: '#F1F7F2',
+          100: '#E0EFE3',
+          200: '#C2DFC7',
+          300: '#99C7A2',
+          600: '#296A42',
+          700: '#1F5333',
+          800: '#174228',
+          900: '#10301D',
+          950: '#0A2013',
         },
-        sage: {
-          50: '#f6f8f5',
-          100: '#ebf0e9',
-          200: '#d7e2d4',
-          300: '#b8cbb4',
-          400: '#95b090',
-          500: '#769470',
-          600: '#5c7657',
-          700: '#4a5e46',
-          800: '#3d4d3a',
-          900: '#334031',
+        kumkum: {
+          50: '#FAF0ED',
+          100: '#F5DDD5',
+          200: '#EBBCAD',
+          600: '#A34125',
+          700: '#8B331B',
+          800: '#722814',
+          900: '#5A1E0D',
         },
-        stonepaper: {
-          50: '#ffffff',
-          100: '#fafbf9',
-          200: '#f3f5f1',
-          300: '#e7ebe3',
-          400: '#d4dbcd',
-          800: '#212620',
-          900: '#141813',
-          950: '#0c0f0c',
+        swarna: {
+          100: '#FBF2DD',
+          200: '#F6E3B3',
+          600: '#B8860B',
+          700: '#9A6E08',
+          800: '#7B5606',
         }
       },
       fontFamily: {

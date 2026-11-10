@@ -10,10 +10,10 @@ export default function CategoryFilter({ selectedCategory, onSelectCategory }) {
           <button
             key={cat.id}
             onClick={() => onSelectCategory(cat.id)}
-            className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all border ${
+            className={`px-3 py-1.5 rounded text-xs sm:text-sm font-medium whitespace-nowrap transition-all border ${
               isSelected
-                ? 'bg-emerald-900 dark:bg-emerald-800 text-white border-emerald-950 dark:border-emerald-700 shadow-xs font-semibold'
-                : 'bg-white dark:bg-[#121c15] text-stone-700 dark:text-stone-300 border-stone-200 dark:border-stone-800 hover:bg-emerald-50/70 hover:border-emerald-600 hover:text-emerald-950 dark:hover:bg-stone-800'
+                ? 'bg-[#1F5333] dark:bg-[#174228] text-[#FAF6ED] border-[#0E2E1A] shadow-xs font-semibold'
+                : 'bg-[#FAF6ED] dark:bg-[#1D1712] text-[#342A1F] dark:text-[#EBDDC7] border-[#CEBC95] dark:border-[#3E3123] hover:bg-[#EBDDC7]/70 hover:border-[#1F5333]'
             }`}
           >
             <span className="font-devanagari mr-1">{cat.labelHindi}</span>

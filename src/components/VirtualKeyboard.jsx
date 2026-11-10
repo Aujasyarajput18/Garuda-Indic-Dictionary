@@ -18,35 +18,35 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
   const [activeTab, setActiveTab] = useState('vyanjan');
 
   return (
-    <div className="mt-3 p-4 bg-stone-50 dark:bg-[#121c15] rounded-xl border border-stone-300 dark:border-stone-800 shadow-sm transition-all">
-      <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-stone-200 dark:border-stone-800 text-xs">
+    <div className="mt-3 p-3.5 bg-[#FAF6ED] dark:bg-[#1A1510] rounded-lg border border-[#CEBC95] dark:border-[#3E3123] shadow-xs transition-all">
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D8C7A3] dark:border-[#3E3123] text-xs">
         <div className="flex gap-1.5 font-medium">
           <button
             onClick={() => setActiveTab('vyanjan')}
-            className={`px-3 py-1 rounded transition-all ${
+            className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'vyanjan'
-                ? 'bg-emerald-800 text-white font-semibold'
-                : 'text-stone-600 dark:text-stone-400 hover:bg-stone-200/70 dark:hover:bg-stone-800'
+                ? 'bg-[#1F5333] text-white font-semibold'
+                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
             }`}
           >
             व्यंजन (Consonants)
           </button>
           <button
             onClick={() => setActiveTab('matra')}
-            className={`px-3 py-1 rounded transition-all ${
+            className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'matra'
-                ? 'bg-emerald-800 text-white font-semibold'
-                : 'text-stone-600 dark:text-stone-400 hover:bg-stone-200/70 dark:hover:bg-stone-800'
+                ? 'bg-[#1F5333] text-white font-semibold'
+                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
             }`}
           >
             मात्राएं (Vowel Signs)
           </button>
           <button
             onClick={() => setActiveTab('swar')}
-            className={`px-3 py-1 rounded transition-all ${
+            className={`px-3 py-1 rounded transition-all font-devanagari ${
               activeTab === 'swar'
-                ? 'bg-emerald-800 text-white font-semibold'
-                : 'text-stone-600 dark:text-stone-400 hover:bg-stone-200/70 dark:hover:bg-stone-800'
+                ? 'bg-[#1F5333] text-white font-semibold'
+                : 'text-[#524332] dark:text-[#A8987E] hover:bg-[#EBDDC7]/60'
             }`}
           >
             स्वर (Vowels)
@@ -55,7 +55,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
 
         <button
           onClick={onClose}
-          className="p-1 rounded text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 hover:bg-stone-200/60 dark:hover:bg-stone-800"
+          className="p-1 rounded text-[#7D6B56] hover:text-[#221B13] dark:hover:text-[#FAF6ED] hover:bg-[#EBDDC7]"
           title="Close keyboard"
         >
           <X className="w-4 h-4" />
@@ -68,7 +68,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 border border-stone-200 dark:border-stone-700 shadow-2xs hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:border-emerald-600 active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#221B13] dark:text-[#FAF6ED] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
           >
             {char}
           </button>
@@ -78,7 +78,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-lg sm:text-xl font-devanagari font-bold rounded bg-white dark:bg-stone-900 text-emerald-800 dark:text-emerald-300 border border-stone-200 dark:border-stone-700 shadow-2xs hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:border-emerald-600 active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-lg sm:text-xl font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#8B331B] dark:text-[#EBBCAD] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#8B331B] active:scale-95 transition-all flex items-center justify-center"
           >
             क{char}
           </button>
@@ -88,7 +88,7 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
           <button
             key={char}
             onClick={() => onInsertChar(char)}
-            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-100 border border-stone-200 dark:border-stone-700 shadow-2xs hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:border-emerald-600 active:scale-95 transition-all flex items-center justify-center"
+            className="w-8 h-9 sm:w-9 sm:h-10 text-base sm:text-lg font-devanagari font-bold rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#221B13] dark:text-[#FAF6ED] border border-[#CEBC95] dark:border-[#4A3B2B] shadow-2xs hover:bg-[#EBDDC7] hover:border-[#1F5333] active:scale-95 transition-all flex items-center justify-center"
           >
             {char}
           </button>
@@ -96,16 +96,16 @@ export default function VirtualKeyboard({ onInsertChar, onBackspace, onClose }) 
       </div>
 
       {/* Control Actions */}
-      <div className="flex items-center justify-center gap-2 mt-3 pt-2.5 border-t border-stone-200 dark:border-stone-800">
+      <div className="flex items-center justify-center gap-2 mt-2.5 pt-2 border-t border-[#D8C7A3] dark:border-[#3E3123]">
         <button
           onClick={() => onInsertChar(" ")}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded bg-white dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-stone-700 hover:bg-stone-100"
+          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#342A1F] dark:text-[#EBDDC7] border border-[#CEBC95] dark:border-[#4A3B2B] hover:bg-[#EBDDC7]"
         >
           <Space className="w-3.5 h-3.5" /> Space (स्थान)
         </button>
         <button
           onClick={onBackspace}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded bg-white dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-stone-700 hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all"
+          className="flex items-center gap-1.5 px-3.5 py-1 text-xs font-medium rounded bg-[#FCF8F0] dark:bg-[#251E17] text-[#8B331B] dark:text-[#EBBCAD] border border-[#CEBC95] dark:border-[#4A3B2B] hover:bg-[#F5DDD5] transition-all"
         >
           <Delete className="w-3.5 h-3.5" /> Backspace (मिटाएं)
         </button>
