@@ -9,7 +9,7 @@ import BookmarksModal from './components/BookmarksModal';
 import AboutModal from './components/AboutModal';
 import { INDIC_DICTIONARY } from './data/dictionaryData';
 import { searchDictionary } from './utils/transliterationEngine';
-import { BookOpen, Sparkles, AlertCircle, RefreshCw, Feather } from 'lucide-react';
+import { BookOpen, AlertCircle, RefreshCw, Feather } from 'lucide-react';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,7 +22,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('garuda_dict_dark');
     if (saved !== null) return JSON.parse(saved);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return false; // Default to clean crisp white theme!
   });
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FFFDF9] dark:bg-[#0c0f17] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-orange-500/20 selection:text-orange-900 transition-colors duration-200">
+    <div className="min-h-screen bg-white dark:bg-[#0d140f] text-stone-900 dark:text-stone-100 flex flex-col transition-colors duration-150">
       
       {/* Top Navigation */}
       <Header
@@ -112,24 +112,24 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-16">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-16">
         
-        {/* Hero & Vedic Invocatory Header */}
+        {/* Dignified Editorial Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 dark:bg-amber-950/60 border border-amber-300/70 dark:border-amber-800/60 text-amber-900 dark:text-amber-300 text-xs font-semibold mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200/80 dark:border-emerald-800/80 text-emerald-900 dark:text-emerald-300 text-xs font-semibold mb-3">
+            <Feather className="w-3.5 h-3.5 text-emerald-800 dark:text-emerald-400" />
             <span>Building for Bharat in the Age of AI</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-sanskrit text-slate-900 dark:text-amber-50 tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-sanskrit text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
             भारतीय ज्ञान-परंपरा शब्दकोश
           </h1>
 
-          <p className="mt-2 text-sm sm:text-base font-devanagari text-orange-800 dark:text-orange-400 font-medium">
+          <p className="mt-2 text-sm sm:text-base font-devanagari text-emerald-900 dark:text-emerald-400 font-semibold">
             "धारणाद्धर्ममित्याहुर्धर्मो धारयते प्रजाः"
           </p>
 
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-2 text-xs sm:text-sm text-stone-600 dark:text-stone-400 max-w-xl mx-auto leading-relaxed">
             Search classical Indic roots, Sanskrit etymologies (धातु), and decolonial semantic nuances in <strong>Devanagari</strong>, <strong>Phonetic Romanized (Hinglish)</strong>, or <strong>English</strong>.
           </p>
         </div>
@@ -177,12 +177,12 @@ export default function App() {
         )}
 
         {/* Search Results Header */}
-        <div className="max-w-4xl mx-auto flex items-center justify-between pb-3 mb-4 border-b border-amber-200/50 dark:border-slate-800 text-xs sm:text-sm">
-          <div className="font-medium text-slate-600 dark:text-slate-400 flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-orange-600" />
+        <div className="max-w-4xl mx-auto flex items-center justify-between pb-3 mb-4 border-b border-stone-200 dark:border-stone-800 text-xs sm:text-sm">
+          <div className="font-medium text-stone-600 dark:text-stone-400 flex items-center gap-2">
+            <BookOpen className="w-4 h-4 text-emerald-800 dark:text-emerald-400" />
             <span>
               {searchQuery ? (
-                <>परिणाम: <strong className="text-slate-900 dark:text-amber-100 font-devanagari">"{searchQuery}"</strong> ({searchResults.length} शब्द मिले)</>
+                <>परिणाम: <strong className="text-stone-900 dark:text-stone-100 font-devanagari">"{searchQuery}"</strong> ({searchResults.length} शब्द मिले)</>
               ) : (
                 <>शब्दावली सूची ({searchResults.length} प्रविष्टियां)</>
               )}
@@ -195,7 +195,7 @@ export default function App() {
                 setSearchQuery('');
                 setSelectedCategory('all');
               }}
-              className="text-orange-700 dark:text-orange-400 font-semibold hover:underline flex items-center gap-1"
+              className="text-emerald-800 dark:text-emerald-400 font-semibold hover:underline flex items-center gap-1"
             >
               <RefreshCw className="w-3 h-3" /> रीसेट करें (Reset)
             </button>
@@ -205,7 +205,7 @@ export default function App() {
         {/* Results Grid */}
         <section className="max-w-4xl mx-auto">
           {searchResults.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-5">
               {searchResults.map((entry) => (
                 <WordCard
                   key={entry.id}
@@ -218,17 +218,17 @@ export default function App() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 px-4 bg-white/60 dark:bg-slate-900/60 rounded-3xl border border-amber-200/60 dark:border-slate-800">
-              <AlertCircle className="w-12 h-12 text-orange-400 mx-auto mb-3" />
-              <h3 className="text-lg font-bold font-devanagari text-slate-800 dark:text-slate-200">
+            <div className="text-center py-16 px-4 bg-stone-50 dark:bg-[#121c15] rounded-xl border border-stone-200 dark:border-stone-800">
+              <AlertCircle className="w-10 h-10 text-emerald-800 dark:text-emerald-400 mx-auto mb-2.5" />
+              <h3 className="text-base font-bold font-devanagari text-stone-800 dark:text-stone-200">
                 कोई शब्द नहीं मिला
               </h3>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+              <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-400 max-w-md mx-auto">
                 "{searchQuery}" के लिए कोई प्रविष्टि उपलब्ध नहीं है। कृपया देवनागरी या फोनेटिक अंग्रेज़ी (जैसे 'dharma', 'gyan', 'yoga') में प्रयास करें।
               </p>
               <button
                 onClick={() => setSearchQuery('')}
-                className="mt-4 px-4 py-2 rounded-xl bg-orange-600 text-white text-xs font-semibold hover:bg-orange-700 transition-all shadow-md"
+                className="mt-4 px-4 py-2 rounded-lg bg-emerald-900 text-stone-50 text-xs font-semibold hover:bg-emerald-800 transition-all shadow-2xs"
               >
                 सभी शब्द देखें (Show All Words)
               </button>
@@ -239,15 +239,17 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-amber-200/60 dark:border-slate-800 bg-[#FAF6EE] dark:bg-[#090c12] py-8 text-xs text-slate-600 dark:text-slate-400 transition-colors">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-sanskrit text-lg font-bold text-orange-600">ग</span>
+      <footer className="mt-auto border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#0c120e] py-8 text-xs text-stone-600 dark:text-stone-400 transition-colors">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded bg-emerald-900 text-stone-100 flex items-center justify-center font-sanskrit text-xs font-bold">
+              ग
+            </div>
             <div>
-              <p className="font-semibold text-slate-900 dark:text-slate-200">
+              <p className="font-semibold text-stone-900 dark:text-stone-200">
                 गरुड़ शब्दकोश (Garuda Indic Lexicon)
               </p>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-stone-500">
                 Live Project Submission for Garuda Prakashan × Rishihood University
               </p>
             </div>
@@ -256,12 +258,12 @@ export default function App() {
           <div className="flex items-center gap-4 text-center sm:text-right">
             <button
               onClick={() => setShowAboutModal(true)}
-              className="hover:text-orange-600 transition-colors font-medium"
+              className="hover:text-emerald-800 dark:hover:text-emerald-400 transition-colors font-medium"
             >
               दर्शन व वास्तुकला (Architecture & Vision)
             </button>
             <span>•</span>
-            <span className="text-[11px] font-devanagari text-orange-800 dark:text-orange-400">
+            <span className="text-[11px] font-devanagari text-emerald-900 dark:text-emerald-400 font-semibold">
               सत्यमेव जयते नानृतम्
             </span>
           </div>

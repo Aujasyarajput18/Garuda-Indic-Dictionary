@@ -31,24 +31,24 @@ export default function BookmarksModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white dark:bg-slate-900 border border-amber-200 dark:border-slate-800 rounded-3xl max-w-xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-fadeIn">
+      <div className="bg-white dark:bg-[#121c15] border border-stone-200 dark:border-stone-800 rounded-2xl max-w-xl w-full max-h-[85vh] flex flex-col shadow-xl overflow-hidden">
         
         {/* Header */}
-        <div className="px-6 py-4 border-b border-amber-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Bookmark className="w-5 h-5 text-orange-600 fill-orange-600" />
-            <h3 className="font-sanskrit text-lg font-bold text-slate-900 dark:text-amber-100">
+            <Bookmark className="w-5 h-5 text-emerald-800 fill-emerald-800" />
+            <h3 className="font-sanskrit text-lg font-bold text-stone-900 dark:text-stone-100">
               सहेजे गए शब्द (Saved Vocabulary)
             </h3>
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-800 dark:text-orange-300">
+            <span className="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300">
               {bookmarkedEntries.length}
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+            className="p-1 rounded text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all"
           >
             <X className="w-5 h-5" />
           </button>
@@ -58,11 +58,11 @@ export default function BookmarksModal({
         <div className="p-6 overflow-y-auto space-y-3 flex-1">
           {bookmarkedEntries.length === 0 ? (
             <div className="text-center py-12">
-              <BookOpen className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-              <p className="font-devanagari text-slate-600 dark:text-slate-400 font-medium">
+              <BookOpen className="w-10 h-10 text-stone-300 dark:text-stone-600 mx-auto mb-2.5" />
+              <p className="font-devanagari text-stone-600 dark:text-stone-400 font-medium">
                 कोई शब्द सहेजा नहीं गया है।
               </p>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+              <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">
                 शब्द कार्ड पर बुकमार्क आइकन दबाकर अपने अध्ययन के लिए शब्द सहेजें।
               </p>
             </div>
@@ -70,21 +70,21 @@ export default function BookmarksModal({
             bookmarkedEntries.map((entry) => (
               <div
                 key={entry.id}
-                className="p-3.5 rounded-xl bg-amber-50/60 dark:bg-slate-850 border border-amber-200/60 dark:border-slate-800 flex items-center justify-between gap-3 hover:border-orange-300 transition-all"
+                className="p-3.5 rounded-lg bg-stone-50 dark:bg-[#16231a] border border-stone-200 dark:border-stone-800 flex items-center justify-between gap-3 hover:border-emerald-600 transition-all"
               >
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-devanagari text-xl font-bold text-slate-900 dark:text-amber-100">
+                    <span className="font-devanagari text-xl font-bold text-stone-900 dark:text-stone-100">
                       {entry.devanagari}
                     </span>
-                    <span className="font-display text-sm italic font-semibold text-orange-700 dark:text-orange-400">
+                    <span className="font-display text-sm italic font-semibold text-emerald-800 dark:text-emerald-400">
                       {entry.iast}
                     </span>
-                    <span className="text-[10px] text-slate-500 font-devanagari">
+                    <span className="text-[10px] text-stone-500 font-devanagari">
                       ({entry.category})
                     </span>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-1 mt-0.5">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 line-clamp-1 mt-0.5">
                     {entry.meanings.english}
                   </p>
                 </div>
@@ -95,14 +95,14 @@ export default function BookmarksModal({
                       onSelectWord(entry);
                       onClose();
                     }}
-                    className="p-1.5 rounded-lg text-orange-700 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-slate-700 transition-all"
+                    className="p-1.5 rounded text-emerald-800 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-stone-800 transition-all"
                     title="View details"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => onRemoveBookmark(entry.id)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 transition-all"
+                    className="p-1.5 rounded text-stone-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 transition-all"
                     title="Remove from saved"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -115,17 +115,17 @@ export default function BookmarksModal({
 
         {/* Footer Actions */}
         {bookmarkedEntries.length > 0 && (
-          <div className="px-6 py-3 border-t border-amber-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-900/50">
+          <div className="px-6 py-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between bg-stone-50 dark:bg-[#0f1712]">
             <button
               onClick={handleExport}
-              className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-orange-600 transition-all"
+              className="flex items-center gap-1.5 text-xs font-semibold text-emerald-800 dark:text-emerald-400 hover:underline transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export as Text (.txt)</span>
             </button>
             <button
               onClick={onClearBookmarks}
-              className="text-xs font-semibold text-red-600 dark:text-red-400 hover:underline"
+              className="text-xs font-semibold text-stone-500 hover:text-red-700 transition-colors"
             >
               Clear All (सब हटाएं)
             </button>

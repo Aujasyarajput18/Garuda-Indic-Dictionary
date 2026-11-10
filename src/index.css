@@ -8,9 +8,8 @@
   }
 }
 
-/* Custom smooth transitions and Indic styling */
 .font-devanagari {
-  font-family: 'Noto Serif Devanagari', 'Rozha One', serif;
+  font-family: 'Noto Serif Devanagari', 'Georgia', serif;
 }
 
 .font-sanskrit {
@@ -18,34 +17,30 @@
 }
 
 .font-display {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', 'Georgia', serif;
 }
 
-/* Custom scrollbars */
+/* Custom subtle scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(194, 65, 12, 0.25);
+  background: rgba(30, 95, 62, 0.25);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(194, 65, 12, 0.45);
+  background: rgba(30, 95, 62, 0.45);
 }
 
-/* Indic gold gradient text */
-.text-indic-gradient {
-  background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #d97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Classical Forest Green Typography Gradient */
+.text-forest-title {
+  color: #14532d;
 }
 
-.dark .text-indic-gradient {
-  background: linear-gradient(135deg, #fdba74 0%, #fb923c 50%, #fcd34d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.dark .text-forest-title {
+  color: #bbf7d0;
 }
