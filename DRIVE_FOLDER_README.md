@@ -15,4 +15,5 @@ Following Sankrant Sanu Ji's keynote session, "Building for Bharat in the Age of
 ### Files Included in This Drive Folder:
 1. `README.md` (This file): 5–10 line project summary, file directory index, and repository links.
 2. `AI_LOG.md`: Detailed AI usage disclosure detailing tools used, prompts, rejected hallucinations, and fact-checking methodology.
-3. `Aujasya_Rajput_Dictionary_App_Source.zip`: Complete standalone source code bundle of the application.
+3. `Garuda_Indic_Dictionary_Demo_Walkthrough.mp4`: Complete screen walkthrough video demonstrating dual phonetic search, Paninian roots, decolonial notes, virtual keyboard, and audio pronunciation.
+4. `Aujasya_Rajput_Dictionary_App_Source.zip`: Complete standalone source code bundle of the application.
