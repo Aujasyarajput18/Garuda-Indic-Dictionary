@@ -37,7 +37,7 @@ As demonstrated in Sankrant Ji's work (*The English Medium Myth*), millions of I
 * **📖 60 Foundational Scholarly Indic Entries:**
   * Across 5 classical categories (Philosophy, Yoga & Wellness, Statecraft & Civil Society, Epics & Literature, Daily Culture).
   * Every entry complete with Paninian Dhatu (`धातु`), derivational formula, Sanskrit scriptural citations (*प्रमाण श्लोक*), decolonial notes, and English reverse lookup.
-* **🧪 Rigorous Automated Test Suite (701 Assertions, 100% Pass Rate):**
+* **🧪 Rigorous Automated Test Suite (738 Assertions, 100% Pass Rate):**
   * Automated testing across 7 comprehensive test suites (`npm test` / `node test_rigorous.js`).
 * **⌨️ Integrated Indic Virtual Keyboard:**
   * For desktop and mobile users without an active Hindi/Devanagari IME keyboard. Categorized into *स्वर (Vowels)*, *मात्राएं (Vowel Signs)*, and *व्यंजन (Consonants & Conjuncts)* with halant and Vedic symbols (ॐ, ं, ः).
@@ -77,7 +77,7 @@ garuda-indic-dictionary/
 │   ├── App.jsx                      # Main reactive application state container
 │   ├── main.jsx                     # Vite React entry point
 │   └── index.css                    # Tailwind CSS directives & Indic typography rules
-├── test_rigorous.js                 # Exhaustive test suite (520/520 automated tests passing)
+├── test_rigorous.js                 # Exhaustive test suite (738/738 automated tests passing)
 ├── test_search.js                   # Automated test runner
 ├── AI_LOG.md                        # Transparent AI usage disclosure log
 ├── DRIVE_FOLDER_README.md           # Submission README for Google Drive folder
@@ -151,4 +151,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 * **Program:** Garuda Prakashan × Rishihood University Live Project
 * **Track:** Track 3 (Dictionary App)
 * **Candidate:** Aujasya (aujasyarajput18@gmail.com)
-* **Date:** 10 November 2026
+* **Date:** 11 November 2026

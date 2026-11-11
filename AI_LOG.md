@@ -2,7 +2,7 @@
 **Garuda Prakashan × Rishihood Live Project Assignment**  
 **Track:** Track 3 (Dictionary App)  
 **Candidate:** Aujasya (Rishihood University)  
-**Submission Date:** 10 November 2026  
+**Submission Date:** 11 November 2026  
 
 ---
 
@@ -63,14 +63,15 @@
      * *कर्मण्येवाधिकारस्ते* (Bhagavad Gita 2.47)
      * *सा विद्या या विमुक्तये* (Vishnu Purana 1.19.41)
 2. **Automated Unit Testing & Rigorous Verification (`test_rigorous.js`):**
-   * Built and executed an exhaustive 520-test automated verification suite covering all 45 foundational entries across 6 distinct dimensions:
-     * **Suite 1: Data Integrity & Scholarly Completeness:** Verified 100% of entries contain complete, verified Hindi definitions, English definitions, Paninian Dhatu formulas, scriptural shlokas with sources, and decolonial notes (360 assertions).
-     * **Suite 2: Devanagari Headword Search:** Validated direct Devanagari lookup for all 45 entries (45 assertions).
-     * **Suite 3: Romanized / Hinglish Phonetic Search:** Validated transliterated phonetic lookup for all 45 entries (45 assertions).
-     * **Suite 4: Schwa-Deletion & Vowel Length Robustness:** Validated 24 common phonetic transformations (`dharm` ⇄ `dharma`, `yog` ⇄ `yoga`, `shant` ⇄ `shanti`, `gyan` ⇄ `jnana`, `tap` ⇄ `tapas`, `bharat` ⇄ `bharata`).
-     * **Suite 5: Reverse English Translation Search:** Validated 41 core philosophical concept queries (`peace` -> `shanti`, `soul` -> `atman`, `god` -> `brahman`, `devotion` -> `bhakti`, `caste` -> `varna`, `compassion` -> `karuna`, `non-violence` -> `ahimsa`, `meditation` -> `dhyana`).
-     * **Suite 6: Typo Tolerance:** Validated Levenshtein distance matching for common typographical slips (`dharmaa`, `namstey`, `mokshaa`, `ahims`, `swaraaj`).
-   * Result: **520/520 passed (100% test pass rate).**
+   * Built and executed an exhaustive 738-test automated verification suite covering all 60 foundational entries across 7 distinct dimensions:
+     * **Suite 1: Data Integrity & Scholarly Completeness:** Verified 100% of entries contain complete, verified Hindi definitions, English definitions, Paninian Dhatu formulas, scriptural shlokas with sources, and decolonial notes (480 assertions).
+     * **Suite 2: Devanagari Headword Search:** Validated direct Devanagari lookup for all 60 entries (60 assertions).
+     * **Suite 3: Romanized / Hinglish Phonetic Search:** Validated transliterated phonetic lookup for all 60 entries (60 assertions).
+     * **Suite 4: Schwa-Deletion & Vowel Length Robustness:** Validated common phonetic transformations (`dharm` ⇄ `dharma`, `yog` ⇄ `yoga`, `shant` ⇄ `shanti`, `gyan` ⇄ `jnana`, `tap` ⇄ `tapas`, `bharat` ⇄ `bharata`).
+     * **Suite 5: Reverse English Translation Search:** Validated core philosophical concept queries (`peace` -> `shanti`, `soul` -> `atman`, `god` -> `brahman`, `devotion` -> `bhakti`, `caste` -> `varna`, `compassion` -> `karuna`, `non-violence` -> `ahimsa`, `meditation` -> `dhyana`).
+     * **Suite 6: Typo Tolerance & Fuzzy Matching:** Validated Levenshtein distance matching for common typographical slips (`dharmaa`, `namstey`, `mokshaa`, `ahims`, `swaraaj`).
+     * **Suite 7: Multi-Candidate Lattice & Google Indic IME Engine:** Validated candidate lattice generation and real-time transliteration for Sanskrit & Hinglish terms (`rishi` -> `ऋषि`, `garuda` -> `गरुड़`, `ram` / `rama` -> `राम`).
+   * Result: **738/738 passed (100% test pass rate).**
 3. **Cross-Browser Audio Validation:**
    * Tested Web Speech API (`SpeechSynthesisUtterance`) with the native `hi-IN` voice on macOS Safari, Google Chrome, and mobile viewports.
 
